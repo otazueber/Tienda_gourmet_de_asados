@@ -1,0 +1,1100 @@
+[
+   {
+      "id":1,
+      "unidadMedida":"kg",
+      "imagen":"../assets/img/vacunos/asado_pampa.jpg",
+      "stock":15,
+      "precio":3390,
+      "descripcion":"Asado Pampa (5 costillas)",
+      "categoryId":"vacunos"
+   },
+   {
+      "id":2,
+      "unidadMedida":"kg",
+      "precio":2290,
+      "categoryId":"vacunos",
+      "imagen":"../assets/img/vacunos/rack_ojo_bife.jpg",
+      "descripcion":"Rack de ojo de bife",
+      "stock":0
+   },
+   {
+      "id":3,
+      "descripcion":"Asado del medio",
+      "stock":10,
+      "categoryId":"vacunos",
+      "precio":1780,
+      "imagen":"../assets/img/vacunos/asado_del_medio.jpg",
+      "unidadMedida":"kg"
+   },
+   {
+      "id":4,
+      "categoryId":"vacunos",
+      "stock":10,
+      "descripcion":"Asado entero",
+      "imagen":"../assets/img/vacunos/asado_entero.jpg",
+      "precio":1280,
+      "unidadMedida":"kg"
+   },
+   {
+      "id":5,
+      "stock":20,
+      "categoryId":"vacunos",
+      "precio":1550,
+      "unidadMedida":"kg",
+      "descripcion":"Nalga",
+      "imagen":"../assets/img/vacunos/nalga.jpg"
+   },
+   {
+      "id":6,
+      "imagen":"../assets/img/vacunos/bola_lomo.jpg",
+      "precio":1300,
+      "descripcion":"Bola de Lomo",
+      "stock":20,
+      "unidadMedida":"kg",
+      "categoryId":"vacunos"
+   },
+   {
+      "id":7,
+      "imagen":"../assets/img/vacunos/picada.jpg",
+      "categoryId":"vacunos",
+      "descripcion":"Carne picada especial",
+      "unidadMedida":"kg",
+      "stock":18,
+      "precio":990
+   },
+   {
+      "id":8,
+      "unidadMedida":"kg",
+      "categoryId":"vacunos",
+      "precio":850,
+      "stock":10,
+      "imagen":"../assets/img/vacunos/osobuco.jpg",
+      "descripcion":"osobuco"
+   },
+   {
+      "id":9,
+      "categoryId":"vacunos",
+      "imagen":"../assets/img/vacunos/lomo_con_cordon.jpg",
+      "unidadMedida":"kg",
+      "stock":20,
+      "precio":2190,
+      "descripcion":"Lomo con cordón"
+   },
+   {
+      "id":10,
+      "imagen":"../assets/img/vacunos/cuadril.jpg",
+      "categoryId":"vacunos",
+      "precio":1450,
+      "descripcion":"Cuadril",
+      "unidadMedida":"kg",
+      "stock":10
+   },
+   {
+      "id":11,
+      "unidadMedida":"kg",
+      "descripcion":"Bife angosto con hueso",
+      "imagen":"../assets/img/vacunos/bife_angosto_con_hueso.jpg",
+      "stock":20,
+      "categoryId":"vacunos",
+      "precio":1250
+   },
+   {
+      "id":12,
+      "stock":10,
+      "descripcion":"Bife ancho c/hueso",
+      "unidadMedida":"kg",
+      "categoryId":"vacunos",
+      "imagen":"../assets/img/vacunos/bife_ancho_con_hueso.jpg",
+      "precio":1150
+   },
+   {
+      "id":13,
+      "imagen":"../assets/img/vacunos/tapa_asado.jpg",
+      "unidadMedida":"kg",
+      "precio":1250,
+      "stock":20,
+      "categoryId":"vacunos",
+      "descripcion":"Tapa de asado"
+   },
+   {
+      "id":14,
+      "imagen":"../assets/img/vacunos/peceto.jpg",
+      "stock":20,
+      "descripcion":"Peceto",
+      "precio":2130,
+      "unidadMedida":"kg",
+      "categoryId":"vacunos"
+   },
+   {
+      "id":15,
+      "stock":20,
+      "descripcion":"Tapa de Nalga",
+      "unidadMedida":"kg",
+      "precio":1100,
+      "imagen":"../assets/img/vacunos/tapa_nalga.jpg",
+      "categoryId":"vacunos"
+   },
+   {
+      "id":16,
+      "stock":10,
+      "unidadMedida":"kg",
+      "precio":2390,
+      "categoryId":"vacunos",
+      "descripcion":"Entraña",
+      "imagen":"../assets/img/vacunos/entrana.jpg"
+   },
+   {
+      "id":17,
+      "unidadMedida":"kg",
+      "stock":10,
+      "descripcion":"Vacío",
+      "categoryId":"vacunos",
+      "precio":1790,
+      "imagen":"../assets/img/vacunos/vacio.jpg"
+   },
+   {
+      "id":18,
+      "descripcion":"Lomo sin cordón",
+      "categoryId":"vacunos",
+      "precio":2440,
+      "stock":10,
+      "unidadMedida":"kg",
+      "imagen":"../assets/img/vacunos/lomo_sin_cordon.jpg"
+   },
+   {
+      "id":19,
+      "stock":10,
+      "descripcion":"Cima del vacío",
+      "unidadMedida":"kg",
+      "precio":1890,
+      "imagen":"../assets/img/vacunos/cima_vacio.jpg",
+      "categoryId":"vacunos"
+   },
+   {
+      "id":20,
+      "precio":1150,
+      "unidadMedida":"kg",
+      "categoryId":"vacunos",
+      "stock":20,
+      "imagen":"../assets/img/vacunos/marucha.jpg",
+      "descripcion":"Marucha"
+   },
+   {
+      "id":21,
+      "stock":20,
+      "imagen":"../assets/img/vacunos/ojo_bife.jpg",
+      "unidadMedida":"kg",
+      "categoryId":"vacunos",
+      "descripcion":"Ojo de bife",
+      "precio":1790
+   },
+   {
+      "id":22,
+      "unidadMedida":"kg",
+      "descripcion":"Cuadrada",
+      "stock":20,
+      "precio":1200,
+      "imagen":"../assets/img/vacunos/cuadrada.jpg",
+      "categoryId":"vacunos"
+   },
+   {
+      "id":23,
+      "imagen":"../assets/img/vacunos/falda_parrillera.jpg",
+      "stock":10,
+      "descripcion":"Falda Parrillera",
+      "unidadMedida":"kg",
+      "precio":920,
+      "categoryId":"vacunos"
+   },
+   {
+      "id":24,
+      "precio":1090,
+      "stock":20,
+      "imagen":"../assets/img/vacunos/paleta.jpg",
+      "descripcion":"Paleta",
+      "unidadMedida":"kg",
+      "categoryId":"vacunos"
+   },
+   {
+      "id":25,
+      "stock":20,
+      "descripcion":"Osobuco gourmet",
+      "precio":1300,
+      "unidadMedida":"kg",
+      "categoryId":"vacunos",
+      "imagen":"../assets/img/vacunos/osobuco_gourmet.jpg"
+   },
+   {
+      "id":26,
+      "imagen":"../assets/img/vacunos/roast_beef.jpg",
+      "categoryId":"vacunos",
+      "descripcion":"Roast beef",
+      "precio":1150,
+      "stock":20,
+      "unidadMedida":"kg"
+   },
+   {
+      "id":27,
+      "categoryId":"vacunos",
+      "imagen":"../assets/img/vacunos/costillar_entero.jpg",
+      "precio":1680,
+      "unidadMedida":"kg",
+      "descripcion":"Costillar entero",
+      "stock":20
+   },
+   {
+      "id":28,
+      "stock":20,
+      "categoryId":"vacunos",
+      "descripcion":"Bife de chorizo",
+      "precio":1890,
+      "unidadMedida":"kg",
+      "imagen":"../assets/img/vacunos/bife_chorizo.jpg"
+   },
+   {
+      "id":29,
+      "precio":1490,
+      "imagen":"../assets/img/vacunos/bife_americano.jpg",
+      "unidadMedida":"kg",
+      "categoryId":"vacunos",
+      "stock":10,
+      "descripcion":"Bife americano"
+   },
+   {
+      "id":30,
+      "precio":1770,
+      "descripcion":"Picaña",
+      "unidadMedida":"kg",
+      "stock":10,
+      "categoryId":"vacunos",
+      "imagen":"../assets/img/vacunos/picana.jpg"
+   },
+   {
+      "id":31,
+      "unidadMedida":"kg",
+      "precio":1150,
+      "categoryId":"vacunos",
+      "stock":10,
+      "imagen":"../assets/img/vacunos/matambre.jpg",
+      "descripcion":"Matambre"
+   },
+   {
+      "id":32,
+      "categoryId":"vacunos",
+      "stock":10,
+      "imagen":"../assets/img/vacunos/colita_cuadril.jpg",
+      "descripcion":"Colita de cuadril",
+      "unidadMedida":"kg",
+      "precio":1990
+   },
+   {
+      "id":33,
+      "unidadMedida":"kg",
+      "precio":1680,
+      "categoryId":"vacunos",
+      "imagen":"../assets/img/vacunos/asado_banderita.jpg",
+      "descripcion":"Asado banderita",
+      "stock":10
+   },
+   {
+      "id":34,
+      "descripcion":"Ribs de cerdo",
+      "imagen":"../assets/img/cerdos/ribs.jpg",
+      "unidadMedida":"kg",
+      "stock":10,
+      "precio":1880,
+      "categoryId":"cerdo"
+   },
+   {
+      "id":35,
+      "unidadMedida":"kg",
+      "stock":9,
+      "imagen":"../assets/img/cerdos/churrasco_cerdo.jpg",
+      "categoryId":"cerdo",
+      "descripcion":"Churrasco de cerdo",
+      "precio":2040
+   },
+   {
+      "id":36,
+      "imagen":"../assets/img/cerdos/pechito_cerdo.jpg",
+      "unidadMedida":"kg",
+      "precio":1060,
+      "descripcion":"Pechito de cerdo",
+      "stock":20,
+      "categoryId":"cerdo"
+   },
+   {
+      "id":37,
+      "precio":720,
+      "imagen":"../assets/img/cerdos/chuletas_cerdo.jpg",
+      "descripcion":"Chuletas de cerdo",
+      "stock":20,
+      "categoryId":"cerdo",
+      "unidadMedida":"kg"
+   },
+   {
+      "id":38,
+      "unidadMedida":"kg",
+      "descripcion":"Solomillo de cerdo",
+      "imagen":"../assets/img/cerdos/solomillo_cerdo.jpg",
+      "categoryId":"cerdo",
+      "precio":1750,
+      "stock":10
+   },
+   {
+      "id":39,
+      "categoryId":"cerdo",
+      "stock":20,
+      "imagen":"../assets/img/cerdos/bondiola.jpg",
+      "precio":1910,
+      "descripcion":"Bondiola",
+      "unidadMedida":"kg"
+   },
+   {
+      "id":40,
+      "unidadMedida":"kg",
+      "precio":1300,
+      "stock":10,
+      "categoryId":"cerdo",
+      "imagen":"../assets/img/cerdos/bondiola.jpg",
+      "descripcion":"Matambre de cerdo"
+   },
+   {
+      "id":41,
+      "categoryId":"aves",
+      "descripcion":"Pata muslo deshuesada sin piel COECO",
+      "precio":1360,
+      "unidadMedida":"unidad",
+      "imagen":"../assets/img/aves/pata_muslo_deshuesada_sin_piel.jpg",
+      "stock":10
+   },
+   {
+      "id":42,
+      "unidadMedida":"unidad",
+      "descripcion":"Suprema de pollo deshuesado sin piel COECO",
+      "stock":10,
+      "imagen":"../assets/img/aves/suprema_pollo_deshuesada_sin_piel.jpg",
+      "precio":2070,
+      "categoryId":"aves"
+   },
+   {
+      "id":43,
+      "precio":1600,
+      "unidadMedida":"kg",
+      "imagen":"../assets/img/aves/nuggets_pollo.jpg",
+      "categoryId":"aves",
+      "stock":19,
+      "descripcion":"Nugets de pollo"
+   },
+   {
+      "id":44,
+      "unidadMedida":"kg",
+      "imagen":"../assets/img/aves/suprema_pollo.jpg",
+      "categoryId":"aves",
+      "descripcion":"Suprema de pollo",
+      "precio":1330,
+      "stock":20
+   },
+   {
+      "id":45,
+      "categoryId":"aves",
+      "unidadMedida":"unidad",
+      "stock":20,
+      "descripcion":"Pollo pastoril COECO",
+      "precio":3290,
+      "imagen":"../assets/img/aves/pollo_pastoril.jpg"
+   },
+   {
+      "id":46,
+      "stock":20,
+      "precio":2350,
+      "unidadMedida":"unidad",
+      "categoryId":"mar",
+      "imagen":"../assets/img/mar/langostinos_pelados_desvenados.jpg",
+      "descripcion":"Langostinos pelados desvenados"
+   },
+   {
+      "id":47,
+      "precio":970,
+      "descripcion":"Filete de merluza empanados",
+      "unidadMedida":"unidad",
+      "imagen":"../assets/img/mar/filete_merluza.jpg",
+      "stock":9,
+      "categoryId":"mar"
+   },
+   {
+      "id":48,
+      "categoryId":"mar",
+      "stock":5,
+      "precio":2450,
+      "imagen":"../assets/img/mar/camarones_pelados_cocidos.jpg",
+      "descripcion":"Camarones pelados cocidos",
+      "unidadMedida":"unidad"
+   },
+   {
+      "id":49,
+      "descripcion":"Medallones de merluza",
+      "imagen":"../assets/img/mar/medallones_merluza.jpg",
+      "categoryId":"mar",
+      "precio":660,
+      "unidadMedida":"unidad",
+      "stock":10
+   },
+   {
+      "id":50,
+      "descripcion":"Medallón de merluza crocante",
+      "precio":1970,
+      "stock":20,
+      "categoryId":"mar",
+      "unidadMedida":"kg",
+      "imagen":"../assets/img/mar/medallon_merluza_crotante.jpg"
+   },
+   {
+      "id":51,
+      "stock":20,
+      "descripcion":"Morcila tipo copetín",
+      "unidadMedida":"kg",
+      "imagen":"../assets/img/embutidos/morcilla_copetin.jpg",
+      "categoryId":"embutidos",
+      "precio":1210
+   },
+   {
+      "id":52,
+      "stock":20,
+      "imagen":"../assets/img/embutidos/salamin_picado_grueso.jpg",
+      "categoryId":"embutidos",
+      "precio":300,
+      "descripcion":"Salamín picado grueso",
+      "unidadMedida":"unidad"
+   },
+   {
+      "id":53,
+      "unidadMedida":"kg",
+      "categoryId":"embutidos",
+      "stock":20,
+      "descripcion":"Morcilla vasca",
+      "precio":920,
+      "imagen":"../assets/img/embutidos/morcilla_vasca.jpg"
+   },
+   {
+      "id":54,
+      "imagen":"../assets/img/embutidos/longaniza_baston_con_anis.jpg",
+      "descripcion":"Longaniza bastón con semillas de anis",
+      "categoryId":"embutidos",
+      "unidadMedida":"kg",
+      "precio":1750,
+      "stock":20
+   },
+   {
+      "id":55,
+      "precio":1750,
+      "descripcion":"Longaniza tipo española",
+      "stock":10,
+      "categoryId":"embutidos",
+      "unidadMedida":"kg",
+      "imagen":"../assets/img/embutidos/longaniza_tipo_espanola.jpg"
+   },
+   {
+      "id":56,
+      "precio":1190,
+      "imagen":"../assets/img/embutidos/chorizo_puro_cerdo.jpg",
+      "stock":20,
+      "descripcion":"Chorizo puro de cerdo",
+      "unidadMedida":"kg",
+      "categoryId":"embutidos"
+   },
+   {
+      "id":57,
+      "unidadMedida":"kg",
+      "categoryId":"embutidos",
+      "imagen":"../assets/img/embutidos/chorizo_frezco_saborizado.jpg",
+      "stock":20,
+      "descripcion":"Chorizos frescos saborizados",
+      "precio":1800
+   },
+   {
+      "id":58,
+      "stock":10,
+      "imagen":"../assets/img/embutidos/chorizos_bombon_la_divisa.jpg",
+      "unidadMedida":"kg",
+      "precio":1650,
+      "descripcion":"Chorizo bombón La Divisa",
+      "categoryId":"embutidos"
+   },
+   {
+      "id":59,
+      "categoryId":"embutidos",
+      "stock":10,
+      "imagen":"../assets/img/embutidos/salamin_picado_fino.jpg",
+      "unidadMedida":"unidad",
+      "precio":300,
+      "descripcion":"Salamín picado fino"
+   },
+   {
+      "id":60,
+      "imagen":"../assets/img/embutidos/panceta_salada.jpg",
+      "precio":1300,
+      "unidadMedida":"kg",
+      "categoryId":"embutidos",
+      "descripcion":"Panceta salada",
+      "stock":10
+   },
+   {
+      "id":61,
+      "unidadMedida":"kg",
+      "imagen":"../assets/img/embutidos/salchicha_parrillera.jpg",
+      "categoryId":"embutidos",
+      "descripcion":"Salchicha parrillera La Divisa Mixta",
+      "stock":20,
+      "precio":1810
+   },
+   {
+      "id":62,
+      "unidadMedida":"unidad",
+      "imagen":"../assets/img/embutidos/chorizo_colorado.jpg",
+      "descripcion":"Chorizo colorado",
+      "precio":250,
+      "categoryId":"embutidos",
+      "stock":10
+   },
+   {
+      "id":63,
+      "unidadMedida":"kg",
+      "categoryId":"embutidos",
+      "imagen":"../assets/img/embutidos/morcilla_rosca.jpg",
+      "descripcion":"Morcilla rosca",
+      "precio":690,
+      "stock":10
+   },
+   {
+      "id":64,
+      "precio":1620,
+      "imagen":"../assets/img/embutidos/salchicha_parrillera_puro_cerdo.jpg",
+      "categoryId":"embutidos",
+      "descripcion":"Salchicha parrillera puro cerdo",
+      "unidadMedida":"kg",
+      "stock":10
+   },
+   {
+      "id":65,
+      "unidadMedida":"kg",
+      "categoryId":"achuras",
+      "imagen":"../assets/img/achuras/chinchulines.jpg",
+      "precio":1000,
+      "descripcion":"Chinchulines",
+      "stock":20
+   },
+   {
+      "id":66,
+      "precio":2640,
+      "imagen":"../assets/img/achuras/mollejas.jpg",
+      "descripcion":"Mollejas",
+      "stock":10,
+      "categoryId":"achuras",
+      "unidadMedida":"kg"
+   },
+   {
+      "id":67,
+      "unidadMedida":"kg",
+      "precio":1190,
+      "descripcion":"Hamburguesas",
+      "categoryId":"elaborados",
+      "stock":20,
+      "imagen":"../assets/img/elaborados/hamburguesas.jpg"
+   },
+   {
+      "id":68,
+      "unidadMedida":"kg",
+      "stock":20,
+      "precio":1190,
+      "descripcion":"Milanesas rebosadas de pollo",
+      "categoryId":"elaborados",
+      "imagen":"../assets/img/elaborados/milanesas_rebozadas_pollo.jpg"
+   },
+   {
+      "id":69,
+      "precio":1190,
+      "categoryId":"elaborados",
+      "imagen":"../assets/img/elaborados/milanesas_rebozadas_carne.jpg",
+      "stock":8,
+      "descripcion":"Milanesas rebosadas de carne",
+      "unidadMedida":"kg"
+   },
+   {
+      "id":70,
+      "imagen":"../assets/img/quesos/provoleta_ahumada_fraccionada.jpg",
+      "unidadMedida":"unidad",
+      "stock":10,
+      "categoryId":"quesos",
+      "descripcion":"Provoleta ahumada fraccionada",
+      "precio":880
+   },
+   {
+      "id":71,
+      "precio":1390,
+      "stock":10,
+      "unidadMedida":"unidad",
+      "categoryId":"quesos",
+      "imagen":"../assets/img/quesos/provolone_parrillero_450g.jpg",
+      "descripcion":"Provolone parrillero por 2 unidades 450g"
+   },
+   {
+      "id":72,
+      "unidadMedida":"unidad",
+      "categoryId":"quesos",
+      "descripcion":"Queso Gouda x 300g",
+      "imagen":"../assets/img/quesos/queso_gouda.jpg",
+      "precio":600,
+      "stock":10
+   },
+   {
+      "id":73,
+      "precio":680,
+      "unidadMedida":"unidad",
+      "stock":20,
+      "categoryId":"quesos",
+      "imagen":"../assets/img/quesos/queso_fontina_300g.jpg",
+      "descripcion":"Queso fontina x 300g"
+   },
+   {
+      "id":74,
+      "categoryId":"quesos",
+      "precio":850,
+      "stock":10,
+      "descripcion":"Queso provolone Patagónico ahumado x 220g",
+      "unidadMedida":"unidad",
+      "imagen":"../assets/img/quesos/qyesi_provolone_patagonico_ahumado.jpg"
+   },
+   {
+      "id":75,
+      "descripcion":"Provoleta parrillera fraccionada",
+      "imagen":"../assets/img/quesos/provoleta_parrillera_fraccionada.jpg",
+      "precio":702.5,
+      "unidadMedida":"unidad",
+      "stock":20,
+      "categoryId":"quesos"
+   },
+   {
+      "id":76,
+      "categoryId":"quesos",
+      "precio":820,
+      "unidadMedida":"unidad",
+      "imagen":"../assets/img/quesos/queso_sardo.jpg",
+      "descripcion":"Queso sardo x 250g",
+      "stock":20
+   },
+   {
+      "id":77,
+      "precio":1040,
+      "unidadMedida":"unidad",
+      "categoryId":"helados",
+      "stock":10,
+      "descripcion":"Helado Banana Split x 500g",
+      "imagen":"../assets/img/helados/helado_banana_split.jpg"
+   },
+   {
+      "id":78,
+      "precio":1040,
+      "descripcion":"Helado Dulce de Leche con DDL x 500g",
+      "stock":20,
+      "unidadMedida":"unidad",
+      "imagen":"../assets/img/helados/helado_ddl_con_ddl.jpg",
+      "categoryId":"helados"
+   },
+   {
+      "id":79,
+      "stock":9,
+      "imagen":"../assets/img/helados/bombon_chololate_blanco.jpg",
+      "descripcion":"Bombón Chololate Blanco",
+      "unidadMedida":"caja x 6u",
+      "precio":2400,
+      "categoryId":"helados"
+   },
+   {
+      "id":80,
+      "unidadMedida":"unidad",
+      "precio":1040,
+      "descripcion":"Helado Dulce de Leche Tentación x 500g",
+      "categoryId":"helados",
+      "imagen":"../assets/img/helados/helado_dulce_leche_tentacion.jpg",
+      "stock":20
+   },
+   {
+      "id":81,
+      "categoryId":"helados",
+      "stock":10,
+      "descripcion":"Helado Tramontana x 500g",
+      "imagen":"../assets/img/helados/helado_tramontana.jpg",
+      "unidadMedida":"unidad",
+      "precio":1040
+   },
+   {
+      "id":82,
+      "stock":20,
+      "precio":1040,
+      "categoryId":"helados",
+      "descripcion":"Helado Mouse de Arándanos x 500g",
+      "imagen":"../assets/img/helados/helado_mouse_arandanos.jpg",
+      "unidadMedida":"unidad"
+   },
+   {
+      "id":83,
+      "descripcion":"Bombón Escocés",
+      "imagen":"../assets/img/helados/bombon_escoces.jpg",
+      "unidadMedida":"caja x 6u",
+      "categoryId":"helados",
+      "precio":2400,
+      "stock":20
+   },
+   {
+      "id":84,
+      "descripcion":"Helado Mouse de Maracuyá x 500g",
+      "imagen":"../assets/img/helados/helado_mouse_maracuya.jpg",
+      "categoryId":"helados",
+      "unidadMedida":"unidad",
+      "stock":10,
+      "precio":1040
+   },
+   {
+      "id":85,
+      "precio":2910,
+      "descripcion":"Bombón de Maracuyá",
+      "unidadMedida":"caja x 6u",
+      "imagen":"../assets/img/helados/bombon_maracuya.jpg",
+      "stock":20,
+      "categoryId":"helados"
+   },
+   {
+      "id":86,
+      "categoryId":"helados",
+      "descripcion":"Helado Chocolate con DDL x 500g",
+      "unidadMedida":"unidad",
+      "stock":10,
+      "precio":1040,
+      "imagen":"../assets/img/helados/helado_chocolate_ddl.jpg"
+   },
+   {
+      "id":87,
+      "stock":20,
+      "descripcion":"Bombón Suizo",
+      "categoryId":"helados",
+      "unidadMedida":"caja x 6u",
+      "precio":2400,
+      "imagen":"../assets/img/helados/bombon_suizo.jpg"
+   },
+   {
+      "id":88,
+      "categoryId":"almacen",
+      "descripcion":"Chipas congeladas x 600g",
+      "stock":20,
+      "unidadMedida":"unidad",
+      "precio":1490,
+      "imagen":"../assets/img/almacen/Chipas_congeladas.jpg"
+   },
+   {
+      "id":89,
+      "imagen":"../assets/img/almacen/Dulce_de_Leche_Oringinal.jpg",
+      "categoryId":"almacen",
+      "unidadMedida":"unidad",
+      "descripcion":"Dulce de Leche Oringinal",
+      "stock":10,
+      "precio":660
+   },
+   {
+      "id":90,
+      "descripcion":"Salsa: Frutos rojos, vino malvec y miel",
+      "imagen":"../assets/img/almacen/Salsa_Frutos_rojos.jpg",
+      "categoryId":"almacen",
+      "stock":20,
+      "unidadMedida":"unidad",
+      "precio":930
+   },
+   {
+      "id":91,
+      "descripcion":"Berenjenas en aceite y vinagre",
+      "imagen":"../assets/img/almacen/Berenjenas_en_aceite_vinagre.jpg",
+      "precio":470,
+      "stock":20,
+      "unidadMedida":"unidad",
+      "categoryId":"almacen"
+   },
+   {
+      "id":92,
+      "descripcion":"Sal especiada",
+      "precio":480,
+      "unidadMedida":"unidad",
+      "categoryId":"almacen",
+      "imagen":"../assets/img/almacen/Sal_especiada.jpg",
+      "stock":10
+   },
+   {
+      "id":93,
+      "stock":10,
+      "categoryId":"almacen",
+      "imagen":"../assets/img/almacen/Salsa_Sriracha.jpg",
+      "precio":1140,
+      "unidadMedida":"unidad",
+      "descripcion":"Salsa: Sriracha"
+   },
+   {
+      "id":94,
+      "imagen":"../assets/img/almacen/Salsa_Mostaza_miel.jpg",
+      "descripcion":"Salsa: Mostaza y miel",
+      "precio":1010,
+      "unidadMedida":"unidad",
+      "categoryId":"almacen",
+      "stock":10
+   },
+   {
+      "id":95,
+      "unidadMedida":"unidad",
+      "precio":860,
+      "descripcion":"Salsa: Chimichurri con vino malbec",
+      "imagen":"../assets/img/almacen/Salsa_Chimichurri_vino_malbec.jpg",
+      "categoryId":"almacen",
+      "stock":10
+   },
+   {
+      "id":96,
+      "stock":20,
+      "descripcion":"Morrones en vinagre",
+      "imagen":"../assets/img/almacen/Morrones_en_vinagre.jpg",
+      "unidadMedida":"unidad",
+      "precio":420,
+      "categoryId":"almacen"
+   },
+   {
+      "id":97,
+      "categoryId":"almacen",
+      "stock":20,
+      "descripcion":"Salsa: Sweet Chili",
+      "precio":1140,
+      "imagen":"../assets/img/almacen/Salsa_Sweet_Chili.jpg",
+      "unidadMedida":"unidad"
+   },
+   {
+      "id":98,
+      "precio":580,
+      "descripcion":"Papas Smiles",
+      "stock":10,
+      "categoryId":"almacen",
+      "unidadMedida":"unidad",
+      "imagen":"../assets/img/almacen/Papas_Smiles.jpg"
+   },
+   {
+      "id":99,
+      "precio":1480,
+      "unidadMedida":"unidad",
+      "stock":10,
+      "imagen":"../assets/img/almacen/guacamole.jpg",
+      "descripcion":"Guacamole",
+      "categoryId":"almacen"
+   },
+   {
+      "id":100,
+      "descripcion":"Sal ahumada",
+      "stock":20,
+      "categoryId":"almacen",
+      "imagen":"../assets/img/almacen/Sal_ahumada.jpg",
+      "unidadMedida":"unidad",
+      "precio":200
+   },
+   {
+      "id":101,
+      "stock":20,
+      "categoryId":"almacen",
+      "descripcion":"Sal entrefina especiada - Cerdo",
+      "imagen":"../assets/img/almacen/Sal_entrefina_especiada_Cerdo.jpg",
+      "precio":420,
+      "unidadMedida":"unidad"
+   },
+   {
+      "id":102,
+      "categoryId":"almacen",
+      "stock":10,
+      "descripcion":"Salsa: Ciruelas, jengibre, salsa de soja y vino torrontés",
+      "unidadMedida":"unidad",
+      "imagen":"../assets/img/almacen/Salsa_Ciruelas_jengibre_soja_vino_torrontes.jpg",
+      "precio":930
+   },
+   {
+      "id":103,
+      "stock":10,
+      "categoryId":"almacen",
+      "precio":330,
+      "unidadMedida":"unidad",
+      "imagen":"../assets/img/almacen/Pickles_mixtos.jpg",
+      "descripcion":"Pickles mixtos"
+   },
+   {
+      "id":104,
+      "descripcion":"Papas Surecrisp",
+      "imagen":"../assets/img/almacen/Papas_Surecrisp.jpg",
+      "categoryId":"almacen",
+      "unidadMedida":"unidad",
+      "stock":20,
+      "precio":870
+   },
+   {
+      "id":105,
+      "precio":930,
+      "imagen":"../assets/img/almacen/Salsa_Spicy_Mango_Sauce.jpg",
+      "unidadMedida":"unidad",
+      "stock":20,
+      "categoryId":"almacen",
+      "descripcion":"Salsa: Spicy Mango Sauce"
+   },
+   {
+      "id":106,
+      "imagen":"../assets/img/almacen/Aderezos.jpg",
+      "unidadMedida":"unidad",
+      "stock":10,
+      "descripcion":"Aderezos",
+      "categoryId":"almacen",
+      "precio":620
+   },
+   {
+      "id":107,
+      "unidadMedida":"unidad",
+      "descripcion":"Salsa: Premium Barbacoa",
+      "stock":20,
+      "categoryId":"almacen",
+      "imagen":"../assets/img/almacen/Salsa_Premium_Barbacoa.jpg",
+      "precio":970
+   },
+   {
+      "id":108,
+      "descripcion":"Vino Salentein Blanc de blancs 750ml",
+      "precio":990,
+      "stock":20,
+      "unidadMedida":"unidad",
+      "categoryId":"vinos",
+      "imagen":"../assets/img/vinos/Salentein_Blanc_de_blancs.jpg"
+   },
+   {
+      "id":109,
+      "precio":1750,
+      "stock":14,
+      "imagen":"../assets/img/vinos/padrillo_malvec.jpg",
+      "categoryId":"vinos",
+      "unidadMedida":"unidad",
+      "descripcion":"Padrillos Malvec 750ml"
+   },
+   {
+      "id":110,
+      "categoryId":"vinos",
+      "descripcion":"Vino Salentein Malbec 750ml",
+      "imagen":"../assets/img/vinos/Salentein_Malbec.jpg",
+      "stock":6,
+      "precio":2180,
+      "unidadMedida":"unidad"
+   },
+   {
+      "id":111,
+      "imagen":"../assets/img/vinos/Salentein_Numina_Cabernet_Franc.jpg",
+      "precio":3400,
+      "descripcion":"Vino Salentein Numina Cabernet Franc 750ml",
+      "stock":20,
+      "unidadMedida":"unidad",
+      "categoryId":"vinos"
+   },
+   {
+      "id":112,
+      "categoryId":"vinos",
+      "descripcion":"Vino Zuccardi Q Tempranillo 750ml",
+      "precio":3380,
+      "stock":10,
+      "unidadMedida":"unidad",
+      "imagen":"../assets/img/vinos/Zuccardi_Q_Tempranillo.jpg"
+   },
+   {
+      "id":113,
+      "imagen":"../assets/img/vinos/DV_Catena_Cabernet_Malbec.jpg",
+      "precio":3400,
+      "categoryId":"vinos",
+      "unidadMedida":"unidad",
+      "stock":10,
+      "descripcion":"Vino DV Catena Cabernet - Malbec 750ml"
+   },
+   {
+      "id":114,
+      "imagen":"../assets/img/vinos/Dv_Catena_Malbec_Malbec.jpg",
+      "precio":5800,
+      "descripcion":"Vino Dv Catena Malbec - Malbec 750ml",
+      "unidadMedida":"unidad",
+      "stock":10,
+      "categoryId":"vinos"
+   },
+   {
+      "id":115,
+      "descripcion":"Vino Zuccardi Q Malbec 750ml",
+      "unidadMedida":"unidad",
+      "precio":3380,
+      "imagen":"../assets/img/vinos/Zuccardi_Q_Malbec.jpg",
+      "stock":10,
+      "categoryId":"vinos"
+   },
+   {
+      "id":116,
+      "descripcion":"Vino Animal Malbec 750ml",
+      "imagen":"../assets/img/vinos/Animal_Malbec.jpg",
+      "categoryId":"vinos",
+      "unidadMedida":"unidad",
+      "stock":20,
+      "precio":2390
+   },
+   {
+      "id":117,
+      "categoryId":"vinos",
+      "imagen":"../assets/img/vinos/Salentein_Numina_Malbec.jpg",
+      "precio":3400,
+      "stock":20,
+      "unidadMedida":"unidad",
+      "descripcion":"Vino Salentein Numina Malbec 750ml"
+   },
+   {
+      "id":118,
+      "unidadMedida":"unidad",
+      "imagen":"../assets/img/fuego/iniciador_fuego_madera.jpg",
+      "descripcion":"Iniciador de fuego Maderasa",
+      "stock":10,
+      "precio":300,
+      "categoryId":"fuego"
+   },
+   {
+      "id":119,
+      "unidadMedida":"unidad",
+      "descripcion":"Leña espinillo x 8kg",
+      "precio":830,
+      "stockstock":10,
+      "categoryId":"fuego",
+      "imagen":"../assets/img/fuego/lena_espinillo.jpg"
+   },
+   {
+      "id":120,
+      "imagen":"../assets/img/fuego/carbon_4kg.jpg",
+      "categoryId":"fuego",
+      "unidadMedida":"unidad",
+      "stock":20,
+      "descripcion":"Carbón x 4kg",
+      "precio":750
+   },
+   {
+      "id":121,
+      "precio":330,
+      "stock":20,
+      "categoryId":"fuego",
+      "imagen":"../assets/img/fuego/chips_lena_nogal.jpg",
+      "descripcion":"Chips de leña - Nogal",
+      "unidadMedida":"caja"
+   },
+   {
+      "id":122,
+      "imagen":"../assets/img/fuego/chips_lena_espinillo.jpg",
+      "categoryId":"fuego",
+      "stock":10,
+      "precio":330,
+      "unidadMedida":"caja",
+      "descripcion":"Chips de leña - Espinillo"
+   }
+]
