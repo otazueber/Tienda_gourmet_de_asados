@@ -1,0 +1,55 @@
+{
+	"info": {
+		"_postman_id": "04a5ed30-d42c-416d-9fb7-b4ca403fd850",
+		"name": "carts",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "14110080"
+	},
+	"item": [
+		{
+			"name": "AddACart",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": "{{url}}/api/carts"
+			},
+			"response": []
+		},
+		{
+			"name": "AddOrUpdateAProduct",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"quantity\": 100\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{url}}/api/carts/1/product/6"
+			},
+			"response": []
+		},
+		{
+			"name": "GetProductsOfACart",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{url}}/api/carts/1"
+			},
+			"response": []
+		},
+		{
+			"name": "DelACart",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "{{url}}/api/carts/2"
+			},
+			"response": []
+		}
+	]
+}

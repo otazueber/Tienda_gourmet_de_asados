@@ -1,0 +1,19 @@
+{
+	"info": {
+		"_postman_id": "d6ab49eb-1f2d-4849-8c8c-9a638c1cb87d",
+		"name": "home",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "14110080"
+	},
+	"item": [
+		{
+			"name": "Home",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{url}}"
+			},
+			"response": []
+		}
+	]
+}
