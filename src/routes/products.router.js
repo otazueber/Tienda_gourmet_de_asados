@@ -5,6 +5,25 @@ const router = Router();
 const path = './src/data/';
 const productManager = new ProductManager(path);
 
+const title = 'Not Vegan. Carnes. Quesos. Helados. Vinos.';
+
+router.get('/home', async (req, res) => {
+    const products = await productManager.getProducts();
+    res.render('home.handlebars', {
+        products,
+        title,
+    })
+});
+
+router.get('/realtimeproducts', async (req, res) => {
+    const products = await productManager.getProducts();
+    res.render('realTimeProducts.handlebars', {
+        products,
+        title,
+    })
+});
+
+
 router.get('/', async (req, res) => {
     const limit = req.query.limit;
     try {
@@ -56,6 +75,8 @@ router.post('/', async (req, res) => {
     const product = req.body;
     const result = await productManager.addProduct(product);
     res.status(result[0]).json({ message: result[1] });
+    const productsJSON = JSON.stringify(await productManager.getProducts(), null, 2);
+    req.app.get('io').emit('productos', productsJSON);
 });
 
 router.delete('/:pid', async (req, res) => {
@@ -67,6 +88,8 @@ router.delete('/:pid', async (req, res) => {
         } else {
             productManager.deleteProduct(pid);
             res.status(200).json({ message: 'Producto eliminado satisfactoriamente' });
+            const productsJSON = JSON.stringify(await productManager.getProducts(), null, 2);
+            req.app.get('io').emit('productos', productsJSON);
         }
     } catch (err) {
         console.error(err);
