@@ -1,5 +1,5 @@
 {
-  "name": "desafio03",
+  "name": "desafios",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,6 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "express-handlebars": "^7.0.2",
+    "socket.io": "^4.6.1"
   }
 }
