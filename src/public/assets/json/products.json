@@ -1,8 +1,7 @@
 [
   {
-    "id": 1,
     "title": "",
-    "code": "",
+    "code": "001",
     "status": false,
     "measurement": "kg",
     "thumbnails": "/assets/img/vacunos/asado_pampa.jpg",
@@ -12,9 +11,8 @@
     "category": "vacunos"
   },
   {
-    "id": 2,
     "title": "",
-    "code": "",
+    "code": "002",
     "status": true,
     "measurement": "kg",
     "price": 2290,
@@ -24,9 +22,8 @@
     "stock": 0
   },
   {
-    "id": 3,
     "title": "",
-    "code": "",
+    "code": "003",
     "status": true,
     "description": "Asado del medio",
     "stock": 10,
@@ -36,9 +33,8 @@
     "measurement": "kg"
   },
   {
-    "id": 4,
     "title": "",
-    "code": "",
+    "code": "004",
     "status": true,
     "category": "vacunos",
     "stock": 10,
@@ -48,9 +44,8 @@
     "measurement": "kg"
   },
   {
-    "id": 5,
     "title": "",
-    "code": "",
+    "code": "005",
     "status": true,
     "stock": 20,
     "category": "vacunos",
@@ -60,9 +55,8 @@
     "thumbnails": "/assets/img/vacunos/nalga.jpg"
   },
   {
-    "id": 6,
     "title": "",
-    "code": "",
+    "code": "006",
     "status": true,
     "thumbnails": "/assets/img/vacunos/bola_lomo.jpg",
     "price": 1300,
@@ -72,9 +66,8 @@
     "category": "vacunos"
   },
   {
-    "id": 7,
     "title": "",
-    "code": "",
+    "code": "007",
     "status": true,
     "thumbnails": "/assets/img/vacunos/picada.jpg",
     "category": "vacunos",
@@ -84,9 +77,8 @@
     "price": 990
   },
   {
-    "id": 8,
     "title": "",
-    "code": "",
+    "code": "008",
     "status": true,
     "measurement": "kg",
     "category": "vacunos",
@@ -96,9 +88,8 @@
     "description": "osobuco"
   },
   {
-    "id": 9,
     "title": "",
-    "code": "",
+    "code": "009",
     "status": true,
     "category": "vacunos",
     "thumbnails": "/assets/img/vacunos/lomo_con_cordon.jpg",
@@ -108,9 +99,8 @@
     "description": "Lomo con cordón"
   },
   {
-    "id": 10,
     "title": "",
-    "code": "",
+    "code": "010",
     "status": true,
     "thumbnails": "/assets/img/vacunos/cuadril.jpg",
     "category": "vacunos",
@@ -120,9 +110,8 @@
     "stock": 10
   },
   {
-    "id": 11,
     "title": "",
-    "code": "",
+    "code": "011",
     "status": true,
     "measurement": "kg",
     "description": "Bife angosto con hueso",
@@ -132,9 +121,8 @@
     "price": 1250
   },
   {
-    "id": 12,
     "title": "",
-    "code": "",
+    "code": "012",
     "status": true,
     "stock": 10,
     "description": "Bife ancho c/hueso",
@@ -144,9 +132,8 @@
     "price": 1150
   },
   {
-    "id": 13,
     "title": "",
-    "code": "",
+    "code": "013",
     "status": true,
     "thumbnails": "/assets/img/vacunos/tapa_asado.jpg",
     "measurement": "kg",
@@ -156,9 +143,8 @@
     "description": "Tapa de asado"
   },
   {
-    "id": 14,
     "title": "",
-    "code": "",
+    "code": "014",
     "status": true,
     "thumbnails": "/assets/img/vacunos/peceto.jpg",
     "stock": 20,
@@ -168,9 +154,8 @@
     "category": "vacunos"
   },
   {
-    "id": 15,
     "title": "",
-    "code": "",
+    "code": "015",
     "status": true,
     "stock": 20,
     "description": "Tapa de Nalga",
@@ -180,9 +165,8 @@
     "category": "vacunos"
   },
   {
-    "id": 16,
     "title": "",
-    "code": "",
+    "code": "016",
     "status": true,
     "stock": 10,
     "measurement": "kg",
@@ -192,9 +176,8 @@
     "thumbnails": "/assets/img/vacunos/entrana.jpg"
   },
   {
-    "id": 17,
     "title": "",
-    "code": "",
+    "code": "017",
     "status": true,
     "measurement": "kg",
     "stock": 10,
@@ -204,9 +187,8 @@
     "thumbnails": "/assets/img/vacunos/vacio.jpg"
   },
   {
-    "id": 18,
     "title": "",
-    "code": "",
+    "code": "018",
     "status": true,
     "description": "Lomo sin cordón",
     "category": "vacunos",
@@ -216,9 +198,8 @@
     "thumbnails": "/assets/img/vacunos/lomo_sin_cordon.jpg"
   },
   {
-    "id": 19,
     "title": "",
-    "code": "",
+    "code": "019",
     "status": true,
     "stock": 10,
     "description": "Cima del vacío",
@@ -228,9 +209,8 @@
     "category": "vacunos"
   },
   {
-    "id": 20,
     "title": "",
-    "code": "",
+    "code": "020",
     "status": true,
     "price": 1150,
     "measurement": "kg",
@@ -240,9 +220,8 @@
     "description": "Marucha"
   },
   {
-    "id": 21,
     "title": "",
-    "code": "",
+    "code": "021",
     "status": true,
     "stock": 20,
     "thumbnails": "/assets/img/vacunos/ojo_bife.jpg",
@@ -252,9 +231,8 @@
     "price": 1790
   },
   {
-    "id": 22,
     "title": "",
-    "code": "",
+    "code": "022",
     "status": true,
     "measurement": "kg",
     "description": "Cuadrada",
@@ -264,9 +242,8 @@
     "category": "vacunos"
   },
   {
-    "id": 23,
     "title": "",
-    "code": "",
+    "code": "023",
     "status": true,
     "thumbnails": "/assets/img/vacunos/falda_parrillera.jpg",
     "stock": 10,
@@ -276,9 +253,8 @@
     "category": "vacunos"
   },
   {
-    "id": 24,
     "title": "",
-    "code": "",
+    "code": "024",
     "status": true,
     "price": 1090,
     "stock": 20,
@@ -288,9 +264,8 @@
     "category": "vacunos"
   },
   {
-    "id": 25,
     "title": "",
-    "code": "",
+    "code": "025",
     "status": true,
     "stock": 20,
     "description": "Osobuco gourmet",
@@ -300,9 +275,8 @@
     "thumbnails": "/assets/img/vacunos/osobuco_gourmet.jpg"
   },
   {
-    "id": 26,
     "title": "",
-    "code": "",
+    "code": "026",
     "status": true,
     "thumbnails": "/assets/img/vacunos/roast_beef.jpg",
     "category": "vacunos",
@@ -312,9 +286,8 @@
     "measurement": "kg"
   },
   {
-    "id": 27,
     "title": "",
-    "code": "",
+    "code": "027",
     "status": true,
     "category": "vacunos",
     "thumbnails": "/assets/img/vacunos/costillar_entero.jpg",
@@ -324,9 +297,8 @@
     "stock": 20
   },
   {
-    "id": 28,
     "title": "",
-    "code": "",
+    "code": "028",
     "status": true,
     "stock": 20,
     "category": "vacunos",
@@ -336,9 +308,8 @@
     "thumbnails": "/assets/img/vacunos/bife_chorizo.jpg"
   },
   {
-    "id": 29,
     "title": "",
-    "code": "",
+    "code": "029",
     "status": true,
     "price": 1490,
     "thumbnails": "/assets/img/vacunos/bife_americano.jpg",
@@ -348,9 +319,8 @@
     "description": "Bife americano"
   },
   {
-    "id": 30,
     "title": "",
-    "code": "",
+    "code": "030",
     "status": true,
     "price": 1770,
     "description": "Picaña",
@@ -360,9 +330,8 @@
     "thumbnails": "/assets/img/vacunos/picana.jpg"
   },
   {
-    "id": 31,
     "title": "",
-    "code": "",
+    "code": "031",
     "status": true,
     "measurement": "kg",
     "price": 1150,
@@ -372,9 +341,8 @@
     "description": "Matambre"
   },
   {
-    "id": 32,
     "title": "",
-    "code": "",
+    "code": "032",
     "status": true,
     "category": "vacunos",
     "stock": 10,
@@ -384,9 +352,8 @@
     "price": 1990
   },
   {
-    "id": 33,
     "title": "",
-    "code": "",
+    "code": "033",
     "status": true,
     "measurement": "kg",
     "price": 1680,
@@ -396,9 +363,8 @@
     "stock": 10
   },
   {
-    "id": 34,
     "title": "",
-    "code": "",
+    "code": "034",
     "status": true,
     "description": "Ribs de cerdo",
     "thumbnails": "/assets/img/cerdos/ribs.jpg",
@@ -408,9 +374,8 @@
     "category": "cerdo"
   },
   {
-    "id": 35,
     "title": "",
-    "code": "",
+    "code": "035",
     "status": true,
     "measurement": "kg",
     "stock": 9,
@@ -420,9 +385,8 @@
     "price": 2040
   },
   {
-    "id": 36,
     "title": "",
-    "code": "",
+    "code": "036",
     "status": true,
     "thumbnails": "/assets/img/cerdos/pechito_cerdo.jpg",
     "measurement": "kg",
@@ -432,9 +396,8 @@
     "category": "cerdo"
   },
   {
-    "id": 37,
     "title": "",
-    "code": "",
+    "code": "037",
     "status": true,
     "price": 720,
     "thumbnails": "/assets/img/cerdos/chuletas_cerdo.jpg",
@@ -444,9 +407,8 @@
     "measurement": "kg"
   },
   {
-    "id": 38,
     "title": "",
-    "code": "",
+    "code": "038",
     "status": true,
     "measurement": "kg",
     "description": "Solomillo de cerdo",
@@ -456,9 +418,8 @@
     "stock": 10
   },
   {
-    "id": 39,
     "title": "",
-    "code": "",
+    "code": "039",
     "status": true,
     "category": "cerdo",
     "stock": 20,
@@ -468,9 +429,8 @@
     "measurement": "kg"
   },
   {
-    "id": 40,
     "title": "",
-    "code": "",
+    "code": "040",
     "status": true,
     "measurement": "kg",
     "price": 1300,
@@ -480,9 +440,8 @@
     "description": "Matambre de cerdo"
   },
   {
-    "id": 41,
     "title": "",
-    "code": "",
+    "code": "041",
     "status": true,
     "category": "aves",
     "description": "Pata muslo deshuesada sin piel COECO",
@@ -492,9 +451,8 @@
     "stock": 10
   },
   {
-    "id": 42,
     "title": "",
-    "code": "",
+    "code": "042",
     "status": true,
     "measurement": "unidad",
     "description": "Suprema de pollo deshuesado sin piel COECO",
@@ -504,9 +462,8 @@
     "category": "aves"
   },
   {
-    "id": 43,
     "title": "",
-    "code": "",
+    "code": "043",
     "status": true,
     "price": 1600,
     "measurement": "kg",
@@ -516,9 +473,8 @@
     "description": "Nugets de pollo"
   },
   {
-    "id": 44,
     "title": "",
-    "code": "",
+    "code": "044",
     "status": true,
     "measurement": "kg",
     "thumbnails": "/assets/img/aves/suprema_pollo.jpg",
@@ -528,9 +484,8 @@
     "stock": 20
   },
   {
-    "id": 45,
     "title": "",
-    "code": "",
+    "code": "045",
     "status": true,
     "category": "aves",
     "measurement": "unidad",
@@ -540,9 +495,8 @@
     "thumbnails": "/assets/img/aves/pollo_pastoril.jpg"
   },
   {
-    "id": 46,
     "title": "",
-    "code": "",
+    "code": "046",
     "status": true,
     "stock": 20,
     "price": 2350,
@@ -552,9 +506,8 @@
     "description": "Langostinos pelados desvenados"
   },
   {
-    "id": 47,
     "title": "",
-    "code": "",
+    "code": "047",
     "status": true,
     "price": 970,
     "description": "Filete de merluza empanados",
@@ -564,9 +517,8 @@
     "category": "mar"
   },
   {
-    "id": 48,
     "title": "",
-    "code": "",
+    "code": "048",
     "status": true,
     "category": "mar",
     "stock": 5,
@@ -576,9 +528,8 @@
     "measurement": "unidad"
   },
   {
-    "id": 49,
     "title": "",
-    "code": "",
+    "code": "049",
     "status": true,
     "description": "Medallones de merluza",
     "thumbnails": "/assets/img/mar/medallones_merluza.jpg",
@@ -588,9 +539,8 @@
     "stock": 10
   },
   {
-    "id": 50,
     "title": "",
-    "code": "",
+    "code": "050",
     "status": true,
     "description": "Medallón de merluza crocante",
     "price": 1970,
@@ -600,9 +550,8 @@
     "thumbnails": "/assets/img/mar/medallon_merluza_crotante.jpg"
   },
   {
-    "id": 51,
     "title": "",
-    "code": "",
+    "code": "051",
     "status": true,
     "stock": 20,
     "description": "Morcila tipo copetín",
@@ -612,9 +561,8 @@
     "price": 1210
   },
   {
-    "id": 52,
     "title": "",
-    "code": "",
+    "code": "052",
     "status": true,
     "stock": 20,
     "thumbnails": "/assets/img/embutidos/salamin_picado_grueso.jpg",
@@ -624,9 +572,8 @@
     "measurement": "unidad"
   },
   {
-    "id": 53,
     "title": "",
-    "code": "",
+    "code": "053",
     "status": true,
     "measurement": "kg",
     "category": "embutidos",
@@ -636,9 +583,8 @@
     "thumbnails": "/assets/img/embutidos/morcilla_vasca.jpg"
   },
   {
-    "id": 54,
     "title": "",
-    "code": "",
+    "code": "054",
     "status": true,
     "thumbnails": "/assets/img/embutidos/longaniza_baston_con_anis.jpg",
     "description": "Longaniza bastón con semillas de anis",
@@ -648,9 +594,8 @@
     "stock": 20
   },
   {
-    "id": 55,
     "title": "",
-    "code": "",
+    "code": "0550",
     "status": true,
     "price": 1750,
     "description": "Longaniza tipo española",
@@ -660,9 +605,8 @@
     "thumbnails": "/assets/img/embutidos/longaniza_tipo_espanola.jpg"
   },
   {
-    "id": 56,
     "title": "",
-    "code": "",
+    "code": "056",
     "status": true,
     "price": 1190,
     "thumbnails": "/assets/img/embutidos/chorizo_puro_cerdo.jpg",
@@ -672,9 +616,8 @@
     "category": "embutidos"
   },
   {
-    "id": 57,
     "title": "",
-    "code": "",
+    "code": "057",
     "status": true,
     "measurement": "kg",
     "category": "embutidos",
@@ -684,9 +627,8 @@
     "price": 1800
   },
   {
-    "id": 58,
     "title": "",
-    "code": "",
+    "code": "058",
     "status": true,
     "stock": 10,
     "thumbnails": "/assets/img/embutidos/chorizos_bombon_la_divisa.jpg",
@@ -696,9 +638,8 @@
     "category": "embutidos"
   },
   {
-    "id": 59,
     "title": "",
-    "code": "",
+    "code": "059",
     "status": true,
     "category": "embutidos",
     "stock": 10,
@@ -708,9 +649,8 @@
     "description": "Salamín picado fino"
   },
   {
-    "id": 60,
     "title": "",
-    "code": "",
+    "code": "060",
     "status": true,
     "thumbnails": "/assets/img/embutidos/panceta_salada.jpg",
     "price": 1300,
@@ -720,9 +660,8 @@
     "stock": 10
   },
   {
-    "id": 61,
     "title": "",
-    "code": "",
+    "code": "061",
     "status": true,
     "measurement": "kg",
     "thumbnails": "/assets/img/embutidos/salchicha_parrillera.jpg",
@@ -732,9 +671,8 @@
     "price": 1810
   },
   {
-    "id": 62,
     "title": "",
-    "code": "",
+    "code": "062",
     "status": true,
     "measurement": "unidad",
     "thumbnails": "/assets/img/embutidos/chorizo_colorado.jpg",
@@ -744,9 +682,8 @@
     "stock": 10
   },
   {
-    "id": 63,
     "title": "",
-    "code": "",
+    "code": "063",
     "status": true,
     "measurement": "kg",
     "category": "embutidos",
@@ -756,9 +693,8 @@
     "stock": 10
   },
   {
-    "id": 64,
     "title": "",
-    "code": "",
+    "code": "064",
     "status": true,
     "price": 1620,
     "thumbnails": "/assets/img/embutidos/salchicha_parrillera_puro_cerdo.jpg",
@@ -768,9 +704,8 @@
     "stock": 10
   },
   {
-    "id": 65,
     "title": "",
-    "code": "",
+    "code": "065",
     "status": true,
     "measurement": "kg",
     "category": "achuras",
@@ -780,9 +715,8 @@
     "stock": 20
   },
   {
-    "id": 66,
     "title": "",
-    "code": "",
+    "code": "066",
     "status": true,
     "price": 2640,
     "thumbnails": "/assets/img/achuras/mollejas.jpg",
@@ -792,9 +726,8 @@
     "measurement": "kg"
   },
   {
-    "id": 67,
     "title": "",
-    "code": "",
+    "code": "067",
     "status": true,
     "measurement": "kg",
     "price": 1190,
@@ -804,9 +737,8 @@
     "thumbnails": "/assets/img/elaborados/hamburguesas.jpg"
   },
   {
-    "id": 68,
     "title": "",
-    "code": "",
+    "code": "068",
     "status": true,
     "measurement": "kg",
     "stock": 20,
@@ -816,9 +748,8 @@
     "thumbnails": "/assets/img/elaborados/milanesas_rebozadas_pollo.jpg"
   },
   {
-    "id": 69,
     "title": "",
-    "code": "",
+    "code": "069",
     "status": true,
     "price": 1190,
     "category": "elaborados",
@@ -828,9 +759,8 @@
     "measurement": "kg"
   },
   {
-    "id": 70,
     "title": "",
-    "code": "",
+    "code": "070",
     "status": true,
     "thumbnails": "/assets/img/quesos/provoleta_ahumada_fraccionada.jpg",
     "measurement": "unidad",
@@ -840,9 +770,8 @@
     "price": 880
   },
   {
-    "id": 71,
     "title": "",
-    "code": "",
+    "code": "071",
     "status": true,
     "price": 1390,
     "stock": 10,
@@ -852,9 +781,8 @@
     "description": "Provolone parrillero por 2 unidades 450g"
   },
   {
-    "id": 72,
     "title": "",
-    "code": "",
+    "code": "072",
     "status": true,
     "measurement": "unidad",
     "category": "quesos",
@@ -864,9 +792,8 @@
     "stock": 10
   },
   {
-    "id": 73,
     "title": "",
-    "code": "",
+    "code": "073",
     "status": true,
     "price": 680,
     "measurement": "unidad",
@@ -876,9 +803,8 @@
     "description": "Queso fontina x 300g"
   },
   {
-    "id": 74,
     "title": "",
-    "code": "",
+    "code": "074",
     "status": true,
     "category": "quesos",
     "price": 850,
@@ -888,9 +814,8 @@
     "thumbnails": "/assets/img/quesos/qyesi_provolone_patagonico_ahumado.jpg"
   },
   {
-    "id": 75,
     "title": "",
-    "code": "",
+    "code": "075",
     "status": true,
     "description": "Provoleta parrillera fraccionada",
     "thumbnails": "/assets/img/quesos/provoleta_parrillera_fraccionada.jpg",
@@ -900,9 +825,8 @@
     "category": "quesos"
   },
   {
-    "id": 76,
     "title": "",
-    "code": "",
+    "code": "076",
     "status": true,
     "category": "quesos",
     "price": 820,
@@ -912,9 +836,8 @@
     "stock": 20
   },
   {
-    "id": 77,
     "title": "",
-    "code": "",
+    "code": "077",
     "status": true,
     "price": 1040,
     "measurement": "unidad",
@@ -924,9 +847,8 @@
     "thumbnails": "/assets/img/helados/helado_banana_split.jpg"
   },
   {
-    "id": 78,
     "title": "",
-    "code": "",
+    "code": "078",
     "status": true,
     "price": 1040,
     "description": "Helado Dulce de Leche con DDL x 500g",
@@ -936,9 +858,8 @@
     "category": "helados"
   },
   {
-    "id": 79,
     "title": "",
-    "code": "",
+    "code": "079",
     "status": true,
     "stock": 9,
     "thumbnails": "/assets/img/helados/bombon_chololate_blanco.jpg",
@@ -948,9 +869,8 @@
     "category": "helados"
   },
   {
-    "id": 80,
     "title": "",
-    "code": "",
+    "code": "080",
     "status": true,
     "measurement": "unidad",
     "price": 1040,
@@ -960,9 +880,8 @@
     "stock": 20
   },
   {
-    "id": 81,
     "title": "",
-    "code": "",
+    "code": "081",
     "status": true,
     "category": "helados",
     "stock": 10,
@@ -972,9 +891,8 @@
     "price": 1040
   },
   {
-    "id": 82,
     "title": "",
-    "code": "",
+    "code": "082",
     "status": true,
     "stock": 20,
     "price": 1040,
@@ -984,9 +902,8 @@
     "measurement": "unidad"
   },
   {
-    "id": 83,
     "title": "",
-    "code": "",
+    "code": "083",
     "status": true,
     "description": "Bombón Escocés",
     "thumbnails": "/assets/img/helados/bombon_escoces.jpg",
@@ -996,9 +913,8 @@
     "stock": 20
   },
   {
-    "id": 84,
     "title": "",
-    "code": "",
+    "code": "084085",
     "status": true,
     "description": "Helado Mouse de Maracuyá x 500g",
     "thumbnails": "/assets/img/helados/helado_mouse_maracuya.jpg",
@@ -1008,9 +924,8 @@
     "price": 1040
   },
   {
-    "id": 85,
     "title": "",
-    "code": "",
+    "code": "086",
     "status": true,
     "price": 2910,
     "description": "Bombón de Maracuyá",
@@ -1020,9 +935,8 @@
     "category": "helados"
   },
   {
-    "id": 86,
     "title": "",
-    "code": "",
+    "code": "087",
     "status": true,
     "category": "helados",
     "description": "Helado Chocolate con DDL x 500g",
@@ -1032,9 +946,8 @@
     "thumbnails": "/assets/img/helados/helado_chocolate_ddl.jpg"
   },
   {
-    "id": 87,
     "title": "",
-    "code": "",
+    "code": "088",
     "status": true,
     "stock": 20,
     "description": "Bombón Suizo",
@@ -1044,9 +957,8 @@
     "thumbnails": "/assets/img/helados/bombon_suizo.jpg"
   },
   {
-    "id": 88,
     "title": "",
-    "code": "",
+    "code": "089",
     "status": true,
     "category": "almacen",
     "description": "Chipas congeladas x 600g",
@@ -1056,9 +968,8 @@
     "thumbnails": "/assets/img/almacen/Chipas_congeladas.jpg"
   },
   {
-    "id": 89,
     "title": "",
-    "code": "",
+    "code": "090",
     "status": true,
     "thumbnails": "/assets/img/almacen/Dulce_de_Leche_Oringinal.jpg",
     "category": "almacen",
@@ -1068,9 +979,8 @@
     "price": 660
   },
   {
-    "id": 90,
     "title": "",
-    "code": "",
+    "code": "091",
     "status": true,
     "description": "Salsa: Frutos rojos, vino malvec y miel",
     "thumbnails": "/assets/img/almacen/Salsa_Frutos_rojos.jpg",
@@ -1080,9 +990,8 @@
     "price": 930
   },
   {
-    "id": 91,
     "title": "",
-    "code": "",
+    "code": "092",
     "status": true,
     "description": "Berenjenas en aceite y vinagre",
     "thumbnails": "/assets/img/almacen/Berenjenas_en_aceite_vinagre.jpg",
@@ -1092,9 +1001,8 @@
     "category": "almacen"
   },
   {
-    "id": 92,
     "title": "",
-    "code": "",
+    "code": "093",
     "status": true,
     "description": "Sal especiada",
     "price": 480,
@@ -1104,9 +1012,8 @@
     "stock": 10
   },
   {
-    "id": 93,
     "title": "",
-    "code": "",
+    "code": "094",
     "status": true,
     "stock": 10,
     "category": "almacen",
@@ -1116,9 +1023,8 @@
     "description": "Salsa: Sriracha"
   },
   {
-    "id": 94,
     "title": "",
-    "code": "",
+    "code": "095096",
     "status": true,
     "thumbnails": "/assets/img/almacen/Salsa_Mostaza_miel.jpg",
     "description": "Salsa: Mostaza y miel",
@@ -1128,9 +1034,8 @@
     "stock": 10
   },
   {
-    "id": 95,
     "title": "",
-    "code": "",
+    "code": "097",
     "status": true,
     "measurement": "unidad",
     "price": 860,
@@ -1140,9 +1045,8 @@
     "stock": 10
   },
   {
-    "id": 96,
     "title": "",
-    "code": "",
+    "code": "098",
     "status": true,
     "stock": 20,
     "description": "Morrones en vinagre",
@@ -1152,9 +1056,8 @@
     "category": "almacen"
   },
   {
-    "id": 97,
     "title": "",
-    "code": "",
+    "code": "099",
     "status": true,
     "category": "almacen",
     "stock": 20,
@@ -1164,9 +1067,8 @@
     "measurement": "unidad"
   },
   {
-    "id": 98,
     "title": "",
-    "code": "",
+    "code": "100",
     "status": true,
     "price": 580,
     "description": "Papas Smiles",
@@ -1176,9 +1078,8 @@
     "thumbnails": "/assets/img/almacen/Papas_Smiles.jpg"
   },
   {
-    "id": 99,
     "title": "",
-    "code": "",
+    "code": "101",
     "status": true,
     "price": 1480,
     "measurement": "unidad",
@@ -1188,9 +1089,8 @@
     "category": "almacen"
   },
   {
-    "id": 100,
     "title": "",
-    "code": "",
+    "code": "102",
     "status": true,
     "description": "Sal ahumada",
     "stock": 20,
@@ -1200,9 +1100,8 @@
     "price": 200
   },
   {
-    "id": 101,
     "title": "",
-    "code": "",
+    "code": "103",
     "status": true,
     "stock": 20,
     "category": "almacen",
@@ -1212,9 +1111,8 @@
     "measurement": "unidad"
   },
   {
-    "id": 102,
     "title": "",
-    "code": "",
+    "code": "104",
     "status": true,
     "category": "almacen",
     "stock": 10,
@@ -1224,9 +1122,8 @@
     "price": 930
   },
   {
-    "id": 103,
     "title": "",
-    "code": "",
+    "code": "105",
     "status": true,
     "stock": 10,
     "category": "almacen",
@@ -1236,9 +1133,8 @@
     "description": "Pickles mixtos"
   },
   {
-    "id": 104,
     "title": "",
-    "code": "",
+    "code": "106",
     "status": true,
     "description": "Papas Surecrisp",
     "thumbnails": "/assets/img/almacen/Papas_Surecrisp.jpg",
@@ -1248,9 +1144,8 @@
     "price": 870
   },
   {
-    "id": 105,
     "title": "",
-    "code": "",
+    "code": "107",
     "status": true,
     "price": 930,
     "thumbnails": "/assets/img/almacen/Salsa_Spicy_Mango_Sauce.jpg",
@@ -1260,9 +1155,8 @@
     "description": "Salsa: Spicy Mango Sauce"
   },
   {
-    "id": 106,
     "title": "",
-    "code": "",
+    "code": "108",
     "status": true,
     "thumbnails": "/assets/img/almacen/Aderezos.jpg",
     "measurement": "unidad",
@@ -1272,9 +1166,8 @@
     "price": 620
   },
   {
-    "id": 107,
     "title": "",
-    "code": "",
+    "code": "109",
     "status": true,
     "measurement": "unidad",
     "description": "Salsa: Premium Barbacoa",
@@ -1284,9 +1177,8 @@
     "price": 970
   },
   {
-    "id": 108,
     "title": "",
-    "code": "",
+    "code": "110",
     "status": true,
     "description": "Vino Salentein Blanc de blancs 750ml",
     "price": 990,
@@ -1296,9 +1188,8 @@
     "thumbnails": "/assets/img/vinos/Salentein_Blanc_de_blancs.jpg"
   },
   {
-    "id": 109,
     "title": "",
-    "code": "",
+    "code": "111",
     "status": true,
     "price": 1750,
     "stock": 14,
@@ -1308,9 +1199,8 @@
     "description": "Padrillos Malvec 750ml"
   },
   {
-    "id": 110,
     "title": "",
-    "code": "",
+    "code": "112",
     "status": true,
     "category": "vinos",
     "description": "Vino Salentein Malbec 750ml",
@@ -1320,9 +1210,8 @@
     "measurement": "unidad"
   },
   {
-    "id": 111,
     "title": "",
-    "code": "",
+    "code": "113",
     "status": true,
     "thumbnails": "/assets/img/vinos/Salentein_Numina_Cabernet_Franc.jpg",
     "price": 3400,
@@ -1332,9 +1221,8 @@
     "category": "vinos"
   },
   {
-    "id": 112,
     "title": "",
-    "code": "",
+    "code": "114",
     "status": true,
     "category": "vinos",
     "description": "Vino Zuccardi Q Tempranillo 750ml",
@@ -1344,9 +1232,8 @@
     "thumbnails": "/assets/img/vinos/Zuccardi_Q_Tempranillo.jpg"
   },
   {
-    "id": 113,
     "title": "",
-    "code": "",
+    "code": "115",
     "status": true,
     "thumbnails": "/assets/img/vinos/DV_Catena_Cabernet_Malbec.jpg",
     "price": 3400,
@@ -1356,9 +1243,8 @@
     "description": "Vino DV Catena Cabernet - Malbec 750ml"
   },
   {
-    "id": 114,
     "title": "",
-    "code": "",
+    "code": "116",
     "status": true,
     "thumbnails": "/assets/img/vinos/Dv_Catena_Malbec_Malbec.jpg",
     "price": 5800,
@@ -1368,9 +1254,8 @@
     "category": "vinos"
   },
   {
-    "id": 115,
     "title": "",
-    "code": "",
+    "code": "117",
     "status": true,
     "description": "Vino Zuccardi Q Malbec 750ml",
     "measurement": "unidad",
@@ -1380,9 +1265,8 @@
     "category": "vinos"
   },
   {
-    "id": 116,
     "title": "",
-    "code": "",
+    "code": "118",
     "status": true,
     "description": "Vino Animal Malbec 750ml",
     "thumbnails": "/assets/img/vinos/Animal_Malbec.jpg",
@@ -1392,9 +1276,8 @@
     "price": 2390
   },
   {
-    "id": 117,
     "title": "",
-    "code": "",
+    "code": "119",
     "status": true,
     "category": "vinos",
     "thumbnails": "/assets/img/vinos/Salentein_Numina_Malbec.jpg",
@@ -1404,9 +1287,8 @@
     "description": "Vino Salentein Numina Malbec 750ml"
   },
   {
-    "id": 118,
     "title": "",
-    "code": "",
+    "code": "120",
     "status": true,
     "measurement": "unidad",
     "thumbnails": "/assets/img/fuego/iniciador_fuego_madera.jpg",
@@ -1416,9 +1298,8 @@
     "category": "fuego"
   },
   {
-    "id": 119,
     "title": "",
-    "code": "",
+    "code": "121",
     "status": true,
     "measurement": "unidad",
     "description": "Leña espinillo x 8kg",
@@ -1428,9 +1309,8 @@
     "thumbnails": "/assets/img/fuego/lena_espinillo.jpg"
   },
   {
-    "id": 120,
     "title": "",
-    "code": "",
+    "code": "122",
     "status": true,
     "thumbnails": "/assets/img/fuego/carbon_4kg.jpg",
     "category": "fuego",
@@ -1440,9 +1320,8 @@
     "price": 750
   },
   {
-    "id": 121,
     "title": "",
-    "code": "",
+    "code": "123",
     "status": true,
     "price": 330,
     "stock": 20,
@@ -1452,9 +1331,8 @@
     "measurement": "caja"
   },
   {
-    "id": 122,
     "title": "",
-    "code": "",
+    "code": "124",
     "status": true,
     "thumbnails": "/assets/img/fuego/chips_lena_espinillo.jpg",
     "category": "fuego",
@@ -1465,14 +1343,13 @@
   },
   {
     "title": "titulo",
-    "code": "105",
+    "code": "125",
     "status": false,
     "measurement": "kg",
     "thumbnails": "/assets/img/vacunos/asado_pampa.jpg",
     "stock": 15,
     "price": 5000,
     "description": "nuevo agregado",
-    "category": "vacunos",
-    "id": 126
+    "category": "vacunos"
   }
 ]

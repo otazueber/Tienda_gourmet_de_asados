@@ -1,8 +1,8 @@
 {
 	"info": {
-		"_postman_id": "dd4c3a44-64c1-48b0-b159-b5534f7b71ca",
+		"_postman_id": "1082b738-3629-43ab-bad3-26582a04b57b",
 		"name": "products",
-		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "14110080"
 	},
 	"item": [
@@ -12,15 +12,65 @@
 				"method": "POST",
 				"header": [],
 				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"title\": \"titulo\",\r\n    \"code\": \"105\",\r\n    \"status\": false,\r\n    \"measurement\": \"kg\",\r\n    \"thumbnails\": \"../assets/img/vacunos/asado_pampa.jpg\",\r\n    \"stock\": 15,\r\n    \"price\": 5000,\r\n    \"description\": \"nuevo agregado\",\r\n    \"category\": \"vacunos\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "carbón",
+							"type": "text"
+						},
+						{
+							"key": "code",
+							"value": "004",
+							"type": "text"
+						},
+						{
+							"key": "status",
+							"value": "true",
+							"type": "text"
+						},
+						{
+							"key": "measurement",
+							"value": "unidad",
+							"type": "text"
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/eber/Downloads/carbon_4kg.jpg"
+						},
+						{
+							"key": "category",
+							"value": "fuego",
+							"type": "text"
+						},
+						{
+							"key": "stock",
+							"value": "20",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "750",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "Carbón x 4kg",
+							"type": "text"
 						}
-					}
+					]
 				},
-				"url": "{{url}}/api/products"
+				"url": {
+					"raw": "{{url}}/api/products",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"products"
+					]
+				}
 			},
 			"response": []
 		},
@@ -31,14 +81,24 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"price\": 10000\r\n}",
+					"raw": " {\r\n        \"title\": \"carbón\",\r\n        \"code\": \"004\",\r\n        \"status\": true,\r\n        \"measurement\": \"unidad\",\r\n        \"thumbnails\": \"1681148712195carbon_4kg.jpg\",\r\n        \"stock\": 20000,\r\n        \"price\": 750,\r\n        \"description\": \"Carbón x 4kg\",\r\n        \"category\": \"fuego\",\r\n        \"__v\": 0\r\n    }",
 					"options": {
 						"raw": {
 							"language": "json"
 						}
 					}
 				},
-				"url": "{{url}}/api/products/1"
+				"url": {
+					"raw": "{{url}}/api/products/64344b28787779b1c8a8381d",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"products",
+						"64344b28787779b1c8a8381d"
+					]
+				}
 			},
 			"response": []
 		},
@@ -48,20 +108,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{url}}/api/products/?limit=10000",
+					"raw": "{{url}}/api/products",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
 						"api",
-						"products",
-						""
-					],
-					"query": [
-						{
-							"key": "limit",
-							"value": "10000"
-						}
+						"products"
 					]
 				}
 			},
@@ -72,7 +125,17 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": "{{url}}/api/products/10"
+				"url": {
+					"raw": "{{url}}/api/products/64344b28787779b1c8a8381d",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"products",
+						"64344b28787779b1c8a8381d"
+					]
+				}
 			},
 			"response": []
 		},
@@ -83,14 +146,24 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"title\": \"titulo\",\r\n    \"code\": \"100\",\r\n    \"status\": false,\r\n    \"measurement\": \"kg\",\r\n    \"thumbnails\": \"../assets/img/vacunos/asado_pampa.jpg\",\r\n    \"stock\": 15,\r\n    \"price\": 5000,\r\n    \"description\": \"nuevo agregado\",\r\n    \"category\": \"vacunos\"\r\n}",
+					"raw": "",
 					"options": {
 						"raw": {
 							"language": "json"
 						}
 					}
 				},
-				"url": "{{url}}/api/products/123"
+				"url": {
+					"raw": "{{url}}/api/products/64344b28787779b1c8a8381d",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"products",
+						"64344b28787779b1c8a8381d"
+					]
+				}
 			},
 			"response": []
 		}

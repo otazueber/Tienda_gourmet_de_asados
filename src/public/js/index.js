@@ -1,21 +1,67 @@
-const socket = io();
+let cart = '';
 
-socket.on('productos', products => {
-    const arrayProductos = JSON.parse(products);    
-    let html = '';
+function grabarCarritoEnLocalStorage() {
+    localStorage.setItem("cart", JSON.stringify(cart));
+}
 
-    arrayProductos.forEach((producto) => {
-        const { thumbnails, description, measurement, price } = producto;
-        html = html + `<div class="col-12 col-lg-4 pt-5">
-                            <img src=${thumbnails} alt="Fhoto">
-                            <p>${description} <br> Precio por ${measurement}: ${price}</p>
-                        </div> `;
-        
+function getCart() {
+    fetch('/api/carts', {
+        method: 'POST'
+    })
+        .then(response => response.json())
+        .then(data => {
+            cart = data.idCart;
+            grabarCarritoEnLocalStorage();
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+}
+
+function leerCarrito() {
+    let jsonCarrito = localStorage.getItem("cart");
+    if (jsonCarrito != null) {
+        cart = JSON.parse(jsonCarrito);
+    } else {
+        getCart();
     }
-    );
-    html = html + ` </div>`;
+}
 
-    let contenedor = document.getElementById("productos");
-    contenedor.innerHTML = html;
-});
+leerCarrito();
 
+let botones = document.getElementsByClassName("add-to-cart");
+
+if (botones != null) {
+    for (let boton of botones) {
+        boton.addEventListener("click", (e) => {
+            agregarAlCarrito(e.target.id);
+        })
+    }
+}
+
+function agregarAlCarrito(pid) {
+    const url = `/api/carts/${cart}/product/${pid}`;
+    const datos = { quantity: 1 };
+    const opciones = {
+        method: "PUT",
+        body: JSON.stringify(datos),
+        headers: { "Content-Type": "application/json" },
+    };
+
+    fetch(url, opciones)
+        .then(mostrarMensaje())
+        .catch((error) => console.error('el error es este: ' + error));
+
+}
+
+function mostrarMensaje() {
+    Swal.fire({
+        text: `Producto agregado al carrito !!`,
+        toast: true,
+        position: 'top-right',
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        icon: 'success',
+    });
+};

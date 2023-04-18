@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "04a5ed30-d42c-416d-9fb7-b4ca403fd850",
 		"name": "carts",
-		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "14110080"
 	},
 	"item": [
@@ -11,7 +11,34 @@
 			"request": {
 				"method": "POST",
 				"header": [],
-				"url": "{{url}}/api/carts"
+				"url": {
+					"raw": "{{url}}/api/carts",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"carts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get carts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/carts",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"carts"
+					]
+				}
 			},
 			"response": []
 		},
@@ -22,14 +49,26 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"quantity\": 100\r\n}",
+					"raw": "{\r\n    \"quantity\": 1\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
 						}
 					}
 				},
-				"url": "{{url}}/api/carts/1/product/6"
+				"url": {
+					"raw": "{{url}}/api/carts/64344a49b209c795b4d0f7d9/product/64344b28787779b1c8a8381d",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"carts",
+						"64344a49b209c795b4d0f7d9",
+						"product",
+						"64344b28787779b1c8a8381d"
+					]
+				}
 			},
 			"response": []
 		},
@@ -38,7 +77,17 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": "{{url}}/api/carts/1"
+				"url": {
+					"raw": "{{url}}/api/carts/64344a49b209c795b4d0f7d9",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"carts",
+						"64344a49b209c795b4d0f7d9"
+					]
+				}
 			},
 			"response": []
 		},
@@ -47,7 +96,17 @@
 			"request": {
 				"method": "DELETE",
 				"header": [],
-				"url": "{{url}}/api/carts/2"
+				"url": {
+					"raw": "{{url}}/api/carts/64344a49b209c795b4d0f7d9",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"carts",
+						"64344a49b209c795b4d0f7d9"
+					]
+				}
 			},
 			"response": []
 		}

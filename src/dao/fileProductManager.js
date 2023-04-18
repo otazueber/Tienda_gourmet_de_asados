@@ -1,6 +1,6 @@
 const fs = require("fs");
 
-class ProductManager {
+class FileProductManager {
     constructor(path) {
         this.path = path;
         this.file = path + 'products.json';
@@ -83,4 +83,4 @@ class ProductManager {
     }
 }
 
-module.exports = ProductManager;
+module.exports = FileProductManager;

@@ -1,0 +1,15 @@
+    {{#if this.hasProducts}}
+        <h1>Productos de tu carrito</h1>
+    {{else}}
+        <p>tu carrito está vacío</p>
+    {{/if}}
+
+<div class="row">
+    <br><br>
+    {{#each products}}
+    <div class="col-12 col-lg-4 pt-5">
+        <img src={{this.thumbnails}} alt="Fhoto">
+        <p>{{this.description}} <br> Precio por {{this.measurement}}: {{this.price}} <br> Cantidad: {{this.quantity}}</p>
+    </div>
+    {{/each}}
+</div>
