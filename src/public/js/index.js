@@ -12,6 +12,7 @@ function getCart() {
         .then(data => {
             cart = data.idCart;
             grabarCarritoEnLocalStorage();
+            SetLinkToCart();
         })
         .catch(error => {
             console.error('Error:', error);
@@ -22,6 +23,7 @@ function leerCarrito() {
     let jsonCarrito = localStorage.getItem("cart");
     if (jsonCarrito != null) {
         cart = JSON.parse(jsonCarrito);
+        SetLinkToCart();
     } else {
         getCart();
     }
@@ -65,3 +67,9 @@ function mostrarMensaje() {
         icon: 'success',
     });
 };
+
+function SetLinkToCart(){
+    let linkToCart = document.getElementById("linkToCart");
+    linkToCart.href = "/api/views/carts/" + cart;
+}
+
