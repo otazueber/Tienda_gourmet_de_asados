@@ -52,8 +52,7 @@ function agregarAlCarrito(pid) {
 
     fetch(url, opciones)
         .then(mostrarMensaje())
-        .catch((error) => console.error('el error es este: ' + error));
-
+        .catch((error) => console.error(error));
 }
 
 function mostrarMensaje() {
@@ -73,3 +72,15 @@ function SetLinkToCart(){
     linkToCart.href = "/api/views/carts/" + cart;
 }
 
+
+const form = document.getElementById('btnCarrarSesion');
+
+form.addEventListener('click', e => {
+    cerrarSesion();
+});
+
+function cerrarSesion(){
+    fetch('/auth/logout', {method: 'GET'})
+    .then(location.href = '/login')
+    .catch(error => console.log(error))
+}

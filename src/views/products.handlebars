@@ -1,26 +1,30 @@
+<div style="text-align: center;">
+    <h1>Bienvenido {{userName}}</h1>
+    <button id="btnCarrarSesion">Cerrar sesión</button>
+</div>
 <div class="row">
     {{#if this.hasPrevPage}}
-        <a href="{{this.prevLink}}">Anterior</a>
+    <a href="{{this.prevLink}}">Anterior</a>
     {{else}}
-        <p>Anterior</p>
+    <p>Anterior</p>
     {{/if}}
 
     {{#if this.hasNextPage}}
-        <a href="{{this.nextLink}}">Siguiente</a>
+    <a href="{{this.nextLink}}">Siguiente</a>
     {{else}}
-        <p>Siguiente</p>
-    {{/if}} 
+    <p>Siguiente</p>
+    {{/if}}
     <a id="linkToCart" href="">Mostrar el carrito</a>
 
     {{#each products}}
     <div class="col-12 col-lg-4 pt-5">
         <img src={{this.thumbnails}} alt="Fhoto">
         <p>{{this.description}} <br> Precio por {{this.measurement}}: {{this.price}}</p>
-        <button class="add-to-cart" id="{{this._id}}" >Agregar al carrito</button>
+        <button class="add-to-cart" id="{{this._id}}">Agregar al carrito</button>
     </div>
     {{/each}}
 </div>
 
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="/js/index.js"></script>
+<script src="/js/products.js"></script>

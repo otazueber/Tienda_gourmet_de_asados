@@ -27,6 +27,7 @@ router.get('/products', async (req, res) => {
                 }
             );
         });
+
         res.render('products.handlebars', {
             products: productos,
             title,
@@ -34,6 +35,7 @@ router.get('/products', async (req, res) => {
             hasNextPage: products.hasNextPage,
             prevLink: products.prevLink,
             nextLink: products.nextLink,
+            userName: `${req.session.user.first_name} ${req.session.user.last_name}, ${req.session.user.email} Rol: ${req.session.user.role}`,
         })
     } catch (err) {
         console.error(err);
@@ -67,4 +69,4 @@ router.get('/carts/:cid', async (req, res) => {
     })
 });
 
-module.exports = router
+module.exports = router;

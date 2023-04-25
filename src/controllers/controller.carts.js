@@ -8,7 +8,7 @@ router.post('/', async (req, res) => {
     try {
         const idCart = await Carts.addCart();
         if (idCart) {
-            res.status(200).json({ idCart });
+            res.status(201).json({ idCart });
         } else {
             res.status(500).json({ error: 'Internal server error' });
         };
@@ -106,4 +106,4 @@ router.delete('/:cid/products/:pid', async (req, res) => {
 });
 
 
-module.exports = router
+module.exports = router;

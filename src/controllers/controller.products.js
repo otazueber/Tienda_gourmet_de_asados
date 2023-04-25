@@ -82,7 +82,7 @@ router.post('/', uploader.single('file'), async (req, res) => {
             description, category
         };
         const newProduct = await Products.addProduct(productInfo);
-        res.status(200).json({ message: newProduct });
+        res.status(201).json({ message: newProduct });
     } catch (error) {
         if (error.code == '11000') {
             res.status(400).json({ message: 'El producto que quieres ingresar ya existe.' });
@@ -120,4 +120,4 @@ router.post('/insertMany', async (req, res) => {
     }
 });
 
-module.exports = router
+module.exports = router;
