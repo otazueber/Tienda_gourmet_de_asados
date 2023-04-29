@@ -34,10 +34,9 @@ form.addEventListener('submit', e => {
 
 function redirect(data) {
   if (data.status == 'success') {
-    setTimeout(function () {
-      location.href = '/api/views/products'
-    }, 1000);
+    location.href = '/api/views/products';
   } else {
-    console.log(data.error);
+    const errorMessage = document.getElementById("errorMessage");
+    errorMessage.innerHTML = data.message;
   }
 }

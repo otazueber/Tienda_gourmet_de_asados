@@ -10,11 +10,11 @@ router.post('/', async (req, res) => {
         if (idCart) {
             res.status(201).json({ idCart });
         } else {
-            res.status(500).json({ error: 'Internal server error' });
+            res.status(500).json({ status: 'error', message: 'Internal server error' });
         };
     } catch (error) {
         console.error(error);
-        res.status(500).json({ error: 'Internal server error' });
+        res.status(500).json({ status: 'error', message: 'Internal server error' });
     }
 
 });
@@ -25,7 +25,7 @@ router.get('/', async (req, res) => {
         res.status(200).json({ carts });
     } catch (error) {
         console.error(error);
-        res.status(500).json({ error: 'Internal server error' });
+        res.status(500).json({ status: 'error', message: 'Internal server error' });
     }
 });
 
@@ -36,11 +36,11 @@ router.get('/:cid', async (req, res) => {
         if (cart) {
             res.status(200).json(cart.products);
         } else {
-            res.status(404).json({ error: 'Carrito no encontrado' });
+            res.status(404).json({ status: 'error', message: 'Carrito no encontrado' });
         }
     } catch (err) {
         console.error(err);
-        res.status(500).json({ error: 'Internal server error' });
+        res.status(500).json({ status: 'error', message: 'Internal server error' });
     }
 });
 
@@ -56,16 +56,16 @@ router.put('/:cid/product/:pid', async (req, res) => {
             }
             const result = await Carts.updateCart(cid, product);
             if (result) {
-                res.status(200).json({ message: 'Producto agregado al carrito satisfactoriametne' });
+                res.status(200).json({ status: 'success', message: 'Producto agregado al carrito satisfactoriametne' });
             } else {
-                res.status(500).json({ error: 'Carrito no encontrado' });
+                res.status(500).json({ status: 'error', message: 'Carrito no encontrado' });
             }
         } else {
-            res.status(404).json({ message: 'Carrito no encontrado' });
+            res.status(404).json({ status: 'error', message: 'Carrito no encontrado' });
         };
     } catch (error) {
         console.error(error);
-        res.status(500).json({ error: 'Internal server error' });
+        res.status(500).json({ status: 'error', message: 'Internal server error' });
     }
 });
 
@@ -76,15 +76,15 @@ router.delete('/:cid', async (req, res) => {
         if (cartToDel) {
             const result = await Carts.deleteProducts(cid);
             if (result) {
-                res.status(200).json({ message: 'Productos eliminados satisfactoriamente!!!' });
+                res.status(200).json({ status: 'success', message: 'Productos eliminados satisfactoriamente!!!' });
             } else {
-                res.status(500).json({ error: 'Internal server error' });
+                res.status(500).json({ status: 'error', message: 'Internal server error' });
             }
         } else {
-            res.status(404).json({ message: 'Carrito no encontrado' });
+            res.status(404).json({ status: 'error', message: 'Carrito no encontrado' });
         }
     } catch (error) {
-        res.status(500).json({ error: 'Internal server error' });
+        res.status(500).json({ status: 'error', message: 'Internal server error' });
     };
 });
 
@@ -95,14 +95,13 @@ router.delete('/:cid/products/:pid', async (req, res) => {
     {
         if (await Carts.deleteProduct(cid, pid))
         {
-            res.status(200).json({ message: 'Producto eliminado satisfactoriamente!!!' });
+            res.status(200).json({ status: 'success', message: 'Producto eliminado satisfactoriamente!!!' });
         } else {
-            res.status(500).json({ error: 'Internal server error' });
+            res.status(500).json({ status: 'error', message: 'Internal server error' });
         }
     } else {
-        res.status(404).json({ message: 'Carrito no encontrado' });
+        res.status(404).json({ status: 'error', message: 'Carrito no encontrado' });
     }
-
 });
 
 

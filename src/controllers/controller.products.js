@@ -100,12 +100,12 @@ router.delete('/:pid', async (req, res) => {
     if (productToDel) {
         const result = await Products.deleteProduct(pid);
         if (result) {
-            res.status(200).json({ message: 'Producto eliminado satisfactoriamente !!!' });
+            res.status(200).json({ status: 'success', message: 'Producto eliminado satisfactoriamente !!!' });
         } else {
-            res.status(500).json({ error: 'Internal server error' });
+            res.status(500).json({ status: 'error', message: 'Internal server error' });
         }
     } else {
-        res.status(404).json({ message: 'Producto no encontrado' });
+        res.status(404).json({ status: 'error', message: 'Producto no encontrado' });
     }
 });
 
@@ -114,9 +114,9 @@ router.post('/insertMany', async (req, res) => {
         const FileProducts = new FileProductManager(process.cwd() + '/public/assets/json/');
         const jsonProducts = await FileProducts.getProducts();
         await Products.addManyProducts(jsonProducts);
-        res.status(200).json({ message: 'Productos agregados!!!' });
+        res.status(200).json({ status: 'success', message: 'Productos agregados!!!' });
     } catch (error) {
-        res.status(500).json({ error });
+        res.status(500).json({ status: 'error', message: error.message});
     }
 });
 

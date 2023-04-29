@@ -1,5 +1,6 @@
 const { Router } = require('express');
 const Users = require('../dao/models/users.model');
+const { isValidPassword } = require('../utils/cryptPassword');
 
 const router = Router();
 
@@ -19,11 +20,11 @@ router.post('/', async (req, res) => {
             const user = await Users.findOne({ email });
             if (!user)
             {
-                return res.status(400).json({status: 'error', error: errorMessage});
+                return res.status(401).json({status: 'error', message: errorMessage});
             }
-            if (user.password !== password)
+            if (!isValidPassword(password, user))
             {
-                return res.status(400).json({status: 'error', error: errorMessage});
+                return res.status(401).json({status: 'error', message: errorMessage});
             }
     
             req.session.user = {
@@ -37,7 +38,7 @@ router.post('/', async (req, res) => {
         res.json({ status: 'success', message: 'Sesión iniciada'});
     } catch (error) {
         console.error(error.message);
-        res.status(500).json({ status: 'error', error: error.message});
+        res.status(500).json({ status: 'error', message: error.message});
     }
 });
 
@@ -45,7 +46,7 @@ router.get('/logout', (req, res) => {
     req.session.destroy(error => {
         if (error) 
         {
-            return res.json({ error });
+            return res.status(500).json({ status: 'error',  message: error.message });
         }
         res.redirect('/login');
     })
