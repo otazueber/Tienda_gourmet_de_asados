@@ -1,52 +1,44 @@
 const { Router } = require('express');
-const Users = require('../dao/models/users.model');
-const { isValidPassword } = require('../utils/cryptPassword');
+const passport = require('passport');
 
 const router = Router();
 
-router.post('/', async (req, res) => {
+router.post('/', passport.authenticate('login', { failureRedirect: '/auth/failLogin' }), async (req, res) => {
     try {
-        const { email, password } = req.body;
-        if ((email == 'adminCoder@coder.com') & (password == 'adminCod3r123')){
-            req.session.user = {
-                first_name: 'admin',
-                last_name: 'Coder',
-                email: 'adminCoder@coder.com',
-                role: 'admin',
-            }
+        if (!req.user) {
+            return res.status(401).json({ status: 'error', message: 'El usuario y la contraseña no coinciden' });
         }
-        else{
-            const errorMessage = 'El usuario y la contraseña no coinciden';
-            const user = await Users.findOne({ email });
-            if (!user)
-            {
-                return res.status(401).json({status: 'error', message: errorMessage});
-            }
-            if (!isValidPassword(password, user))
-            {
-                return res.status(401).json({status: 'error', message: errorMessage});
-            }
-    
-            req.session.user = {
-                first_name: user.first_name,
-                last_name: user.last_name,
-                email: user.email,
-                role: user.role,
-            }
-        }        
-
-        res.json({ status: 'success', message: 'Sesión iniciada'});
+        req.session.user = {
+            first_name: req.user.first_name,
+            last_name: req.user.last_name,
+            email: req.user.email,
+            role: req.user.role,
+        }
+        res.json({ status: 'success', message: 'Sesión iniciada' });
     } catch (error) {
         console.error(error.message);
-        res.status(500).json({ status: 'error', message: error.message});
+        res.status(500).json({ status: 'error', message: 'el mensaje es: ' + error.message });
     }
 });
 
+router.get('/github', passport.authenticate('github', { scope: ['user: email'] }), async (req, res) => { });
+
+router.get('/githubcallback', passport.authenticate('github', { failureRedirect: '/login' }),
+    async (req, res) => {
+        req.session.user = req.user
+        res.redirect('/api/views/products')
+    }
+);
+
+router.get('/failLogin', (req, res) => {
+    res.status(400).json({ status: 'error', message: 'El usuario y la contraseña no coinciden' })
+}
+);
+
 router.get('/logout', (req, res) => {
     req.session.destroy(error => {
-        if (error) 
-        {
-            return res.status(500).json({ status: 'error',  message: error.message });
+        if (error) {
+            return res.status(500).json({ status: 'error', message: error.message });
         }
         res.redirect('/login');
     })

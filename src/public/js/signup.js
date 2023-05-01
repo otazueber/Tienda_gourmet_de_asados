@@ -1,4 +1,6 @@
 const form = document.getElementById('signupForm');
+const responseMessage = document.getElementById('responseMessage');
+
 
 form.addEventListener('submit', e => {
   e.preventDefault();
@@ -20,10 +22,13 @@ function Submit() {
   .then(response => response.json())
   .then(data => redirect(data))
     .catch(error => console.log(error))
-}
+};
 
 function redirect(data) {
+  console.log('redirect: ' + data.status);
   if (data.status == 'success') {
       location.href = '/login';
+  } else {
+    responseMessage.innerHTML = data.message;
   }
-}
+};

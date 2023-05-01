@@ -5,8 +5,10 @@ const handlebars = require('express-handlebars');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const MongoStore = require('connect-mongo');
-
+const passport = require('passport');
+const initializePassport = require('./config/passport.config');
 const { dbUser, dbPass, dbHost, dbName } = require('../src/config/db.config');
+
 
 const app = express();
 app.use(express.static(__dirname + '/public'));
@@ -20,7 +22,7 @@ app.use(
                 `mongodb+srv://${dbUser}:${dbPass}@${dbHost}/sessions?retryWrites=true&w=majority`,
             mongoOptions: { useNewUrlParser: true, useUnifiedTopology: true },
         }),
-        secret: 'coderSecret',
+        secret: 'notVeganSecret',
         resave: false,
         saveUninitialized: false,
     })
@@ -28,6 +30,10 @@ app.use(
 app.engine('handlebars', handlebars.engine());
 app.set('views', __dirname + '/views');
 app.set('view engine', 'handlebars');
+
+initializePassport();
+app.use(passport.initialize());
+app.use(passport.session());
 
 mongoConnect();
 router(app);
