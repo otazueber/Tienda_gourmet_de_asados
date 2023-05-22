@@ -1,9 +1,8 @@
 {
 	"info": {
-		"_postman_id": "1919129e-d1e3-4915-8a23-c52de882ff63",
+		"_postman_id": "98a2a433-6136-4fa2-a78b-42d542638a3b",
 		"name": "messages",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "14110080"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
