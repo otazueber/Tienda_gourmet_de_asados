@@ -21,11 +21,10 @@ function Submit() {
   fetch(url, options)
   .then(response => response.json())
   .then(data => redirect(data))
-    .catch(error => console.log(error))
+    .catch(error => console.error(error))
 };
 
 function redirect(data) {
-  console.log('redirect: ' + data.status);
   if (data.status == 'success') {
       location.href = '/login';
   } else {

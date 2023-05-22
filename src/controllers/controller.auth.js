@@ -1,5 +1,6 @@
 const { Router } = require('express');
 const passport = require('passport');
+const { generateToken } = require('../utils/jwt.utils');
 
 const router = Router();
 
@@ -8,13 +9,20 @@ router.post('/', passport.authenticate('login', { failureRedirect: '/auth/failLo
         if (!req.user) {
             return res.status(401).json({ status: 'error', message: 'El usuario y la contraseña no coinciden' });
         }
-        req.session.user = {
-            first_name: req.user.first_name,
-            last_name: req.user.last_name,
-            email: req.user.email,
-            role: req.user.role,
-        }
-        res.json({ status: 'success', message: 'Sesión iniciada' });
+        // req.session.user = {
+        //     first_name: req.user.first_name,
+        //     last_name: req.user.last_name,
+        //     email: req.user.email,
+        //     role: req.user.role,
+        // }
+        // res.json({ status: 'success', message: 'Sesión iniciada' });
+        const access_token = generateToken({ email: req.user.email, role: req.user.role });
+        res.cookie('authToken', access_token, { maxAge: 60000, httpOnly: true })
+        .json({
+          status: 'success',
+          message: 'Sesión iniciada',
+        });
+        
     } catch (error) {
         console.error(error.message);
         res.status(500).json({ status: 'error', message: 'el mensaje es: ' + error.message });

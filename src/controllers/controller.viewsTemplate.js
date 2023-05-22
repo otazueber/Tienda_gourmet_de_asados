@@ -13,7 +13,7 @@ router.get('/login', publicAccess, (req, res) => {
 });
 
 router.get('/', privateAccess, (req, res) => {
-    const { user } = req.session
+    const { user } = req.user;
     res.render('profile.handlebars', { user });
 })
 

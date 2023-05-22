@@ -35,7 +35,7 @@ router.get('/products', async (req, res) => {
             hasNextPage: products.hasNextPage,
             prevLink: products.prevLink,
             nextLink: products.nextLink,
-            userName: `${req.session.user.first_name} ${req.session.user.last_name}, ${req.session.user.email} Rol: ${req.session.user.role}`,
+            userName: `${req.user.first_name} ${req.user.last_name}, ${req.user.email} Rol: ${req.user.role}`,
         })
     } catch (err) {
         console.error(err);

@@ -7,5 +7,5 @@ form.addEventListener('click', e => {
 function cerrarSesion(){
     fetch('/auth/logout', {method: 'GET'})
     .then(location.href = '/login')
-    .catch(error => console.log(error))
+    .catch(error => console.error(error))
 }

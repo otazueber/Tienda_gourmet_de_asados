@@ -29,7 +29,7 @@ form.addEventListener('submit', e => {
   })
     .then(response => response.json())
     .then(data => redirect(data))
-    .catch(error => console.log(error))
+    .catch(error => console.error(error))
 });
 
 function redirect(data) {
