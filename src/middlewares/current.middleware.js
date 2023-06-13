@@ -1,5 +1,4 @@
 function adminAccess(req, res, next) {
-    console.log('user ' + req.user)
     const userRole = req.user.role;
     if (userRole != 'admin') {
         return res.status(403).json({ status: 'error', message: 'Acceso no autorizado' })
