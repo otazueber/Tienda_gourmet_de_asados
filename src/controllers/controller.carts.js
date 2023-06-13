@@ -111,6 +111,7 @@ router.delete('/:cid/products/:pid', authToken, userAccess, async (req, res) => 
 router.post('/:cid/purchase', authToken, async (req, res) => {
     try {
         let hayVenta = false;
+        let amount = 0;
         const { cid } = req.params;
         const cart = await Carts.getCartById(cid);
         if (cart) {
@@ -132,6 +133,7 @@ router.post('/:cid/purchase', authToken, async (req, res) => {
                 });
                 cart.products = cart.products.filter(p => !productosSinStock.includes(p));
                 cart.products.forEach(async p => {
+                    amount = amount + (p.quantity * p.product.price)
                     await Carts.deleteProduct(cid, p.product._id)
                 });
 
@@ -139,10 +141,9 @@ router.post('/:cid/purchase', authToken, async (req, res) => {
                     const Tickets = new TicketManager();
 
                     const newTicket = await Tickets.getNewTicket();
-                    console.log('el ticket obtenido es: ' + newTicket);
                     newTicket.code = uuidv4();
                     newTicket.purchase_datetime = Date.now();
-                    newTicket.amount = 10560;
+                    newTicket.amount = amount;
                     newTicket.purchaser = req.user.email;
 
                     await Tickets.updateTicket(newTicket);
