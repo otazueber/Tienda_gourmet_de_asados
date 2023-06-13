@@ -42,10 +42,16 @@
 			"response": []
 		},
 		{
-			"name": "AddOrUpdateAProduct",
+			"name": "AddProductToCart",
 			"request": {
-				"method": "POST",
-				"header": [],
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im90YXp1ZWJlckBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4NjYwMzI4OCwiZXhwIjoxNjg2NjQ2NDg4fQ.BJRh5MvmSao8tAx1iPp0uv_S8FFkGM_9uOgMvnoNoB4",
+						"type": "default"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\r\n    \"quantity\": 1\r\n}",
@@ -56,16 +62,16 @@
 					}
 				},
 				"url": {
-					"raw": "{{url}}/api/carts/64344a49b209c795b4d0f7d9/product/64344b28787779b1c8a8381d",
+					"raw": "{{url}}/api/carts/64879ea7dd32844d8fe5d976/product/644c5aec424afd5c3e6e6431",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
 						"api",
 						"carts",
-						"64344a49b209c795b4d0f7d9",
+						"64879ea7dd32844d8fe5d976",
 						"product",
-						"64344b28787779b1c8a8381d"
+						"644c5aec424afd5c3e6e6431"
 					]
 				}
 			},
@@ -77,33 +83,65 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{url}}/api/carts/64344a49b209c795b4d0f7d9",
+					"raw": "{{url}}/api/carts/64879ea7dd32844d8fe5d976",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
 						"api",
 						"carts",
-						"64344a49b209c795b4d0f7d9"
+						"64879ea7dd32844d8fe5d976"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "DelACart",
+			"name": "DelProductsfromACart",
 			"request": {
 				"method": "DELETE",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im90YXp1ZWJlckBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4NjYwMzI4OCwiZXhwIjoxNjg2NjQ2NDg4fQ.BJRh5MvmSao8tAx1iPp0uv_S8FFkGM_9uOgMvnoNoB4",
+						"type": "default"
+					}
+				],
 				"url": {
-					"raw": "{{url}}/api/carts/64344a49b209c795b4d0f7d9",
+					"raw": "{{url}}/api/carts/64879ea7dd32844d8fe5d976",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
 						"api",
 						"carts",
-						"64344a49b209c795b4d0f7d9"
+						"64879ea7dd32844d8fe5d976"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Purchase",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im90YXp1ZWJlckBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4NjYwMzI4OCwiZXhwIjoxNjg2NjQ2NDg4fQ.BJRh5MvmSao8tAx1iPp0uv_S8FFkGM_9uOgMvnoNoB4",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/api/carts/64879ea7dd32844d8fe5d976/purchase",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"carts",
+						"64879ea7dd32844d8fe5d976",
+						"purchase"
 					]
 				}
 			},

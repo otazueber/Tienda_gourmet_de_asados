@@ -14,7 +14,6 @@ const initializePassport = () => {
 
             const user = await Users.findOne({ email: username });
             if (user) {
-                console.error('Usuario ya existe');
                 return done(null, false);
             };
 
@@ -41,6 +40,7 @@ const initializePassport = () => {
         try {
             if ((username == 'adminCoder@coder.com') & (password == 'adminCod3r123')) {
                 const user = {
+                    id: "CODER",
                     first_name: 'admin',
                     last_name: 'Coder',
                     email: 'adminCoder@coder.com',
@@ -89,14 +89,28 @@ const initializePassport = () => {
     );
 
     passport.serializeUser((user, done) => {
-        done(null, user.id)
+        done(null, user.id);
     })
 
     passport.deserializeUser(async (id, done) => {
-        const user = await Users.findById(id)
-        done(null, user)
+        let user;
+        if (id === "CODER")
+        {
+            user = {
+                _id: "CODER",
+                first_name: 'admin',
+                last_name: 'Coder',
+                email: 'adminCoder@coder.com',
+                role: 'admin',
+                password: 'adminCod3r123'
+            };
+        } 
+        else
+         {
+            user = await Users.findById(id)
+        }
+        done(null, user);
     })
-
 }
 
 module.exports = initializePassport;

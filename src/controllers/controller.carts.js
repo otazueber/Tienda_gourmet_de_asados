@@ -1,5 +1,11 @@
 const { Router } = require('express');
 const CartManager = require('../dao/dbCartManager');
+const Products = require('../dao/models/products.model');
+const { v4: uuidv4 } = require('uuid');
+const { authToken } = require('../utils/jwt.utils');
+const TicketDTO = require('../dto/ticket.dto');
+const { userAccess } = require('../middlewares/current.middleware');
+const TicketManager = require('../factory/factory');
 
 const router = Router();
 const Carts = new CartManager();
@@ -44,7 +50,7 @@ router.get('/:cid', async (req, res) => {
     }
 });
 
-router.put('/:cid/product/:pid', async (req, res) => {
+router.put('/:cid/product/:pid', authToken, userAccess, async (req, res) => {
     try {
         const { cid, pid } = req.params;
         const cart = Carts.getCartById(cid);
@@ -69,7 +75,7 @@ router.put('/:cid/product/:pid', async (req, res) => {
     }
 });
 
-router.delete('/:cid', async (req, res) => {
+router.delete('/:cid', authToken, userAccess, async (req, res) => {
     try {
         const { cid } = req.params;
         const cartToDel = Carts.getCartById(cid);
@@ -88,13 +94,11 @@ router.delete('/:cid', async (req, res) => {
     };
 });
 
-router.delete('/:cid/products/:pid', async (req, res) => {
-    const {cid, pid} = req.params;
+router.delete('/:cid/products/:pid', authToken, userAccess, async (req, res) => {
+    const { cid, pid } = req.params;
     const cart = await Carts.getCartById(cid);
-    if (cart)
-    {
-        if (await Carts.deleteProduct(cid, pid))
-        {
+    if (cart) {
+        if (await Carts.deleteProduct(cid, pid)) {
             res.status(200).json({ status: 'success', message: 'Producto eliminado satisfactoriamente!!!' });
         } else {
             res.status(500).json({ status: 'error', message: 'Internal server error' });
@@ -104,5 +108,66 @@ router.delete('/:cid/products/:pid', async (req, res) => {
     }
 });
 
+router.post('/:cid/purchase', authToken, async (req, res) => {
+    try {
+        let hayVenta = false;
+        const { cid } = req.params;
+        const cart = await Carts.getCartById(cid);
+        if (cart) {
+            const idsProductos = cart.products.map(p => p.product);
+            try {
+                const productos = await Products.find({ _id: { $in: idsProductos } });
+                const productosSinStock = cart.products.filter(productoDelCarrito => {
+                    const productoStock = productos.find(p => {
+                        return (p._id.toString().trim() == productoDelCarrito.product._id.toString().trim()) && (parseFloat(p.stock) < parseFloat(productoDelCarrito.quantity))
+                    }
+                    );
+                    return productoStock;
+                });
+                cart.products.forEach(async p => {
+                    if (!productosSinStock.includes(p)) {
+                        hayVenta = true;
+                        await Products.updateOne({ _id: p.product._id }, { $inc: { stock: -p.quantity } });
+                    }
+                });
+                cart.products = cart.products.filter(p => !productosSinStock.includes(p));
+                cart.products.forEach(async p => {
+                    await Carts.deleteProduct(cid, p.product._id)
+                });
+
+                if (hayVenta) {
+                    const Tickets = new TicketManager();
+
+                    const newTicket = await Tickets.getNewTicket();
+                    console.log('el ticket obtenido es: ' + newTicket);
+                    newTicket.code = uuidv4();
+                    newTicket.purchase_datetime = Date.now();
+                    newTicket.amount = 10560;
+                    newTicket.purchaser = req.user.email;
+
+                    await Tickets.updateTicket(newTicket);
+
+                    const newTicketDTO = new TicketDTO(newTicket);
+                    if (productosSinStock.length > 0) {
+                        res.status(200).json({ status: 'success', message: 'compra realizada con éxito!!!', ticket: newTicketDTO, productos_no_procesados: productosSinStock });
+                    } else {
+                        res.status(200).json({ status: 'success', message: 'compra realizada con éxito!!!', ticket: newTicketDTO });
+                    }
+                }
+                else {
+                    res.status(200).json({ status: 'success', message: 'compra realizada con éxito!!!' });
+                }
+            } catch (error) {
+                console.error(error.message);
+                res.status(500).json({ status: 'error', message: 'Error al verificar el stock.' });
+            }
+        } else {
+            res.status(404).json({ status: 'error', message: 'Carrito no encontrado' });
+        }
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).json({ status: 'error', message: 'Internal server error' });
+    };
+});
 
 module.exports = router;

@@ -45,14 +45,19 @@ class CartManager {
     }
 
     async deleteProduct(cid, pid) {
-        const cartToUpdate = await this.getCartById(cid);
-        const index = cartToUpdate.products.findIndex(p => p.product == pid);
-        if (index !== -1) {
-            cartToUpdate.products.splice(index, 1);
-            await Carts.updateOne({ _id: cid }, cartToUpdate);
-            return true;
-        } else {
-            return false;
+        
+        try {
+            const cartToUpdate = await this.getCartById(cid);
+            const index = cartToUpdate.products.findIndex(producto => producto.product._id.toString().trim() == pid.toString().trim());
+            if (index != -1) {
+                cartToUpdate.products.splice(index, 1);
+                await Carts.updateOne({ _id: cid }, cartToUpdate);
+                return true;
+            } else {
+                return false;
+            }
+        } catch (error) {
+
         }
     }
 }

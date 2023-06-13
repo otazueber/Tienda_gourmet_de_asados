@@ -2,6 +2,8 @@ const { Router } = require('express');
 const uploader = require('../utils/multer.utils');
 const DbProductManager = require('../dao/dbProductManager');
 const FileProductManager = require('../dao/fileProductManager');
+const { authToken } = require('../utils/jwt.utils');
+const { adminAccess } = require('../middlewares/current.middleware');
 
 const router = Router();
 
@@ -37,7 +39,7 @@ router.get('/:pid', async (req, res) => {
     }
 });
 
-router.put('/:pid', async (req, res) => {
+router.put('/:pid', authToken, adminAccess, async (req, res) => {
     const { pid } = req.params;
     try {
         const product = await Products.getProductById(pid);
@@ -68,7 +70,7 @@ router.put('/:pid', async (req, res) => {
     }
 });
 
-router.post('/', uploader.single('file'), async (req, res) => {
+router.post('/', authToken, adminAccess, uploader.single('file'), async (req, res) => {
     try {
         const { title, code, status, measurement, stock, price, description, category } = req.body;
         const productInfo = {
@@ -94,7 +96,7 @@ router.post('/', uploader.single('file'), async (req, res) => {
     }
 });
 
-router.delete('/:pid', async (req, res) => {
+router.delete('/:pid', authToken, adminAccess, async (req, res) => {
     const { pid } = req.params;
     const productToDel = await Products.getProductById(pid);
     if (productToDel) {
@@ -109,7 +111,7 @@ router.delete('/:pid', async (req, res) => {
     }
 });
 
-router.post('/insertMany', async (req, res) => {
+router.post('/insertMany', authToken, adminAccess, async (req, res) => {
     try {
         const FileProducts = new FileProductManager(process.cwd() + '/public/assets/json/');
         const jsonProducts = await FileProducts.getProducts();
