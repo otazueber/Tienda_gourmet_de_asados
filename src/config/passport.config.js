@@ -4,6 +4,9 @@ const Users = require('../dao/models/users.model');
 const GithubStrategy = require('passport-github2');
 const { hashPassword, isValidPassword } = require('../utils/cryptPassword');
 const { gitHubClientID, gitHubClientSecret } = require('./app.config');
+const CustomError = require('../handler/errors/CustomError');
+const generateUserErrorInfo = require('../handler/errors/info');
+const EnumErrors = require('../handler/errors/enumErrors');
 
 const LocalStrategy = local.Strategy;
 
@@ -16,7 +19,15 @@ const initializePassport = () => {
             if (user) {
                 return done(null, false);
             };
-
+            if (!first_name || !last_name || !email)
+            {
+                CustomError.createError({
+                    name: "Error creando usuario",
+                    cause: generateUserErrorInfo({first_name, last_name, email}),
+                    message: "Error intentando crear un usuario",
+                    code: EnumErrors.INVALID_TYPES_ERROR
+                })
+            }
             const newUserInfo = {
                 first_name,
                 last_name,

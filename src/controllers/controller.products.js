@@ -4,6 +4,8 @@ const DbProductManager = require('../dao/dbProductManager');
 const FileProductManager = require('../dao/fileProductManager');
 const { authToken } = require('../utils/jwt.utils');
 const { adminAccess } = require('../middlewares/current.middleware');
+const EnumErrors = require('../handler/errors/enumErrors');
+const CustomError = require('../handler/errors/CustomError');
 
 const router = Router();
 
@@ -24,6 +26,11 @@ router.get('/', async (req, res) => {
     }
 });
 
+router.get('/mockingproducts', (req, res) => {
+    const products = Products.getMockProducts();
+    res.status(200).json(products);
+});
+
 router.get('/:pid', async (req, res) => {
     const { pid } = req.params;
     try {
@@ -39,12 +46,21 @@ router.get('/:pid', async (req, res) => {
     }
 });
 
-router.put('/:pid', authToken, adminAccess, async (req, res) => {
+router.put('/:pid', authToken, adminAccess, async (req, res, next) => {
     const { pid } = req.params;
     try {
         const product = await Products.getProductById(pid);
         if (product) {
             const { title, measurement, thumbnails, stock, price, description, category } = req.body;
+            if (!isNaN(price) & (parseFloat(price) < 0))
+            {
+                CustomError.createError({
+                    name: "Error actualizando el producto",
+                    cause: "El precio debe ser mayor que 0",
+                    message: "Error al intentar actualizar el producto.",
+                    code: EnumErrors.INVALID_PARAM
+                });
+            }
             const productInfo = {
                 title,
                 measurement,
@@ -65,8 +81,15 @@ router.put('/:pid', authToken, adminAccess, async (req, res) => {
             res.status(404).json({ error: 'Producto no encontrado' });
         }
     } catch (err) {
-        console.error(err);
-        res.status(500).json({ error: 'Internal server error.' });
+        if (err.code == EnumErrors.INVALID_PARAM)
+        {
+            next(err);
+        }
+        else {
+            console.error(err);
+            res.status(500).json({ error: 'Internal server error.' });
+        }
+        
     }
 });
 

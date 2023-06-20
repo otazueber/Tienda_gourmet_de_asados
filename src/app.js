@@ -7,7 +7,8 @@ const cookieParser = require('cookie-parser');
 const MongoStore = require('connect-mongo');
 const passport = require('passport');
 const initializePassport = require('./config/passport.config');
-const { dbUser, dbPass, dbHost, dbName } = require('../src/config/db.config');
+const { dbUser, dbPass, dbHost } = require('../src/config/db.config');
+const errorHandler = require('./middlewares/errors');
 
 
 const app = express();
@@ -38,5 +39,6 @@ app.use(passport.session());
 mongoConnect();
 router(app);
 
+app.use(errorHandler);
 
 module.exports = app;

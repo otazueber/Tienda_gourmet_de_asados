@@ -1,5 +1,5 @@
 const Products = require('./models/products.model');
-
+const { v4: uuidv4 } = require('uuid');
 
 class DbProductManager {
     constructor() { }
@@ -22,9 +22,9 @@ class DbProductManager {
                 limit: internalLimit,
                 sort: { price: sort },
             };
-            products =  await Products.paginate(query? { category: query } : {}, options);
+            products = await Products.paginate(query? { category: query } : {}, options);
         } else {
-            products =  await Products.paginate(query? { category: query } : {}, { limit: internalLimit, page: internalPage });
+            products = await Products.paginate(query? { category: query } : {}, { limit: internalLimit, page: internalPage });
         }
         let prevLink;
         let nextLink;
@@ -57,9 +57,46 @@ class DbProductManager {
             hasPrevPage: products.hasPrevPage,
             hasNextPage: products.hasNextPage,
             prevLink: (products.hasPrevPage) ? prevLink : null,
-            nextLink:  (products.hasNextPage < products.totalPages)  ? nextLink : null,
+            nextLink: (products.hasNextPage < products.totalPages) ? nextLink : null,
         }
         return result;
+    }
+
+    getMockProducts() {
+        try {
+            const products = [];
+            for (let i = 0; i < 100; i++) {
+
+                const newproduct = {
+                    id: uuidv4(),
+                    title: `Title of product (${i + 1})`,
+                    code: `${i + 1}`,
+                    status: true,
+                    measurement: "kg",
+                    thumbnails: "",
+                    stock: 12,
+                    price: 0.5 * i,
+                    description: `Description of product (${i + 1})`,
+                    category: `Category of product (${i + 1})`
+                };
+                products.push(newproduct);
+            };            
+            const result = {
+                status: 'success',
+                payload: products,
+                totalPages: 1,
+                prevPage: null,
+                nextPage: null,
+                page: 1,
+                hasPrevPage: false,
+                hasNextPage: false,
+                prevLink: null,
+                nextLink: null,
+            }
+            return result;
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     async getProductById(id) {

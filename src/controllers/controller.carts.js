@@ -6,6 +6,8 @@ const { authToken } = require('../utils/jwt.utils');
 const TicketDTO = require('../dto/ticket.dto');
 const { userAccess } = require('../middlewares/current.middleware');
 const TicketManager = require('../factory/factory');
+const EnumErrors = require('../handler/errors/enumErrors');
+const CustomError = require('../handler/errors/CustomError');
 
 const router = Router();
 const Carts = new CartManager();
@@ -50,12 +52,21 @@ router.get('/:cid', async (req, res) => {
     }
 });
 
-router.put('/:cid/product/:pid', authToken, userAccess, async (req, res) => {
+router.put('/:cid/product/:pid', authToken, userAccess, async (req, res, next) => {
     try {
         const { cid, pid } = req.params;
         const cart = Carts.getCartById(cid);
         if (cart) {
             obj = req.body;
+            if (isNaN(obj.quantity) || ( parseFloat(obj.quantity) <= 0))
+            {
+                CustomError.createError({
+                    name: "Error agregando el producto al carrito",
+                    cause: "La cantidad debe ser mayor que 0",
+                    message: "Error al intentar agregar el producto al carrito.",
+                    code: EnumErrors.INVALID_PARAM
+                });
+            }
             const product = {
                 product: pid,
                 quantity: obj.quantity
@@ -70,8 +81,13 @@ router.put('/:cid/product/:pid', authToken, userAccess, async (req, res) => {
             res.status(404).json({ status: 'error', message: 'Carrito no encontrado' });
         };
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ status: 'error', message: 'Internal server error' });
+        if (error.code == EnumErrors.INVALID_PARAM){
+            next(error)
+        }
+        else {
+            console.error(error);
+            res.status(500).json({ status: 'error', message: 'Internal server error' });
+        }        
     }
 });
 
