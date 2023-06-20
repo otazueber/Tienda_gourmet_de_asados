@@ -83,10 +83,16 @@
 			"name": "UpdateAProduct",
 			"request": {
 				"method": "PUT",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im90YXp1ZWJlckBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4NjYwMzI4OCwiZXhwIjoxNjg2NjQ2NDg4fQ.BJRh5MvmSao8tAx1iPp0uv_S8FFkGM_9uOgMvnoNoB4",
+						"type": "default"
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": " {\r\n        \"title\": \"carbón\",\r\n        \"code\": \"004\",\r\n        \"status\": true,\r\n        \"measurement\": \"unidad\",\r\n        \"thumbnails\": \"1681148712195carbon_4kg.jpg\",\r\n        \"stock\": 20000,\r\n        \"price\": 750,\r\n        \"description\": \"Carbón x 4kg\",\r\n        \"category\": \"fuego\",\r\n        \"__v\": 0\r\n    }",
+					"raw": " {\r\n        \"title\": \"carbón\",\r\n        \"code\": \"004\",\r\n        \"status\": true,\r\n        \"measurement\": \"unidad\",\r\n        \"thumbnails\": \"1681148712195carbon_4kg.jpg\",\r\n        \"stock\": 20000,\r\n        \"price\": -1,\r\n        \"description\": \"Carbón x 4kg\",\r\n        \"category\": \"fuego\",\r\n        \"__v\": 0\r\n    }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -173,6 +179,43 @@
 						"api",
 						"products",
 						"644c5aec424afd5c3e6e6468"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Getmockingproducts",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im90YXp1ZWJlckBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4NjUwODk5NCwiZXhwIjoxNjg2NTUyMTk0fQ.8dCAt79yVGGTKWl37JI7qMuV0xiupWAnpyC-WivRaq0",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n        \"title\": \"carbón\",\r\n        \"code\": \"004\",\r\n        \"status\": true,\r\n        \"measurement\": \"unidad\",\r\n        \"thumbnails\": \"1681148712195carbon_4kg.jpg\",\r\n        \"stock\": 20000,\r\n        \"price\": 750,\r\n        \"description\": \"Carbón x 4kg\",\r\n        \"category\": \"fuego\",\r\n        \"__v\": 0\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/products/mockingproducts",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"products",
+						"mockingproducts"
 					]
 				}
 			},
