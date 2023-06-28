@@ -1,1 +1,1 @@
-# Desafío: Mocking y manejo de errores
+# Desafío: Implementación de logger
