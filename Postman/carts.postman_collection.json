@@ -48,13 +48,13 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im90YXp1ZWJlckBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4NjYwMzI4OCwiZXhwIjoxNjg2NjQ2NDg4fQ.BJRh5MvmSao8tAx1iPp0uv_S8FFkGM_9uOgMvnoNoB4",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im90YXp1ZWJlckBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4NzIwNTExMiwiZXhwIjoxNjg3MjQ4MzEyfQ.dnZ9jzc8DlV3mWZ6LJIWBl6Bc9dj09SDJpfcxIHPpkQ",
 						"type": "default"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"quantity\": 1\r\n}",
+					"raw": "{\r\n    \"quantity\": 0\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -79,18 +79,46 @@
 		},
 		{
 			"name": "GetProductsOfACart",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im90YXp1ZWJlckBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4NjYwMzI4OCwiZXhwIjoxNjg2NjQ2NDg4fQ.BJRh5MvmSao8tAx1iPp0uv_S8FFkGM_9uOgMvnoNoB4",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
-					"raw": "{{url}}/api/carts/64879ea7dd32844d8fe5d976",
+					"raw": "{{url}}/api/carts/648642c468616fd93555ade7",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
 						"api",
 						"carts",
-						"64879ea7dd32844d8fe5d976"
+						"648642c468616fd93555ade7"
 					]
 				}
 			},

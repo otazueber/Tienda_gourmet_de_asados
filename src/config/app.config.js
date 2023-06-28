@@ -6,4 +6,5 @@ module.exports = {
     gitHubClientSecret: process.env.GITHUB_CLIENT_SECRET,
     jwtSecret: process.env.JWT_SECRET,
     tickets: process.env.TICKETS,
+    environment: process.env.ENVIRONMENT
 }

@@ -1,0 +1,27 @@
+{
+	"info": {
+		"_postman_id": "5b59de91-90e1-456f-84b9-c1cb366b478e",
+		"name": "logs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "logTest",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/loggerTest",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"loggerTest"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

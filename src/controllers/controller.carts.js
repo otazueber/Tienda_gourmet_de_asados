@@ -21,7 +21,7 @@ router.post('/', async (req, res) => {
             res.status(500).json({ status: 'error', message: 'Internal server error' });
         };
     } catch (error) {
-        console.error(error);
+        req.logger.error(error.message);
         res.status(500).json({ status: 'error', message: 'Internal server error' });
     }
 
@@ -32,7 +32,7 @@ router.get('/', async (req, res) => {
         const carts = await Carts.getCarts();
         res.status(200).json({ carts });
     } catch (error) {
-        console.error(error);
+        req.logger.error(error.message);
         res.status(500).json({ status: 'error', message: 'Internal server error' });
     }
 });
@@ -46,8 +46,8 @@ router.get('/:cid', async (req, res) => {
         } else {
             res.status(404).json({ status: 'error', message: 'Carrito no encontrado' });
         }
-    } catch (err) {
-        console.error(err);
+    } catch (error) {
+        req.logger.error(error.message);
         res.status(500).json({ status: 'error', message: 'Internal server error' });
     }
 });
@@ -85,7 +85,7 @@ router.put('/:cid/product/:pid', authToken, userAccess, async (req, res, next) =
             next(error)
         }
         else {
-            console.error(error);
+            req.logger.error(error.message);
             res.status(500).json({ status: 'error', message: 'Internal server error' });
         }        
     }
@@ -175,14 +175,14 @@ router.post('/:cid/purchase', authToken, async (req, res) => {
                     res.status(200).json({ status: 'success', message: 'compra realizada con éxito!!!' });
                 }
             } catch (error) {
-                console.error(error.message);
+                req.logger.error(error.message);
                 res.status(500).json({ status: 'error', message: 'Error al verificar el stock.' });
             }
         } else {
             res.status(404).json({ status: 'error', message: 'Carrito no encontrado' });
         }
     } catch (error) {
-        console.error(error.message);
+        req.logger.error(error.message);
         res.status(500).json({ status: 'error', message: 'Internal server error' });
     };
 });

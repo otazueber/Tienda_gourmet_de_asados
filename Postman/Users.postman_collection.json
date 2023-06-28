@@ -12,7 +12,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"first_name\":\"Eber\", \r\n    \"last_name\":\"Otazu\", \r\n    \"email\":\"otazueber@gmail.com\", \r\n    \"age\":25, \r\n    \"password\":\"123\",\r\n    \"role\": \"admin\"\r\n}\r\n",
+					"raw": "{\r\n \r\n    \"last_name\":\"Otazu\", \r\n    \"email\":\"otazueber@123.com\", \r\n    \"age\":25, \r\n    \"password\":\"123\",\r\n    \"role\": \"admin\"\r\n}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -20,13 +20,12 @@
 					}
 				},
 				"url": {
-					"raw": "{{url}}/api/users",
+					"raw": "{{url}}/auth",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
-						"api",
-						"users"
+						"auth"
 					]
 				}
 			},

@@ -20,8 +20,8 @@ router.get('/', async (req, res) => {
     try {
         const products = await Products.getProducts(endPoint, limit, page, sort, query);
         res.status(200).json(products);
-    } catch (err) {
-        console.error(err);
+    } catch (error) {
+        req.logger.error(error.message);
         res.status(500).json({ error: 'Internal server error.' });
     }
 });
@@ -40,8 +40,8 @@ router.get('/:pid', async (req, res) => {
         } else {
             res.status(404).json({ error: 'Producto no encontrado' });
         }
-    } catch (err) {
-        console.error(err);
+    } catch (error) {
+        req.logger.error(error.message);
         res.status(500).json({ error: 'Internal server error.' });
     }
 });
@@ -80,13 +80,13 @@ router.put('/:pid', authToken, adminAccess, async (req, res, next) => {
         } else {
             res.status(404).json({ error: 'Producto no encontrado' });
         }
-    } catch (err) {
-        if (err.code == EnumErrors.INVALID_PARAM)
+    } catch (error) {
+        if (error.code == EnumErrors.INVALID_PARAM)
         {
-            next(err);
+            next(error);
         }
         else {
-            console.error(err);
+            req.logger.error(error.message);
             res.status(500).json({ error: 'Internal server error.' });
         }
         
@@ -112,7 +112,7 @@ router.post('/', authToken, adminAccess, uploader.single('file'), async (req, re
         if (error.code == '11000') {
             res.status(400).json({ message: 'El producto que quieres ingresar ya existe.' });
         } else {
-            console.error(error);
+            req.logger.error(error.message);
             res.status(500).json({ error: 'Internal server error.' });
         }
 

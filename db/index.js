@@ -6,7 +6,7 @@ const mongoConnect = async () => {
         await mongoose.connect(`mongodb+srv://${dbUser}:${dbPass}@${dbHost}/${dbName}?retryWrites=true&w=majority`);
         console.log('db is connected!!');
     } catch (error) {
-        console.error(error);
+        req.logger.error(error.message);
     }
 }
 

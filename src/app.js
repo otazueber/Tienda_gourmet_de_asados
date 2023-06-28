@@ -9,9 +9,10 @@ const passport = require('passport');
 const initializePassport = require('./config/passport.config');
 const { dbUser, dbPass, dbHost } = require('../src/config/db.config');
 const errorHandler = require('./middlewares/errors');
-
+const addLogger = require('./middlewares/logger.middleware');
 
 const app = express();
+app.use(addLogger);
 app.use(express.static(__dirname + '/public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());

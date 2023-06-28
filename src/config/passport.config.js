@@ -40,7 +40,7 @@ const initializePassport = () => {
 
             done(null, newUser);
         } catch (error) {
-            console.error(error);
+            req.logger.error(error.message);
             done(error);
         };
     }
@@ -62,7 +62,7 @@ const initializePassport = () => {
             } else {
                 const user = await Users.findOne({ email: username });
                 if (!user) {
-                    console.error('El usuario no existe');
+                    req.logger.error('El usuario no existe');
                     return done(null, false);
                 };
                 if (!isValidPassword(password, user)) {

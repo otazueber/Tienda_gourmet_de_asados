@@ -6,6 +6,7 @@ const authController = require('../controllers/controller.auth');
 const viewsTemplateController = require('../controllers/controller.viewsTemplate');
 const userController = require('../controllers/controller.users');
 const sessionsController = require('../controllers/controller.sessions');
+const logController = require('../controllers/controller.logtest');
 
 const router = app => {
     // app.use('/', homeController)
@@ -17,6 +18,7 @@ const router = app => {
     app.use('/auth', authController);
     app.use('/', viewsTemplateController);
     app.use('/api/users', userController);
+    app.use('/api/loggerTest', logController);
 }
 
 module.exports = router;

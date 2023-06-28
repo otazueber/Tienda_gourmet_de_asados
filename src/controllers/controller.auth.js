@@ -24,7 +24,7 @@ router.post('/', passport.authenticate('login', { failureRedirect: '/auth/failLo
         });
         
     } catch (error) {
-        console.error(error.message);
+        req.logger.error(error.message);
         res.status(500).json({ status: 'error', message: 'el mensaje es: ' + error.message });
     }
 });

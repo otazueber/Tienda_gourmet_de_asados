@@ -37,8 +37,8 @@ router.get('/products', async (req, res) => {
             nextLink: products.nextLink,
             userName: `${req.user.first_name} ${req.user.last_name}, ${req.user.email} Rol: ${req.user.role}`,
         })
-    } catch (err) {
-        console.error(err);
+    } catch (error) {
+        req.logger.error(error.message);
         res.status(500).json({ status: 'error', message:  'Internal server error.' });
     }
 });
