@@ -3,7 +3,7 @@ const { jwtSecret } = require('../config/app.config');
 const Users = require('../dao/models/users.model');
 
 const generateToken = user => {
-  const token = jwt.sign(user, jwtSecret, { expiresIn: '43200s' }); // 12 hs
+  const token = jwt.sign(user, jwtSecret, { expiresIn: '12h' });
   return token;
 }
 
@@ -41,7 +41,30 @@ const authToken = (req, res, next) => {
   })
 }
 
+const generatePasswordResetToken = (email) => {
+  const token = jwt.sign({ email }, jwtSecret, { expiresIn: '1h' });
+  return token;
+}
+
+const getEmailFromToken = token => {
+  let email = '';
+  if (token) {
+    jwt.verify(token, jwtSecret, async (error, decoded) => {
+      if (!error) {
+        const decodedToken = jwt.decode(token);
+        if (decodedToken.exp >= Date.now() / 1000) {
+          email = decoded.email;
+        }
+      }
+    })
+  }
+  return email;
+}
+
+
 module.exports = {
   generateToken,
   authToken,
+  generatePasswordResetToken,
+  getEmailFromToken,
 }

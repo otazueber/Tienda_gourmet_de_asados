@@ -1,16 +1,8 @@
-const btnRegistrar = document.getElementById("btnRegistrarse");
-
-btnRegistrar.addEventListener('click', e => {
-  e.preventDefault()
-  location.href = '/signup';
-})
-
-
 const form = document.getElementById('loginForm')
 
 form.addEventListener('submit', e => {
   e.preventDefault()
-
+  
   const data = new FormData(form)
   const obj = {}
 

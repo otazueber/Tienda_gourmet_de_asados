@@ -47,7 +47,7 @@ const initializePassport = () => {
     )
     );
 
-    passport.use('login', new LocalStrategy({ usernameField: 'email' }, async (username, password, done) => {
+    passport.use('login', new LocalStrategy({ passReqToCallback: true, usernameField: 'email' }, async (req, username, password, done) => {
         try {
             if ((username == 'adminCoder@coder.com') & (password == 'adminCod3r123')) {
                 const user = {
@@ -66,11 +66,13 @@ const initializePassport = () => {
                     return done(null, false);
                 };
                 if (!isValidPassword(password, user)) {
+                    req.logger.error('El password no es correcto');
                     return done(null, false);
                 };
                 done(null, user);
             };
         } catch (error) {
+            req.logger.error(error.message);
             done(error);
         };
     }
