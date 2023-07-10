@@ -7,12 +7,27 @@ class DbUserManager {
         return await Users.findOne({ email });
 
     }
+    static async getUserById(id) {
+        return await Users.findById({ _id: id });
+    }
     static async actualizarPassword(email, password) {
         try {
             const pass = hashPassword(password);
             const usuarioActualizado = await Users.findOneAndUpdate(
                 { email: email },
                 { password: pass },
+                { new: true }
+            );
+            return usuarioActualizado;
+        } catch (error) {
+            throw error;
+        }
+    }
+    static async actualizarRol(email, role) {
+        try {
+            const usuarioActualizado = await Users.findOneAndUpdate(
+                { email: email },
+                { role: role },
                 { new: true }
             );
             return usuarioActualizado;
