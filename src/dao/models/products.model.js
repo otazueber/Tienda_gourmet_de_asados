@@ -15,7 +15,11 @@ const collectionSchema = new mongoose.Schema({
     stock: Number,
     price: Number,
     description: String,
-    category: String
+    category: String,
+    owner: {
+        type : String,
+        default: 'admin',
+      }
 });
 
 collectionSchema.plugin(mongoosePaginate);

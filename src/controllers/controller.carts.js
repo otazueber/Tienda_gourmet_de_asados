@@ -67,16 +67,23 @@ router.put('/:cid/product/:pid', authToken, userAccess, async (req, res, next) =
                     code: EnumErrors.INVALID_PARAM
                 });
             }
-            const product = {
-                product: pid,
-                quantity: obj.quantity
-            }
-            const result = await Carts.updateCart(cid, product);
-            if (result) {
-                res.status(200).json({ status: 'success', message: 'Producto agregado al carrito satisfactoriametne' });
+            const dbProduct = await Products.findById(pid);
+            if ((req.user.role == 'premium') & (req.user.email == dbProduct.owner))
+            {
+                res.status(400).json({ status: 'error', message: 'No puedes agregar al carrito tu propio producto' });
             } else {
-                res.status(500).json({ status: 'error', message: 'Carrito no encontrado' });
+                const product = {
+                    product: pid,
+                    quantity: obj.quantity
+                }
+                const result = await Carts.updateCart(cid, product);
+                if (result) {
+                    res.status(200).json({ status: 'success', message: 'Producto agregado al carrito satisfactoriametne' });
+                } else {
+                    res.status(500).json({ status: 'error', message: 'Carrito no encontrado' });
+                }
             }
+            
         } else {
             res.status(404).json({ status: 'error', message: 'Carrito no encontrado' });
         };
