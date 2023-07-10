@@ -1,1 +1,1 @@
-# Desafío: Implementación de logger
+# Desafío complementario: Práctica de integración
