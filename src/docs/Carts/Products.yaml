@@ -1,0 +1,307 @@
+openapi: "3.0.1"
+info: 
+  title: "API Products"
+  version: "1.0"
+
+paths:
+  /api/products:
+    get:
+      summary: Obtiene productos paginando
+      tags:
+        - Products
+      parameters:
+        - name: limit
+          in: query
+          description: Límite de productos por página
+          required: false
+          type: integer
+          minimum: 1
+        - name: page
+          in: query
+          description: Número de página
+          required: false
+          type: integer
+          minimum: 1
+        - name: sort
+          in: query
+          description: Orden de clasificación de los productos
+          required: false
+          type: string
+        - name: query
+          in: query
+          description: Búsqueda por categoría
+          required: false
+          type: string
+      responses:
+        200:
+          description: Lista de productos paginados
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PaginatedProductList"
+        500:
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: "#/definitions/ResponseMessage"
+    
+    post:
+      summary: Crea un producto
+      tags:
+        - Products
+      parameters:
+        - name: file
+          in: formData
+          description: Archivo de imagen del producto
+          required: true
+          type: file
+        - name: title
+          in: formData
+          description: Título del producto
+          required: true
+          type: string
+        - name: code
+          in: formData
+          description: Código del producto
+          required: true
+          type: string
+        - name: status
+          in: formData
+          description: Estado del producto
+          required: true
+          type: boolean
+        - name: measurement
+          in: formData
+          description: Unidad de medida del producto
+          required: true
+          type: string
+        - name: stock
+          in: formData
+          description: Cantidad en stock del producto
+          required: true
+          type: integer
+        - name: price
+          in: formData
+          description: Precio del producto
+          required: true
+          type: number
+        - name: description
+          in: formData
+          description: Descripción del producto
+          required: true
+          type: string
+        - name: category
+          in: formData
+          description: Categoría del producto
+          required: true
+          type: string  
+      responses:
+        201:
+          description: Producto creado exitosamente  
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Product"
+        404:
+          description: El producto que quieres ingresar ya existe. 
+          content:
+            application/json:
+              schema:
+                $ref: "#/definitions/ResponseMessage"      
+        400:
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/definitions/ResponseMessage"         
+
+  /api/products/{pid}:
+    get:
+      summary: Obtiene un producto
+      tags:
+        - Products
+      parameters:
+        - name: pid
+          in: path
+          description: ID del producto a obtener
+          required: true
+          type: string
+      responses:
+        200:
+          description: Producto encontrado
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Product"
+        404:
+          description: Producto no encontrado
+          content:
+            application/json:
+              schema:
+                $ref: "#/definitions/ResponseMessage"
+        500:
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/definitions/ResponseMessage"                    
+
+    put:
+      summary: Actualiza un producto
+      tags:
+        - Products
+      parameters:
+        - name: pid
+          in: path
+          description: ID del producto a actualizar
+          required: true
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ProductToUpdate"
+    delete:
+      summary: Elimina un producto por ID
+      tags:
+        - Products
+      parameters:
+        - name: pid
+          in: path
+          description: ID del producto a eliminar
+          required: true
+          type: string
+      responses:
+        200:
+          description: Producto eliminado satisfactoriamente
+          content:
+            application/json:
+              schema:
+                $ref: "#/definitions/ResponseMessage"
+        400:
+          description: No tiene permisos para eliminar este producto
+          content:
+            application/json:
+              schema:
+                $ref: "#/definitions/ResponseMessage"
+        404:
+          description: Producto no encontrado
+          content:
+            application/json:
+              schema:
+                $ref: "#/definitions/ResponseMessage"
+        500:
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/definitions/ResponseMessage"
+
+components:
+  schemas:
+    PaginatedProductList:
+      type: object
+      properties:
+        status: 
+          type: string
+          description: descripción del status (success)
+        payload:
+          type: array
+          items:
+            $ref: "#/components/schemas/Product"
+        totalPages:
+          type: integer
+          description: Total de páginas      
+        prevPage:
+          type: integer
+          description: Número de la página anterior
+        nextPage:
+          type: integer
+          description: Número de la página siguiente
+        page:
+          type: integer
+          description: Número de página actual
+        hasPrevPage:
+          type: boolean
+          description: indica si hay página anterior
+        hasNextPage:
+          type: boolean
+          description: indica si hay página siguiente
+        prevLink:
+          type: string
+          description: url a la página anterior
+        nextLink:
+          type: string
+          description: url a la página siguiente
+
+    Product:
+      type: object
+      properties:
+        title:
+          type: string
+          description: Título del producto
+        code:
+          type: string
+          description: Código del producto
+        status:
+          type: boolean
+          description: Estado del producto
+        measurement:
+          type: string
+          description: Unidad de medida del producto
+        thumbnails:
+          type: string
+          description: URL de las miniaturas del producto
+        stock:
+          type: integer
+          description: Cantidad en stock del producto
+        price:
+          type: number
+          description: Precio del producto
+        description:
+          type: string
+          description: Descripción del producto
+        category:
+          type: string
+          description: Categoría del producto
+        owner:
+          type: string
+          description: Propietario del producto 
+
+    ProductToUpdate:
+      type: object
+      properties:
+        title:
+          type: string
+          description: Título del producto
+        measurement:
+          type: number
+          description: unidad de medida
+        thumbnails:
+          type: string
+          description: url de la imagen
+        stock:
+          type: number
+          description: cantidad en stock
+        price:
+          type: number
+          description: precio
+        description:
+          type: string
+          description: descripció del producto        
+        category:
+          type: string
+          description: Categoría a la que pertenece el producto
+
+definitions:
+  ResponseMessage:
+    type: object
+    properties:
+      status:
+        type: string
+        description: Estado de la operación
+      message:
+        type: string
+        description: Mensaje de éxito o error      

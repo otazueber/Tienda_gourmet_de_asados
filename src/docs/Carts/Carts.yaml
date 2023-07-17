@@ -1,0 +1,308 @@
+openapi: "3.0.1"
+info: 
+  title: "API Carts"
+  version: "1.0"
+
+paths:
+  /api/carts:
+    post:
+      summary: Crea un nuevo carrito
+      tags:
+        - Carts
+      responses:
+        201:
+          description: Carrito creado exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: "#/definitions/ResponseMessage"
+        500:
+          description: Internal sever error
+          content:
+            application/json:
+              schema:
+                $ref: "#/definitions/ResponseMessage"
+    get:
+      summary: Obtiene todos los carritos
+      tags:
+        - Carts
+      responses:
+        200:
+          description: Lista de carritos
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Cart"
+        500:
+          description: Internal sever error
+          content:
+            application/json:
+              schema:
+                $ref: "#/definitions/ResponseMessage"
+
+  /api/carts/{cid}:
+    get:
+      summary: Obtiene un carrito por ID
+      tags:
+        - Carts
+      parameters:
+        - name: cid
+          in: path
+          description: ID del carrito a obtener
+          required: true
+          type: string
+      responses:
+        200:
+          description: Carrito encontrado
+          schema:
+            $ref: "#/components/schemas/Cart"
+        404:
+          description: Carrito no encontrado
+          content:
+            application/json:
+              schema:
+                $ref: "#/definitions/ResponseMessage"
+        500:
+          description: Internal sever error
+          content:
+            application/json:
+              schema:
+                $ref: "#/definitions/ResponseMessage"
+    delete:
+      summary: Elimina los productos de un carrito
+      tags:
+        - Carts
+      parameters:
+        - name: cid
+          in: path
+          description: ID del carrito a del cual se eliminaran productos
+          required: true
+          type: string
+      responses:
+        200:
+          description: Productos eliminados satisfactoriamente!!!
+          content:
+            application/json:
+              schema:
+                $ref: "#/definitions/ResponseMessage"
+        404:
+          description: Carrito no encontrado
+          content:
+            application/json:
+              schema:
+                $ref: "#/definitions/ResponseMessage"
+
+  /api/carts/{cid}/product/{pid}:
+    get:
+      summary: Agrega un producto al carrito
+      tags:
+        - Carts
+      parameters:
+        - name: cid
+          in: path
+          description: ID del carrito
+          required: true
+          type: string
+        - name: pid
+          in: path
+          description: ID del producto a agregar
+          required: true
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AddProductRequest"
+      responses:
+        200:
+          description: Producto agregado exitosamente al carrito
+          content:
+            application/json:
+              schema:
+                $ref: "#/definitions/ResponseMessage"
+
+        401:
+          description: No puedes agregar al carrito tu propio producto
+          content:
+            application/json:
+              schema:
+                $ref: "#/definitions/ResponseMessage"
+        
+        500:
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/definitions/ResponseMessage"
+  
+  /api/carts/{cid}/purchase:
+    post:
+      summary: Realiza la compra de un carrito
+      tags:
+        - Carts
+      parameters:
+        - name: cid
+          in: path
+          description: ID del carrito a comprar
+          required: true
+          type: string
+      responses:
+        200:
+          description: Compra realizada éxito
+          schema:
+            $ref: "#/components/schemas/PurchaseResponseAndProductsWhitOutStock"
+        202:
+          description: La compra no puede realizarse porque no hay stock para los productos
+          content:
+            application/json:
+              schema:
+                $ref: "#/definitions/ResponseMessage"
+        404:  
+          description: Carrito no encontrado
+          content:
+            application/json:
+              schema:
+                $ref: "#/definitions/ResponseMessage"
+        500:
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/definitions/ResponseMessage"
+
+  /api/carts/{cid}/products/{pid}:
+    delete:
+      summary: Elimina un producto de un carrito
+      tags:
+        - Carts
+      parameters:
+        - name: cid
+          in: path
+          description: ID del carrito
+          required: true
+          type: string
+        - name: pid
+          in: path
+          description: ID del producto a eliminar
+          required: true
+          type: string
+      responses:
+        200:
+          description: Producto eliminado exitosamente del carrito
+          content:
+            application/json:
+              schema:
+                $ref: "#/definitions/ResponseMessage"
+        404:
+          description: Carrito no encontrado
+          content:
+            application/json:
+              schema:
+                $ref: "#/definitions/ResponseMessage"
+        500:
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/definitions/ResponseMessage"
+                    
+
+components:
+  schemas:
+    Cart:
+      type: object
+      properties:
+        _id:
+          type: string
+          description: Id de mongo
+        products:
+          type: array
+          items:
+            $ref: "#/components/schemas/CartProduct"
+
+    CartProduct:
+      type: object
+      properties:
+        product:
+          $ref: "#/components/schemas/Product"
+        quantity:
+          type: number
+
+    Product:
+      type: object
+      properties:
+        _id:
+          type: string
+        title:
+          type: string
+        code:
+          type: string
+        status:
+          type: boolean
+        measurement:
+          type: string
+        thumbnails:
+          type: string
+        stock:
+          type: number
+        price:
+          type: number
+        description:
+          type: string
+        category:
+          type: string
+        owner:
+          type: string
+
+    AddProductRequest:
+      type: object
+      properties:
+        quantity:
+          type: number
+
+    PurchaseResponse:
+      type: object
+      properties:
+        message:
+          type: string
+        ticket:
+          $ref: "#/components/schemas/Ticket"
+      
+    PurchaseResponseAndProductsWhitOutStock:
+      type: object
+      properties:
+        message:
+          type: string
+        ticket:
+          $ref: "#/components/schemas/Ticket"
+        productos_no_procesados:
+          type: array
+          items:
+            _id: string
+
+    Ticket:
+      type: object
+      properties:
+        code:
+          type: string
+        purchase_datetime:
+          type: string
+          format: date-time
+        amount:
+          type: number
+        purchaser:
+          type: string
+
+definitions:
+  ResponseMessage:
+    type: object
+    properties:
+      status:
+        type: string
+        description: Estado de la operación
+      message:
+        type: string
+        description: Mensaje de éxito o error  

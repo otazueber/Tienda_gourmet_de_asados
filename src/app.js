@@ -10,8 +10,24 @@ const initializePassport = require('./config/passport.config');
 const { dbUser, dbPass, dbHost } = require('../src/config/db.config');
 const errorHandler = require('./middlewares/errors');
 const addLogger = require('./middlewares/logger.middleware');
+const swaggerJSDoc = require('swagger-jsdoc');
+const swaggerUiExpress = require('swagger-ui-express');
 
 const app = express();
+
+const swaggerOption = {
+    definition:{
+        openapi:'3.0.1',
+        info:{
+            title: "Carrito de compras API",
+            description: "API para administrar carritos de compras y productos"
+        }
+    },
+    apis:[`${__dirname}/docs/**/*.yaml`]
+}
+const specs = swaggerJSDoc(swaggerOption);
+app.use('/apidocs', swaggerUiExpress.serve, swaggerUiExpress.setup(specs));
+
 app.use(addLogger);
 app.use(express.static(__dirname + '/public'));
 app.use(express.urlencoded({ extended: true }));
