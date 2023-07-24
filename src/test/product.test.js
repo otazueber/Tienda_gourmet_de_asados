@@ -22,7 +22,7 @@ describe('Testing Product API Endpoints', () => {
   
     let createdProductId;
   
-    it('Debería crear un nuevo producto correctamente', async () => {
+    it('01 - Debería crear un nuevo producto correctamente', async () => {
       const res = await requester.post('/api/products')
       .set('Authorization', `Bearer ${fakeToken}`)
       .field('title', testProduct.title)
@@ -40,14 +40,14 @@ describe('Testing Product API Endpoints', () => {
       createdProductId = res.body.message._id;
     });
   
-    it('Debería obtener el producto por ID', async () => {
+    it('02 - Debería obtener el producto por ID', async () => {
       const res = await requester.get(`/api/products/${createdProductId}`);
       expect(res.statusCode).to.equal(200);
       expect(res.body._id).to.equal(createdProductId);//64bc84b86df8e7c71de2da58
       expect(res.body.code).to.equal('TEST123');
     });
   
-    it('Debería actualizar el producto correctamente', async () => {
+    it('03 - Debería actualizar el producto correctamente', async () => {
       const updatedProductInfo = {
         title: 'Descripción actualizada',
         price: 19.99,
@@ -63,7 +63,7 @@ describe('Testing Product API Endpoints', () => {
       expect(res.body.price).to.equal(updatedProductInfo.price);
     });
   
-    it('Debería eliminar el producto correctamente', async () => {
+    it('04 - Debería eliminar el producto correctamente', async () => {
       await requester.delete(`/api/products/${createdProductId}`)
       .set('Authorization', `Bearer ${fakeToken}`);
 
