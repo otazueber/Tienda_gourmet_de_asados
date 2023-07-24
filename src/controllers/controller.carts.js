@@ -25,7 +25,7 @@ router.post('/', async (req, res) => {
         res.status(500).json({ status: 'error', message: 'Internal server error' });
     }
 
-});//ok
+});
 
 router.get('/', async (req, res) => {
     try {
@@ -35,7 +35,7 @@ router.get('/', async (req, res) => {
         req.logger.error(error.message);
         res.status(500).json({ status: 'error', message: 'Internal server error' });
     }
-});//ok
+});
 
 router.get('/:cid', async (req, res) => {
     try {
@@ -50,7 +50,7 @@ router.get('/:cid', async (req, res) => {
         req.logger.error(error.message);
         res.status(500).json({ status: 'error', message: 'Internal server error' });
     }
-});//ok
+});
 
 router.put('/:cid/product/:pid', authToken, userAccess, async (req, res, next) => {
     try {
@@ -96,7 +96,7 @@ router.put('/:cid/product/:pid', authToken, userAccess, async (req, res, next) =
             res.status(500).json({ status: 'error', message: 'Internal server error' });
         }        
     }
-});//ok
+});
 
 router.delete('/:cid', authToken, userAccess, async (req, res) => {
     try {
@@ -115,7 +115,7 @@ router.delete('/:cid', authToken, userAccess, async (req, res) => {
     } catch (error) {
         res.status(500).json({ status: 'error', message: 'Internal server error' });
     };
-});//ok
+});
 
 router.delete('/:cid/products/:pid', authToken, userAccess, async (req, res) => {
     const { cid, pid } = req.params;
@@ -129,7 +129,7 @@ router.delete('/:cid/products/:pid', authToken, userAccess, async (req, res) => 
     } else {
         res.status(404).json({ status: 'error', message: 'Carrito no encontrado' });
     }
-});//ok
+});
 
 router.post('/:cid/purchase', authToken, async (req, res) => {
     try {
