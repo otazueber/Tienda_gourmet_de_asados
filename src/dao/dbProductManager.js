@@ -59,7 +59,6 @@ class DbProductManager {
             prevLink: (products.hasPrevPage) ? prevLink : null,
             nextLink: (products.hasNextPage < products.totalPages) ? nextLink : null,
         }
-        console.log('el result es: ' + result.prevPage)
         return result;
     }
 
