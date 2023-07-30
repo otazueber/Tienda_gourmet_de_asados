@@ -51,6 +51,7 @@ router.get('/logout', (req, res) => {
         if (error) {
             return res.status(500).json({ status: 'error', message: error.message });
         }
+        DbUserManager.setLastConnection(req.user.email);
         res.redirect('/login');
     })
 });

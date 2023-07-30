@@ -1,12 +1,12 @@
 const passport = require('passport');
 const local = require('passport-local');
-const Users = require('../dao/models/users.model');
 const GithubStrategy = require('passport-github2');
 const { hashPassword, isValidPassword } = require('../utils/cryptPassword');
 const { gitHubClientID, gitHubClientSecret } = require('./app.config');
 const CustomError = require('../handler/errors/CustomError');
 const generateUserErrorInfo = require('../handler/errors/info');
 const EnumErrors = require('../handler/errors/enumErrors');
+const DbUserManager = require('../dao/dbUserManager');
 
 const LocalStrategy = local.Strategy;
 
@@ -15,7 +15,7 @@ const initializePassport = () => {
         try {
             const { first_name, last_name, email, age, password } = req.body;
 
-            const user = await Users.findOne({ email: username });
+            const user = await DbUserManager.findOne(email);
             if (user) {
                 return done(null, false);
             };
@@ -36,7 +36,7 @@ const initializePassport = () => {
                 password: hashPassword(password),
             };
 
-            const newUser = await Users.create(newUserInfo);
+            const newUser = await DbUserManager.createUser(newUserInfo);
 
             done(null, newUser);
         } catch (error) {
@@ -60,7 +60,7 @@ const initializePassport = () => {
                 };
                 done(null, user);
             } else {
-                const user = await Users.findOne({ email: username });
+                const user = await DbUserManager.getUser(username);
                 if (!user) {
                     req.logger.error('El usuario no existe');
                     return done(null, false);
@@ -69,6 +69,7 @@ const initializePassport = () => {
                     req.logger.error('El password no es correcto');
                     return done(null, false);
                 };
+                DbUserManager.setLastConnection(user.email);
                 done(null, user);
             };
         } catch (error) {
@@ -81,7 +82,7 @@ const initializePassport = () => {
 
     passport.use('github', new GithubStrategy({ clientID: gitHubClientID, clientSecret: gitHubClientSecret, callbackURL: 'http://localhost:8080/auth/githubcallback' }, async (accessToken, refreshToken, profile, done) => {
         try {
-            const user = await Users.findOne({ email: profile._json.email });
+            const user = await DbUserManager.getUser(profile._json.email);
             if (!user) {
                 const newUserInfo = {
                     first_name: profile._json.name,
@@ -90,9 +91,11 @@ const initializePassport = () => {
                     email: profile._json.email,
                     password: '',
                 };
-                const newUser = await Users.create(newUserInfo);
+                const newUser = await DbUserManager.createUser(newUserInfo);
+                DbUserManager.setLastConnection(newUser.email);
                 return done(null, newUser);
             };
+            DbUserManager.setLastConnection(user.email);
             done(null, user);
         } catch (error) {
             done(error);
@@ -120,7 +123,7 @@ const initializePassport = () => {
         } 
         else
          {
-            user = await Users.findById(id)
+            user = await DbUserManager.getUserById(id)
         }
         done(null, user);
     })
