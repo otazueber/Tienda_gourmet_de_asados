@@ -2,8 +2,7 @@ const Users = require('../dao/models/users.model');
 const { hashPassword } = require('../utils/cryptPassword');
 
 class DbUserManager {
-    static async createUser(newUserInfo)
-    {
+    static async createUser(newUserInfo) {
         return await Users.create(newUserInfo);
     }
     static async getUser(email) {
@@ -42,6 +41,24 @@ class DbUserManager {
                 { email: email },
                 { role: role },
                 { new: true }
+            );
+            return usuarioActualizado;
+        } catch (error) {
+            throw error;
+        }
+    }
+    static async actualizarDocumentos(documentInfo) {
+        try {
+            const usuarioActualizado = await Users.findOneAndUpdate(
+                {
+                    _id: documentInfo.uid,
+                    documentStatus: {
+                        identification: documentInfo.identification !== null? true: false,
+                        proofOfAddress: documentInfo.proofOfAddress !== null? true: false,
+                        bankStatement: documentInfo.bankStatement !== null? true: false,
+                    },
+                    profileImage: documentInfo.profileImage,
+                }
             );
             return usuarioActualizado;
         } catch (error) {

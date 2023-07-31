@@ -29,6 +29,24 @@ const collectionSchema = new mongoose.Schema({
     type: Date,
     default: null,
   },
+  documentStatus: {
+    identification: {
+      type: Boolean,
+      default: false,
+    },
+    proofOfAddress: {
+      type: Boolean,
+      default: false,
+    },
+    bankStatement: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  profileImage: {
+    type: String,
+    default: null,
+  },
 });
 
 const Users = mongoose.model(collectionName, collectionSchema);
