@@ -7,25 +7,24 @@
 	"item": [
 		{
 			"name": "AddUser",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
-				"method": "POST",
+				"method": "GET",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n \r\n    \"last_name\":\"Otazu\", \r\n    \"email\":\"otazueber@123.com\", \r\n    \"age\":25, \r\n    \"password\":\"123\",\r\n    \"role\": \"admin\"\r\n}\r\n",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
+					"raw": "{\r\n \r\n    \"last_name\":\"Otazu\", \r\n    \"email\":\"otazueber@gmail.com\", \r\n    \"age\":25, \r\n    \"password\":\"123\",\r\n    \"role\": \"admin\"\r\n}\r\n"
 				},
 				"url": {
-					"raw": "{{url}}/auth",
+					"raw": "{{url}}/api/loggerTest",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
-						"auth"
+						"api",
+						"loggerTest"
 					]
 				}
 			},
@@ -99,6 +98,77 @@
 						"api",
 						"sessions",
 						"current"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddUserDocuments",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "profileImage",
+							"type": "file",
+							"src": "/C:/Eber/Tienda_gourmet_de_asados/src/public/assets/img/fuego/lena_espinillo.jpg"
+						},
+						{
+							"key": "identification",
+							"type": "file",
+							"src": "/C:/Eber/Tienda_gourmet_de_asados/src/public/assets/img/fuego/iniciador_fuego_madera.jpg"
+						},
+						{
+							"key": "proofOfAddress",
+							"type": "file",
+							"src": "/C:/Eber/Tienda_gourmet_de_asados/src/public/assets/img/fuego/chips_lena_nogal.jpg"
+						},
+						{
+							"key": "bankStatement",
+							"type": "file",
+							"src": "/C:/Eber/Tienda_gourmet_de_asados/src/public/assets/img/fuego/1681148712195carbon_4kg.jpg"
+						},
+						{
+							"key": "bankStatement",
+							"type": "file",
+							"src": [],
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/api/users/6485ccbaf9f4a218d641c241/documents",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"6485ccbaf9f4a218d641c241",
+						"documents"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ChangeRole",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/users/premium/64aa099960d9945517bb8829",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"premium",
+						"64aa099960d9945517bb8829"
 					]
 				}
 			},

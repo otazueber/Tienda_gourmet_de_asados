@@ -44,17 +44,17 @@
 		{
 			"name": "AddProductToCart",
 			"request": {
-				"method": "PUT",
+				"method": "POST",
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im90YXp1ZWJlckBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4NzIwNTExMiwiZXhwIjoxNjg3MjQ4MzEyfQ.dnZ9jzc8DlV3mWZ6LJIWBl6Bc9dj09SDJpfcxIHPpkQ",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im90YXp1ZWJlckBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4ODk1MzE5MCwiZXhwIjoxNjg4OTk2MzkwfQ.uLifXD3XEE90LDWVExHezBmOHSfqIdMPw9hkZn7VZHo",
 						"type": "default"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"quantity\": 0\r\n}",
+					"raw": "{\r\n    \"quantity\": 1\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -62,16 +62,16 @@
 					}
 				},
 				"url": {
-					"raw": "{{url}}/api/carts/64879ea7dd32844d8fe5d976/product/644c5aec424afd5c3e6e6431",
+					"raw": "{{url}}/api/carts/64a9f4211d8059bccfce6751/product/64ab69ba3b4becf8e606a0d0",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
 						"api",
 						"carts",
-						"64879ea7dd32844d8fe5d976",
+						"64a9f4211d8059bccfce6751",
 						"product",
-						"644c5aec424afd5c3e6e6431"
+						"64ab69ba3b4becf8e606a0d0"
 					]
 				}
 			},
