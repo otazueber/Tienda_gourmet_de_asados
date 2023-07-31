@@ -95,7 +95,7 @@ router.put('/:pid', authToken, adminAccess, async (req, res, next) => {
     }
 });
 
-router.post('/', authToken, adminAccess, uploader.single('file'), async (req, res) => {
+router.post('/', authToken, adminAccess, uploader.single('productImage'), async (req, res) => {
     try {
         const { title, code, status, measurement, stock, price, description, category } = req.body;
         const productInfo = {
@@ -142,7 +142,7 @@ router.delete('/:pid', authToken, adminAccess, async (req, res) => {
 
 });
 
-router.post('/insertMany', authToken, adminAccess, async (req, res) => {
+router.post('/insertMany', async (req, res) => {
     try {
         const FileProducts = new FileProductManager(process.cwd() + '/public/assets/json/');
         const jsonProducts = await FileProducts.getProducts();
