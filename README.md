@@ -1,1 +1,1 @@
-# Desafío: Testing para proyecto final
+# Desafío: Práctica de integración
