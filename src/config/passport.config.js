@@ -1,5 +1,5 @@
 const passport = require('passport');
-const local = require('passport-local');
+const { Strategy: LocalStrategy } = require('passport-local');
 const GithubStrategy = require('passport-github2');
 const { hashPassword, isValidPassword } = require('../utils/cryptPassword');
 const { gitHubClientID, gitHubClientSecret } = require('./app.config');
@@ -8,17 +8,11 @@ const generateUserErrorInfo = require('../handler/errors/info');
 const EnumErrors = require('../handler/errors/enumErrors');
 const DbUserManager = require('../dao/dbUserManager');
 
-const LocalStrategy = local.Strategy;
 
 const initializePassport = () => {
     passport.use('register', new LocalStrategy({ passReqToCallback: true, usernameField: 'email' }, async (req, username, password, done) => {
-        try {
+        try {            
             const { first_name, last_name, email, age, password } = req.body;
-
-            const user = await DbUserManager.findOne(email);
-            if (user) {
-                return done(null, false);
-            };
             if (!first_name || !last_name || !email)
             {
                 CustomError.createError({
@@ -28,6 +22,10 @@ const initializePassport = () => {
                     code: EnumErrors.INVALID_TYPES_ERROR
                 })
             }
+            const user = await DbUserManager.getUser(email);
+            if (user) {
+                return done(null, false);
+            };            
             const newUserInfo = {
                 first_name,
                 last_name,
@@ -35,10 +33,8 @@ const initializePassport = () => {
                 age,
                 password: hashPassword(password),
             };
-
             const newUser = await DbUserManager.createUser(newUserInfo);
-
-            done(null, newUser);
+            return done(null, newUser);
         } catch (error) {
             req.logger.error(error.message);
             done(error);
@@ -58,27 +54,27 @@ const initializePassport = () => {
                     role: 'admin',
                     password
                 };
-                done(null, user);
+                req.user = user;
+                done(null, true);
             } else {
                 const user = await DbUserManager.getUser(username);
                 if (!user) {
                     req.logger.error('El usuario no existe');
                     return done(null, false);
-                };
+                }
                 if (!isValidPassword(password, user)) {
                     req.logger.error('El password no es correcto');
                     return done(null, false);
-                };
+                }
                 DbUserManager.setLastConnection(user.email);
-                done(null, user);
-            };
+                req.user = user;
+                done(null, true);
+            }
         } catch (error) {
             req.logger.error(error.message);
             done(error);
-        };
-    }
-    )
-    );
+        }
+    }));
 
     passport.use('github', new GithubStrategy({ clientID: gitHubClientID, clientSecret: gitHubClientSecret, callbackURL: 'http://localhost:8080/auth/githubcallback' }, async (accessToken, refreshToken, profile, done) => {
         try {
@@ -110,8 +106,7 @@ const initializePassport = () => {
 
     passport.deserializeUser(async (id, done) => {
         let user;
-        if (id === "CODER")
-        {
+        if (id === "CODER") {
             user = {
                 _id: "CODER",
                 first_name: 'admin',
@@ -120,12 +115,11 @@ const initializePassport = () => {
                 role: 'admin',
                 password: 'adminCod3r123'
             };
-        } 
-        else
-         {
+        }
+        else {
             user = await DbUserManager.getUserById(id)
         }
-        done(null, user);
+        done(null, null);
     })
 }
 

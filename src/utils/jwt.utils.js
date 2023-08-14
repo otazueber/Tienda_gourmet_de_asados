@@ -1,22 +1,59 @@
 const jwt = require('jsonwebtoken');
 const { jwtSecret } = require('../config/app.config');
-const Users = require('../dao/models/users.model');
+const DbUserManager = require('../dao/dbUserManager');
+const HTTTP_STATUS_CODES = require('../commons/constants/http-status-codes.constants');
 
 const generateToken = user => {
   const token = jwt.sign(user, jwtSecret, { expiresIn: '12h' });
   return token;
 }
 
-const authToken = (req, res, next) => {
-  const authHeader = req.headers.authorization;
+const userToken = async (req, res, next) => {
+  const authHeader = req.headers.Authorization;
+  if (authHeader) {
+    const token = authHeader.split(' ')[1];
+    jwt.verify(token, jwtSecret, async (error, credentials) => {
+      if (!error) {
+        let user;
+        if (credentials.email === "adminCoder@coder.com") {
+          req.user = {
+            first_name: "Admin",
+            last_name: "Coder",
+            email: credentials.email,
+            role: "admin"
+          };
+        } else {
+          user = await DbUserManager.getUser(credentials.email);
+          if (user){
+            const newUserInfo = {
+              first_name: user.first_name,
+              last_name: user.last_name,
+              email: user.email,
+              role: user.role
+            };
+            req.user = newUserInfo;
+          }          
+        }
+        next();
+      }
+    });
+  } else {
+    next();
+  }
+}
 
-  if (!authHeader)
-    return res.status(401).json({ status: 'error', message: 'Not authenticated' });
+
+const authToken = (req, res, next) => {
+  const authHeader = req.headers.Authorization;
+  if (!authHeader){
+    return res.status(HTTTP_STATUS_CODES.UN_AUTHORIZED).json({ status: 'error', message: 'Not authenticated' });
+  }
 
   const token = authHeader.split(' ')[1];
   jwt.verify(token, jwtSecret, async (error, credentials) => {
-    if (error)
-      return res.status(403).json({ status: 'error', message: 'Forbiden' });
+    if (error){
+      return res.status(HTTTP_STATUS_CODES.FORBIDEN).json({ status: 'error', message: 'Forbiden' });
+    }
     let user;
     if (credentials.email == "adminCoder@coder.com") {
       req.user = {
@@ -27,8 +64,7 @@ const authToken = (req, res, next) => {
       }
     }
     else {
-      user = await Users.findOne({ email: credentials.email });
-
+      user = await DbUserManager.getUser(credentials.email);
       req.user = {
         first_name: user.first_name,
         last_name: user.last_name,
@@ -36,7 +72,6 @@ const authToken = (req, res, next) => {
         role: user.role
       };
     }
-
     next();
   })
 }
@@ -67,4 +102,5 @@ module.exports = {
   authToken,
   generatePasswordResetToken,
   getEmailFromToken,
+  userToken,
 }

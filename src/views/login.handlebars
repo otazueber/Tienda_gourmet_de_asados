@@ -1,24 +1,28 @@
-<h2>Login</h2>
-<br>
-<br>
-<form action="" id="loginForm">
-  <div>
-    <label for="">Usuario</label>
-    <input type="email" name="email">
-  </div>
-  <div>
-    <label for="">Password</label>
-    <input type="password" name="password">
-    <p id="errorMessage" style="color: red"></p>
-    <a href="auth/forgot-password">¿Olvidaste tu contraseña?</a>
-  </div>
-  <br>
-  <button type="submit">Iniciar sesión</button>
-
-</form>
-  <br>
-  <a href="/auth/github"> ngresar usando GitHub</a>
-  <br>
-  <a href="/signup">Regístrarte</a>
-
+<div class="row">
+    <div class="col-12 col-lg-12 d-flex justify-content-center">
+        <h1 class="py-5">Inicio de sesión</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12 col-lg-12 d-flex justify-content-center">
+        <div>
+            <form action="" id="loginForm">
+                <p id="errorMessage" style="color: blueviolet"></p>
+                <div class="mb-3 user-login">
+                    <input class="form-control" type="email" placeholder="email@ejemplo.com" id="email" />
+                </div>
+                <div class="mb-3 user-login">
+                    <input class="form-control" type="password" placeholder="Contraseña" id="password" />
+                </div>
+                <div class="mb-5 pb-5 justify-content-center">
+                    <a class="justify-content-center" href="/auth/forgot-password">¿Olvidaste tu contraseña?</a>
+                    <br><br>
+                    <button type="submit" class="boton-iniciar">Iniciar sesión</button>
+                    <br><br>
+                    <a class="justify-content-center" href="/signup">Crear cuenta</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 <script src="/js/login.js"></script>

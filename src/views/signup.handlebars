@@ -1,27 +1,39 @@
-<h2>Registro</h2>
-<br>
-<br>
-<form action="" id="signupForm">
-
-    <label for="">Nombre</label>
-    <input type="text" name="first_name">
-
-    <label for="">Apellido</label>
-    <input type="text" name="last_name">
-
-    <label for="">Edad</label>
-    <input type="number" name="age">
-
-    <label for="">Correo</label>
-    <input type="email" name="email">
-
-    <label for="">Password</label>
-    <input type="password" name="password">
-
-    <br>
-    <button type="submit">Crear Usuario</button>
-
-</form>
- <p id="responseMessage" style="color:red"></p>
+<div class="row">
+	<div class="col-12 col-lg-12 d-flex justify-content-center">
+		<h1 class="py-5">Crear cuenta</h1>
+	</div>
+</div>
+<div class="row">
+	<div class="col-12 col-lg-12 d-flex justify-content-center">
+		<div>
+            <form action="" id="signupForm">
+				<p id="responseMessage" style="color:blueviolet"></p>
+				<div class="mb-3 user-data">
+                    <input class="form-control" type="text" placeholder="Nombres" name="first_name">
+				</div>
+				<div class="mb-3 user-data">
+                    <input class="form-control" type="text" placeholder="Apellido" name="last_name">
+				</div>
+				<div class="mb-3 user-data">
+                    <input class="form-control" type="number" placeholder="Edad" name="age">
+				</div>
+				<div class="mb-3 user-data">
+					<input class="form-control" type="email" placeholder="email@ejemplo.com" name="email">
+				</div>
+				<div class="mb-3 user-data">
+					<input class="form-control" type="password" placeholder="Contraseña" name="password" id="password"> 
+				</div>
+				<div class="mb-3 user-data">
+					<input class="form-control" type="password" placeholder="re ingrese la contraseña" name="password2" id="password2">
+				</div>
+				<div class="mb-5 pb-5">					
+                    <button type="submit" class="boton-aceptar">Crear</button>
+					<br><br>
+					<a class="textLink"	href="/login">Cancelar</a>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
 
 <script src="/js/signup.js"></script>

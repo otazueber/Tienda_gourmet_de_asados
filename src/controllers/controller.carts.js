@@ -4,58 +4,58 @@ const Products = require('../dao/models/products.model');
 const { v4: uuidv4 } = require('uuid');
 const { authToken } = require('../utils/jwt.utils');
 const TicketDTO = require('../dto/ticket.dto');
-const { userAccess } = require('../middlewares/current.middleware');
+const { userAccess } = require('../middlewares/current');
 const TicketManager = require('../factory/factory');
 const EnumErrors = require('../handler/errors/enumErrors');
 const CustomError = require('../handler/errors/CustomError');
+const HTTTP_STATUS_CODES = require('../commons/constants/http-status-codes.constants');
 
 const router = Router();
-const Carts = new CartManager();
 
 router.post('/', async (req, res) => {
     try {
-        const idCart = await Carts.addCart();
+        const idCart = await CartManager.addCart();
         if (idCart) {
-            res.status(201).json({ idCart });
+            res.status(HTTTP_STATUS_CODES.CREATED).json({ idCart });
         } else {
-            res.status(500).json({ status: 'error', message: 'Internal server error' });
+            res.status(HTTTP_STATUS_CODES.INTERNAL_SERVER_ERROR).json({ status: 'error', message: 'Internal server error' });
         };
     } catch (error) {
         req.logger.error(error.message);
-        res.status(500).json({ status: 'error', message: 'Internal server error' });
+        res.status(HTTTP_STATUS_CODES.INTERNAL_SERVER_ERROR).json({ status: 'error', message: 'Internal server error' });
     }
 
 });
 
 router.get('/', async (req, res) => {
     try {
-        const carts = await Carts.getCarts();
-        res.status(200).json({ carts });
+        const carts = await CartManager.getCarts();
+        res.status(HTTTP_STATUS_CODES.OK).json({ carts });
     } catch (error) {
         req.logger.error(error.message);
-        res.status(500).json({ status: 'error', message: 'Internal server error' });
+        res.status(HTTTP_STATUS_CODES.INTERNAL_SERVER_ERROR).json({ status: 'error', message: 'Internal server error' });
     }
 });
 
 router.get('/:cid', async (req, res) => {
     try {
         const { cid } = req.params;
-        const cart = await Carts.getCartById(cid);
+        const cart = await CartManager.getCartById(cid);
         if (cart) {
-            res.status(200).json(cart.products);
+            res.status(HTTTP_STATUS_CODES.OK).json(cart.products);
         } else {
-            res.status(404).json({ status: 'error', message: 'Carrito no encontrado' });
+            res.status(HTTTP_STATUS_CODES.NOT_FOUND).json({ status: 'error', message: 'Carrito no encontrado' });
         }
     } catch (error) {
         req.logger.error(error.message);
-        res.status(500).json({ status: 'error', message: 'Internal server error' });
+        res.status(HTTTP_STATUS_CODES.INTERNAL_SERVER_ERROR).json({ status: 'error', message: 'Internal server error' });
     }
 });
 
 router.put('/:cid/product/:pid', authToken, userAccess, async (req, res, next) => {
     try {
         const { cid, pid } = req.params;
-        const cart = Carts.getCartById(cid);
+        const cart = CartManager.getCartById(cid);
         if (cart) {
             obj = req.body;
             if (isNaN(obj.quantity) || ( parseFloat(obj.quantity) <= 0))
@@ -70,22 +70,22 @@ router.put('/:cid/product/:pid', authToken, userAccess, async (req, res, next) =
             const dbProduct = await Products.findById(pid);
             if ((req.user.role == 'premium') & (req.user.email == dbProduct.owner))
             {
-                res.status(401).json({ status: 'error', message: 'No puedes agregar al carrito tu propio producto' });
+                res.status(HTTTP_STATUS_CODES.UN_AUTHORIZED).json({ status: 'error', message: 'No puedes agregar al carrito tu propio producto' });
             } else {
                 const product = {
                     product: pid,
                     quantity: obj.quantity
                 }
-                const result = await Carts.updateCart(cid, product);
+                const result = await CartManager.updateCart(cid, product);
                 if (result) {
-                    res.status(200).json({ status: 'success', message: 'Producto agregado al carrito satisfactoriametne' });
+                    res.status(HTTTP_STATUS_CODES.OK).json({ status: 'success', message: 'Producto agregado al carrito satisfactoriametne' });
                 } else {
-                    res.status(500).json({ status: 'error', message: 'Internal server error' });
+                    res.status(HTTTP_STATUS_CODES.INTERNAL_SERVER_ERROR).json({ status: 'error', message: 'Internal server error' });
                 }
             }
             
         } else {
-            res.status(404).json({ status: 'error', message: 'Carrito no encontrado' });
+            res.status(HTTTP_STATUS_CODES.NOT_FOUND).json({ status: 'error', message: 'Carrito no encontrado' });
         };
     } catch (error) {
         if (error.code == EnumErrors.INVALID_PARAM){
@@ -93,7 +93,7 @@ router.put('/:cid/product/:pid', authToken, userAccess, async (req, res, next) =
         }
         else {
             req.logger.error(error.message);
-            res.status(500).json({ status: 'error', message: 'Internal server error' });
+            res.status(HTTTP_STATUS_CODES.INTERNAL_SERVER_ERROR).json({ status: 'error', message: 'Internal server error' });
         }        
     }
 });
@@ -101,33 +101,33 @@ router.put('/:cid/product/:pid', authToken, userAccess, async (req, res, next) =
 router.delete('/:cid', authToken, userAccess, async (req, res) => {
     try {
         const { cid } = req.params;
-        const cartToDel = Carts.getCartById(cid);
+        const cartToDel = CartManager.getCartById(cid);
         if (cartToDel) {
-            const result = await Carts.deleteProducts(cid);
+            const result = await CartManager.deleteProducts(cid);
             if (result) {
-                res.status(200).json({ status: 'success', message: 'Productos eliminados satisfactoriamente!!!' });
+                res.status(HTTTP_STATUS_CODES.OK).json({ status: 'success', message: 'Productos eliminados satisfactoriamente!!!' });
             } else {
-                res.status(500).json({ status: 'error', message: 'Internal server error' });
+                res.status(HTTTP_STATUS_CODES.INTERNAL_SERVER_ERROR).json({ status: 'error', message: 'Internal server error' });
             }
         } else {
-            res.status(404).json({ status: 'error', message: 'Carrito no encontrado' });
+            res.status(HTTTP_STATUS_CODES.NOT_FOUND).json({ status: 'error', message: 'Carrito no encontrado' });
         }
     } catch (error) {
-        res.status(500).json({ status: 'error', message: 'Internal server error' });
+        res.status(HTTTP_STATUS_CODES.INTERNAL_SERVER_ERROR).json({ status: 'error', message: 'Internal server error' });
     };
 });
 
 router.delete('/:cid/products/:pid', authToken, userAccess, async (req, res) => {
     const { cid, pid } = req.params;
-    const cart = await Carts.getCartById(cid);
+    const cart = await CartManager.getCartById(cid);
     if (cart) {
-        if (await Carts.deleteProduct(cid, pid)) {
-            res.status(200).json({ status: 'success', message: 'Producto eliminado satisfactoriamente!!!' });
+        if (await CartManager.deleteProduct(cid, pid)) {
+            res.status(HTTTP_STATUS_CODES.OK).json({ status: 'success', message: 'Producto eliminado satisfactoriamente!!!' });
         } else {
-            res.status(500).json({ status: 'error', message: 'Internal server error' });
+            res.status(HTTTP_STATUS_CODES.INTERNAL_SERVER_ERROR).json({ status: 'error', message: 'Internal server error' });
         }
     } else {
-        res.status(404).json({ status: 'error', message: 'Carrito no encontrado' });
+        res.status(HTTTP_STATUS_CODES.NOT_FOUND).json({ status: 'error', message: 'Carrito no encontrado' });
     }
 });
 
@@ -136,7 +136,7 @@ router.post('/:cid/purchase', authToken, async (req, res) => {
         let hayVenta = false;
         let amount = 0;
         const { cid } = req.params;
-        const cart = await Carts.getCartById(cid);
+        const cart = await CartManager.getCartById(cid);
         if (cart) {
             const idsProductos = cart.products.map(p => p.product);
             try {
@@ -157,7 +157,7 @@ router.post('/:cid/purchase', authToken, async (req, res) => {
                 cart.products = cart.products.filter(p => !productosSinStock.includes(p));
                 cart.products.forEach(async p => {
                     amount = amount + (p.quantity * p.product.price)
-                    await Carts.deleteProduct(cid, p.product._id)
+                    await CartManager.deleteProduct(cid, p.product._id)
                 });
 
                 if (hayVenta) {
@@ -173,24 +173,24 @@ router.post('/:cid/purchase', authToken, async (req, res) => {
 
                     const newTicketDTO = new TicketDTO(newTicket);
                     if (productosSinStock.length > 0) {
-                        res.status(200).json({ status: 'success', message: 'compra realizada con éxito!!!', ticket: newTicketDTO, productos_no_procesados: productosSinStock });
+                        res.status(HTTTP_STATUS_CODES.OK).json({ status: 'success', message: 'compra realizada con éxito!!!', ticket: newTicketDTO, productos_no_procesados: productosSinStock });
                     } else {
-                        res.status(200).json({ status: 'success', message: 'compra realizada con éxito!!!', ticket: newTicketDTO });
+                        res.status(HTTTP_STATUS_CODES.OK).json({ status: 'success', message: 'compra realizada con éxito!!!', ticket: newTicketDTO });
                     }
                 }
                 else {
-                    res.status(202).json({ status: 'success', message: 'La compra no puede realizarse porque no hay stock para los productos seleccionados' });
+                    res.status(HTTTP_STATUS_CODES.ACCEPTED).json({ status: 'success', message: 'La compra no puede realizarse porque no hay stock para los productos seleccionados' });
                 }
             } catch (error) {
                 req.logger.error(error.message);
-                res.status(500).json({ status: 'error', message: 'Error al verificar el stock.' });
+                res.status(HTTTP_STATUS_CODES.INTERNAL_SERVER_ERROR).json({ status: 'error', message: 'Error al verificar el stock.' });
             }
         } else {
-            res.status(404).json({ status: 'error', message: 'Carrito no encontrado' });
+            res.status(HTTTP_STATUS_CODES.NOT_FOUND).json({ status: 'error', message: 'Carrito no encontrado' });
         }
     } catch (error) {
         req.logger.error(error.message);
-        res.status(500).json({ status: 'error', message: 'Internal server error' });
+        res.status(HTTTP_STATUS_CODES.INTERNAL_SERVER_ERROR).json({ status: 'error', message: 'Internal server error' });
     };
 });
 

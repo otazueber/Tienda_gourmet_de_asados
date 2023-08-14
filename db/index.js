@@ -1,12 +1,14 @@
 const mongoose = require('mongoose');
 const { dbUser, dbPass, dbHost, dbName } = require('../src/config/db.config');
+const getLogger = require('../src/logger/factory');
 
 const mongoConnect = async () => {
+    const logger = await getLogger();
     try {
         await mongoose.connect(`mongodb+srv://${dbUser}:${dbPass}@${dbHost}/${dbName}?retryWrites=true&w=majority`);
-        console.log('db is connected!!');
+        logger.info('db is connected!!');
     } catch (error) {
-        req.logger.error(error.message);
+        logger.error(error.message);
     }
 }
 

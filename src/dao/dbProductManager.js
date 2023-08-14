@@ -2,17 +2,15 @@ const Products = require('./models/products.model');
 const { v4: uuidv4 } = require('uuid');
 
 class DbProductManager {
-    constructor() { }
-
-    async addProduct(product) {
+    static async addProduct(product) {
         return await Products.create(product);
     }
 
-    async addManyProducts(products) {
+    static async addManyProducts(products) {
         return await Products.insertMany(products);
     }
 
-    async getProducts(endpoint, limit, page, sort, query) {
+    static async getProducts(endpoint, limit, page, sort, query) {
         const internalLimit = limit || 10;
         const internalPage = page || 1;
         let products;
@@ -62,7 +60,7 @@ class DbProductManager {
         return result;
     }
 
-    getMockProducts() {
+    static async getMockProducts() {
         try {
             const products = [];
             for (let i = 0; i < 100; i++) {
@@ -99,16 +97,16 @@ class DbProductManager {
         }
     }
 
-    async getProductById(id) {
+    static async getProductById(id) {
         return await Products.findById(id);
     }
 
-    async deleteProduct(id) {
+    static async deleteProduct(id) {
         await Products.deleteOne({ _id: id });
         return true;
     }
 
-    async updateProduct(id, productInfo) {
+    static async updateProduct(id, productInfo) {
         await Products.updateOne({ _id: id }, productInfo);
         return true;
     }

@@ -1,19 +1,29 @@
-<h2>Crea una nueva contraseña</h2>
-<br>
-
-<form action="" id="resetPassForm">
-  <div>
-    <input type="hidden" id="userId" value={{email}}>
-    <label for="">Ingresa la nueva constaseña</label>
-    <input type="password" id="password1">
-    <br>
-    <label for="">Re ingresa la nueva constaseña</label>
-    <input type="password" id="password2">
-    <p id="errorMessage" style="color: red"></p>
+<div class="row">
+  <div class="col-12 col-lg-12 d-flex justify-content-center">
+    <h1 class="py-5">Reseteo de contraseña</h1>
   </div>
-  <br>
-  <button type="submit">Aceptar</button>
-</form>
+</div>
 
-
+<div class="row">
+  <div class="col-12 col-lg-12 d-flex justify-content-center">
+    <div>
+      <form action="" id="resetPassForm">
+        <div>
+          <input type="hidden" id="userId" value={{email}}>
+          <div class="mb-3 user-data">
+            <input class="form-control" type="password" placeholder="Contraseña" name="password" id="password1">
+          </div>
+          <div class="mb-3 user-data">
+            <input class="form-control" type="password" placeholder="re ingrese la contraseña" name="password2"
+              id="password2">
+          </div>
+          <div class="mb-5 pb-5">
+            <button type="submit" class="boton-aceptar">Aceptar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<br><br><br><br><br>
 <script src="/js/reset.pasword.js"></script>

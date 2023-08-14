@@ -1,4 +1,5 @@
 const { Router } = require('express');
+const HTTTP_STATUS_CODES = require('../commons/constants/http-status-codes.constants');
 
 const router = Router();
 
@@ -9,7 +10,7 @@ router.get('/', async (req, res) => {
      req.logger.warning('Mensaje de warning');
      req.logger.error('Mensaje de error');   
      req.logger.fatal('Mensaje de fatal');
-    res.status(200).json({ message: 'Logs enviados. Verifica la consola o el archivo de errores.' });
+    res.status(HTTTP_STATUS_CODES.OK).json({ message: 'Logs enviados. Verifica la consola o el archivo de errores.' });
 }
 );
 

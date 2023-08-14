@@ -7,19 +7,17 @@ form.addEventListener('submit', e => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   if (!emailRegex.test(email)) {
-    const errorMessage  = document.getElementById('errorMessage') 
+    const errorMessage = document.getElementById('errorMessage')
     errorMessage.innerHTML = 'Por favor, ingresa una dirección de correo electrónico válida.';
   }
-  else{   
-
+  else {
     const url = '/auth/mail-password'
     const headers = {
       'Content-type': 'application/json',
     }
     const method = 'POST'
-    const body = JSON.stringify({email})
-    if (body.length > 0)
-    {
+    const body = JSON.stringify({ email })
+    if (body.length > 0) {
       fetch(url, {
         headers,
         method,
@@ -30,12 +28,8 @@ form.addEventListener('submit', e => {
         .catch(error => console.error(error))
     }
   }
-
-
-    
 });
 
 function redirect() {
-  
-  location.href = '/login';
+  location.href = '/';
 }

@@ -3,6 +3,7 @@ const logger = require('./levels.logger');
 const winston = require('winston');
 
 async function getLogger() {
+  const logger = winston.createLogger();
   switch (appConfig.environment) {
     case 'DEV':
       logger.add(new winston.transports.Console({ level: 'debug' }));
@@ -16,3 +17,4 @@ async function getLogger() {
 }
 
 module.exports = getLogger;
+

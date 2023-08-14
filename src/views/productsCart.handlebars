@@ -1,15 +1,40 @@
-    {{#if this.hasProducts}}
-        <h1>Productos de tu carrito</h1>
-    {{else}}
-        <p>tu carrito está vacío</p>
-    {{/if}}
+{{!-- {{#if this.hasProducts}}
+<h1>Productos de tu carrito</h1>
+{{else}}
+<p>tu carrito está vacío</p>
+{{/if}}
 
 <div class="row">
     <br><br>
     {{#each products}}
     <div class="col-12 col-lg-4 pt-5">
         <img src={{this.thumbnails}} alt="Fhoto">
-        <p>{{this.description}} <br> Precio por {{this.measurement}}: {{this.price}} <br> Cantidad: {{this.quantity}}</p>
+        <p>{{this.description}} <br> Precio por {{this.measurement}}: {{this.price}} <br> Cantidad: {{this.quantity}}
+        </p>
     </div>
     {{/each}}
+</div> --}}
+
+
+<div id="root" class="container-fluid font bground">
+    <div class="row">
+        <div class="col-12 col-lg-4">
+            <h1 class="p-5">Mi carrito ({{this.cantidad}} productos)</h1>
+        </div>
+        <div class="col-12 col-lg-4 pt-5 centrarElementos">
+            <button class="btnAgregarProducto">Finalizar compra {{this.importe}}</button>
+        </div>
+    </div>
+    <div class="row px-5">
+        {{#each products}}
+        <div class="col-12 col-lg-3 box_producto pt-5">
+            <img class="producto ps-5" src={{this.thumbnails}} alt="photo">
+            <p>{{this.description}}<br>Precio por {{this.measurement}}: {{this.price}}</p>
+            <p>Cantidad: {{this.quantity}}</p>
+            <button style="background-color: rgb(115, 19, 134); color: white;">
+                <img class="btn-administrar" src="/assets/img/btnEliminar.png" alt="Icon">Eliminar
+            </button>
+        </div>
+        {{/each}}
+    </div>
 </div>

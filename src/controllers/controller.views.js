@@ -1,19 +1,18 @@
 const { Router } = require('express');
 const ProductManager = require('../dao/dbProductManager');
 const CartManager = require('../dao/dbCartManager');
+const HTTTP_STATUS_CODES = require('../commons/constants/http-status-codes.constants');
 
 const router = Router();
 
 router.get('/products', async (req, res) => {
-    const Products = new ProductManager();
-    const limit = req.query.limit || 10;
+    const limit = req.query.limit || 8;
     const page = req.query.page || 1;
     const sort = req.query.sort;
     const query = req.query.query;
     const endPoint = '/api/views/products';
-    const title = 'Not vegan'
     try {
-        const products = await Products.getProducts(endPoint, limit, page, sort, query);
+        const products = await ProductManager.getProducts(endPoint, limit, page, sort, query);
 
         const productos = [];
         products.payload.forEach(product => {
@@ -30,43 +29,69 @@ router.get('/products', async (req, res) => {
 
         res.render('products.handlebars', {
             products: productos,
-            title,
+            title: query.charAt(0).toUpperCase() + query.toLowerCase().slice(1),
             hasPrevPage: products.hasPrevPage,
             hasNextPage: products.hasNextPage,
             prevLink: products.prevLink,
             nextLink: products.nextLink,
-            userName: `${req.user.first_name} ${req.user.last_name}, ${req.user.email} Rol: ${req.user.role}`,
+            mostrarIconos: true, tengoUsuario: req.user ? true : false,
         })
     } catch (error) {
         req.logger.error(error.message);
-        res.status(500).json({ status: 'error', message:  'Internal server error.' });
+        res.status(HTTTP_STATUS_CODES.INTERNAL_SERVER_ERROR).json({ status: 'error', message: 'Internal server error.' });
     }
 });
 
+router.get('/product/:pid', async (req, res) => {
+    const { pid } = req.params;
+    const producto = await ProductManager.getProductById(pid);
+    
+    const newproduct = {
+        description: producto.description,
+        measurement: producto.measurement,
+        price: producto.price,
+        thumbnails: producto.thumbnails,
+        stock: producto.stock,
+        _id: producto._id
+    }
+    res.render('detail.handlebars', { product: newproduct, mostrarIconos: true, tengoUsuario: req.user ? true : false, })
+});
+
 router.get('/carts/:cid', async (req, res) => {
+
     const { cid } = req.params;
-    const title = 'Not vegan'
-    const Carts = new CartManager();
-    const cart = await Carts.getCartById(cid);
-    const products = [];
+    if (cid === '-1') {
+        res.render('emptyCart.handlebars', { mostrarIconos: true, tengoUsuario: req.user ? true : false, });
+    } else {
+        const cart = await CartManager.getCartById(cid);
+        if (cart) {
+            const products = [];
+            let cantidad = 0;
+            let importeTotal = 0;
 
-    cart.products.forEach(p => {
-        products.push(
-            {
-                thumbnails: p.product.thumbnails,
-                description: p.product.description,
-                measurement: p.product.measurement,
-                price: p.product.price,
-                quantity: p.quantity,
-            }
-        )
-    });
+            cart.products.forEach(p => {
+                cantidad += 1;
+                importeTotal += p.product.price * p.quantity;
+                products.push(
+                    {
+                        thumbnails: p.product.thumbnails,
+                        description: p.product.description,
+                        measurement: p.product.measurement,
+                        price: new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'ARS' }).format(parseFloat(p.product.price)),
+                        quantity: p.quantity,
+                    }
+                )
+            });
 
-    res.render('productsCart.handlebars', {
-        products,
-        title,
-        hasProducts: (products.length > 0),
-    })
+            res.render('productsCart.handlebars', {
+                products,
+                cantidad,
+                importe: new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'ARS' }).format(importeTotal),
+            })
+        } else {
+            res.render('emptyCart.handlebars', { mostrarIconos: true, tengoUsuario: req.user ? true : false, });
+        }
+    }
 });
 
 module.exports = router;
