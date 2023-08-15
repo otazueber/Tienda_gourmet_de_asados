@@ -73,7 +73,7 @@ router.post('/mail-password', async (req, res) => {
         const token = generatePasswordResetToken(email);
         const resetLink = `http://localhost:8080/auth/reset-password/${token}`;
         const mailOptions = {
-            from: 'pruebacoder1976@gmail.com',
+            from: 'Tienda gourmet de asados <tiendadeasados@gmail.com>',
             to: email,
             subject: 'Restablecimiento de contraseña',
             html: `Haz clic <a href="${resetLink}">aquí</a> para restablecer tu contraseña. El enlace expirará en 1 hora.`
