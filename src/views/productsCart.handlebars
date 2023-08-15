@@ -31,10 +31,12 @@
             <img class="producto ps-5" src={{this.thumbnails}} alt="photo">
             <p>{{this.description}}<br>Precio por {{this.measurement}}: {{this.price}}</p>
             <p>Cantidad: {{this.quantity}}</p>
-            <button style="background-color: rgb(115, 19, 134); color: white;">
+            <button class="del-from-cart" style="background-color: rgb(115, 19, 134); color: white;" id={{this._id}}>
                 <img class="btn-administrar" src="/assets/img/btnEliminar.png" alt="Icon">Eliminar
             </button>
         </div>
         {{/each}}
     </div>
 </div>
+
+<script src="/js/cart.js"></script>

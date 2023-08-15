@@ -1,9 +1,20 @@
 const cart = document.getElementById('cart');
-cart.addEventListener('click', async e => {
-    const idCart = await obtenerCarrito();
-    console.log('voy a mostrar el carrito: ' + idCart)
-    location.href = '/api/views/carts/' + idCart;
-});
+const tengoUsuario = document.getElementById('tengoUsuario').value;
+
+if (cart) {
+    cart.addEventListener('click', async e => {
+        if (tengoUsuario === '1') {
+            const idCart = await obtenerCarrito();
+            location.href = '/api/views/carts/' + idCart;
+        } else {
+            location.href = '/api/views/carts/-1';
+        }
+    });
+
+    if (tengoUsuario === '1') {
+        actualizarCantidadEnIconoCarrito();
+    }
+}
 
 function leerCarrito() {
     const cart = localStorage.getItem("cart");
@@ -38,8 +49,8 @@ async function obtenerCarrito() {
 
 async function actualizarCantidadEnIconoCarrito() {
     const idCart = await obtenerCarrito();
-    const cartCount = document.getElementById('cart-count');  
-    let cant = 0;  
+    const cartCount = document.getElementById('cart-count');
+    let cant = 0;
     const url = `/api/carts/${idCart}`;
     fetch(url)
         .then(response => response.json())
@@ -48,9 +59,7 @@ async function actualizarCantidadEnIconoCarrito() {
                 cant += p.quantity;
             });
             cartCount.innerHTML = cant;
-           
+
         })
         .catch(error => console.error(error))
 }
-
-actualizarCantidadEnIconoCarrito();

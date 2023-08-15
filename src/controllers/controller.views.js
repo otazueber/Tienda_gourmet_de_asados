@@ -22,7 +22,7 @@ router.get('/products', async (req, res) => {
                     thumbnails: product.thumbnails,
                     description: product.description,
                     measurement: product.measurement,
-                    price: product.price,
+                    price: new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'ARS' }).format(parseFloat(product.price)),
                 }
             );
         });
@@ -45,11 +45,11 @@ router.get('/products', async (req, res) => {
 router.get('/product/:pid', async (req, res) => {
     const { pid } = req.params;
     const producto = await ProductManager.getProductById(pid);
-    
+
     const newproduct = {
         description: producto.description,
         measurement: producto.measurement,
-        price: producto.price,
+        price: new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'ARS' }).format(parseFloat(producto.price)),
         thumbnails: producto.thumbnails,
         stock: producto.stock,
         _id: producto._id
@@ -74,6 +74,7 @@ router.get('/carts/:cid', async (req, res) => {
                 importeTotal += p.product.price * p.quantity;
                 products.push(
                     {
+                        _id: p.product._id,
                         thumbnails: p.product.thumbnails,
                         description: p.product.description,
                         measurement: p.product.measurement,
@@ -82,12 +83,15 @@ router.get('/carts/:cid', async (req, res) => {
                     }
                 )
             });
-
-            res.render('productsCart.handlebars', {
-                products,
-                cantidad,
-                importe: new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'ARS' }).format(importeTotal),
-            })
+            if (products.length === 0) {
+                res.render('emptyCart.handlebars', { mostrarIconos: true, tengoUsuario: req.user ? true : false, });
+            } else {
+                res.render('productsCart.handlebars', {
+                    products,
+                    cantidad,
+                    importe: new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'ARS' }).format(importeTotal),
+                })
+            }
         } else {
             res.render('emptyCart.handlebars', { mostrarIconos: true, tengoUsuario: req.user ? true : false, });
         }
