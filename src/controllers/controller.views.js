@@ -22,7 +22,11 @@ router.get('/products', async (req, res) => {
                     thumbnails: product.thumbnails,
                     description: product.description,
                     measurement: product.measurement,
-                    price: new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'ARS' }).format(parseFloat(product.price)),
+                    price: product.price.toLocaleString('de-ES', {
+                        style: 'decimal',
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2
+                    })
                 }
             );
         });
@@ -49,7 +53,7 @@ router.get('/product/:pid', async (req, res) => {
     const newproduct = {
         description: producto.description,
         measurement: producto.measurement,
-        price: new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'ARS' }).format(parseFloat(producto.price)),
+        price: new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(parseFloat(producto.price)),
         thumbnails: producto.thumbnails,
         stock: producto.stock,
         _id: producto._id
@@ -78,7 +82,11 @@ router.get('/carts/:cid', async (req, res) => {
                         thumbnails: p.product.thumbnails,
                         description: p.product.description,
                         measurement: p.product.measurement,
-                        price: new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'ARS' }).format(parseFloat(p.product.price)),
+                        price: p.product.price.toLocaleString('de-ES', {
+                            style: 'decimal',
+                            minimumFractionDigits: 2,
+                            maximumFractionDigits: 2
+                        }),
                         quantity: p.quantity,
                     }
                 )
@@ -89,7 +97,11 @@ router.get('/carts/:cid', async (req, res) => {
                 res.render('productsCart.handlebars', {
                     products,
                     cantidad,
-                    importe: new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'ARS' }).format(importeTotal),
+                    importe: importeTotal.toLocaleString('de-ES', {
+                        style: 'decimal',
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2
+                    }),
                 })
             }
         } else {
