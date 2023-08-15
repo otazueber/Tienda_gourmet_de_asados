@@ -8,5 +8,6 @@ module.exports = {
     tickets: process.env.TICKETS,
     environment: process.env.ENVIRONMENT,
     mailUser: process.env.MAIL_USER,
-    mailPass: process.env.MAIL_PASS
+    mailPass: process.env.MAIL_PASS,
+    stripeSK: process.env.STRIPE_SK
 }
