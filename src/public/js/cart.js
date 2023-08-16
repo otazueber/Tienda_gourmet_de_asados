@@ -1,43 +1,142 @@
-let buttons = document.getElementsByClassName("del-from-cart");
+const btnFinalizarCompra = document.getElementById("btnFinalizarCompra");
+const cartConteiner = document.getElementById("cartContainer");
+let stripe = null;
 
+const paimentForm = `
+<div class="container-fluid font bground">
+	<div class="row">
+        <div class="d-flex justify-content-center" id="spiner"></div>
+		<div class="col-12 col-lg-12 d-flex justify-content-center" id="label">
+			<h1 class="py-5">Pago</h1>            
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12 col-lg-4 d-flex justify-content-center"></div>
+		<div class="col-12 col-lg-4 d-flex justify-content-center">
+			<form id="payment-form">
+				<div id="link-authentication-element">
+					<!--Stripe.js injects the Link Authentication Element-->
+				</div>
+				<div id="payment-element">
+					<!--Stripe.js injects the Payment Element-->
+				</div>
+				<br>
+				<button id="submit" class="boton-pagar">
+					<div class="spinner hidden" id="spinner"></div>
+					<span id="button-text">Pagar</span>
+				</button>
+				<div id="payment-message" class="hidden"></div>
+			</form>
+		</div>
+		<div class="col-12 col-lg-4 d-flex justify-content-center"></div>
+	</div>
+</div><br>`;
 
+const urlParams = new URLSearchParams(window.location.search);
+if (urlParams.get('redirect_status') === 'succeeded') {
+    showMessage('Muchas gracias por su compra!!!', "success");
+    localStorage.removeItem("cart");
+    sleep(3000).then(function () {
+        location.href = '/';
+    });    
+}
 
-if (buttons != null) {
-    for (let button of buttons) {
-        button.addEventListener("click", (e) => {
-            eliminarDelCarrito(e.target.id);
+btnFinalizarCompra.addEventListener("click", (e) => {
+    finalizarCompra();
+});
+
+async function finalizarCompra() {
+    const cart = JSON.parse(localStorage.getItem("cart"));
+    if (cart != null) {
+        const url = '/payments/payment-intents?idCart=' + cart.idCart;
+        let clientSecret = ""
+        fetch(url, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
         })
+            .then(response => response.json())
+            .then(data => {
+                clientSecret = data.payload.client_secret;
+                stripe = Stripe(data.stripePK);
+                cartConteiner.innerHTML = paimentForm;
+                setLoading(false);
+                document
+                    .querySelector("#payment-form")
+                    .addEventListener("submit", handleSubmit);
+                const appearance = {
+                    theme: 'night',
+                };
+                elements = stripe.elements({ appearance, clientSecret });
+
+                const linkAuthenticationElement = elements.create("linkAuthentication");
+                linkAuthenticationElement.mount("#link-authentication-element");
+
+                linkAuthenticationElement.on('change', (event) => {
+                    emailAddress = event.value.email;
+                });
+
+                const paymentElementOptions = {
+                    layout: "tabs",
+                };
+
+                const paymentElement = elements.create("payment", paymentElementOptions);
+                paymentElement.mount("#payment-element");
+                document
+                    .querySelector("#payment-form")
+                    .addEventListener("submit", handleSubmit);
+            })
+            .catch(error => console.error(error))
     }
 }
 
-function eliminarDelCarrito(pid) {
+async function handleSubmit(e) {
+    e.preventDefault();
+    setLoading(true);
     const cart = JSON.parse(localStorage.getItem("cart"));
-    const url = `/api/carts/${cart.idCart}/products/${pid}`;
-    const opciones = {
-        method: "DELETE",
-    };
-    fetch(url, { method: "DELETE" })
-        .then(response => response.json())
-        .then(data => {
-            if (data.status === 'success'){                
-                const message = 'Producto eliminado';
-                const icon = 'success';
-                mostrarMensaje(message, icon);
-                location.reload();
-            } else {
-                const message = 'No se pudo eliminar el producto del carrito';
-                const icon = 'error';
-                mostrarMensaje(message, icon)
-            }
-        })
-        .catch(error => console.error(error))
-
+    const { error } = await stripe.confirmPayment({
+        elements,
+        confirmParams: {
+            return_url: 'http://localhost:8080/api/views/carts/' + cart.idCart,
+        },
+    });
+    if (error.type === "card_error" || error.type === "validation_error") {
+        showMessage(error.message, "error");
+    } else {
+        showMessage(error.message, "error");
+    }
+    setLoading(false);
 }
 
-function mostrarMensaje(message, icon) {
+async function checkStatus() {
+    const clientSecret = new URLSearchParams(window.location.search).get(
+        "payment_intent_client_secret"
+    );
+
+    if (!clientSecret) {
+        return;
+    }
+    const { paymentIntent } = await stripe.retrievePaymentIntent(clientSecret);
+
+    switch (paymentIntent.status) {
+        case "succeeded":
+            showMessage("Payment succeeded!", "success");
+            break;
+        case "processing":
+            showMessage("Your payment is processing.", "info");
+            break;
+        case "requires_payment_method":
+            showMessage("Your payment was not successful, please try again.", "warning");
+            break;
+        default:
+            showMessage("Something went wrong.", "error");
+            break;
+    }
+}
+
+function showMessage(message, icon) {
     const Toast = Swal.mixin({
         toast: true,
-        position: 'top-end',
+        position: 'center',
         showConfirmButton: false,
         timer: 3000,
         timerProgressBar: true,
@@ -46,4 +145,33 @@ function mostrarMensaje(message, icon) {
         icon: icon,
         title: message
     })
+}
+
+function setLoading(isLoading) {
+    const spiner = document.getElementById("spiner");
+    const label = document.getElementById("label");
+    if (isLoading) {
+        spiner.innerHTML = '<div class="loader"></div>';
+        if (label) {
+            label.innerHTML = '<h1 class="py-2">Pago</h1>';
+            document.querySelector("#submit").disabled = true;
+            document.querySelector("#spinner").classList.remove("hidden");
+            document.querySelector("#button-text").classList.add("hidden");
+        }
+
+    } else {
+        spiner.innerHTML = '<div></div>';
+        if (label) {
+            label.innerHTML = '<h1 class="py-5">Pago</h1>';
+            document.querySelector("#submit").disabled = false;
+            document.querySelector("#spinner").classList.add("hidden");
+            document.querySelector("#button-text").classList.remove("hidden");
+        }
+    }
+}
+
+function sleep(time) {
+    return (new Promise(function (resolve, reject) {
+        setTimeout(function () { resolve(); }, time);
+    }));
 }
