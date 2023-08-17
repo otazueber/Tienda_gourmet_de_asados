@@ -1,37 +1,41 @@
 <div id="root" class="container-fluid font bground">
-    <div class="row">
-        <div class="col-12 col-lg-3 pt-1">
-            <h1 class="p-5">{{this.title}}</h1>
-        </div>
+  <div class="row">
+    <div class="col-12 col-lg-3 pt-1">
+      <h1 class="p-5">{{this.title}}</h1>
     </div>
-    <div class="row px-5">
-        {{#each products}}
-        <div class="col-12 col-lg-3 pt-5">
-            <img class="producto ps-5" src={{this.thumbnails}} alt="Fhoto">
-            <p>{{this.description}} <br> Precio por {{this.measurement}}: {{this.price}}</p>
-            <div class="centrarElementos">
-                <a href="/api/views/product/{{this._id}}">
-                    <button class="btnAgregarProducto">Ver detalle</button>
-                </a>
-            </div>
+  </div>
+  <div class="row px-5">
+    {{#each products}}
+      <div class="col-12 col-lg-3 pt-5">
+        <img class="producto ps-5" src={{this.thumbnails}} alt="Fhoto" />
+        <p>{{this.description}}
+          <br />
+          Precio por
+          {{this.measurement}}:
+          {{this.price}}</p>
+        <div class="centrarElementos">
+          <a href="/api/views/product/{{this._id}}">
+            <button class="btnAgregarProducto">Ver detalle</button>
+          </a>
         </div>
-        {{/each}}
+      </div>
+    {{/each}}
+  </div>
+  <br />
+  <div class="row">
+    <div class="col-12 col-lg-6 pt-1 right-align">
+      {{#if this.hasPrevPage}}
+        <a href="{{this.prevLink}}">Anterior</a>
+      {{else}}
+        <a class="disabled-link" href="#">Anterior</a>
+      {{/if}}
     </div>
-    <br>
-    <div class="row">
-        <div class="col-12 col-lg-6 pt-1 right-align">
-            {{#if this.hasPrevPage}}
-            <a href="{{this.prevLink}}">Anterior</a>
-            {{else}}
-            <a class="disabled-link" href="#">Anterior</a>
-            {{/if}}
-        </div>
-        <div class="col-12 col-lg-6 pt-1">
-            {{#if this.hasNextPage}}
-            <a href="{{this.nextLink}}">Siguiente</a>
-            {{else}}
-            <a class="disabled-link" href="#">Siguiente</a>
-            {{/if}}
-        </div>
+    <div class="col-12 col-lg-6 pt-1">
+      {{#if this.hasNextPage}}
+        <a href="{{this.nextLink}}">Siguiente</a>
+      {{else}}
+        <a class="disabled-link" href="#">Siguiente</a>
+      {{/if}}
     </div>
+  </div>
 </div>

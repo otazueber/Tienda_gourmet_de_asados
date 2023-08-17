@@ -1,9 +1,9 @@
-const getLogger = require('../logger/factory');
+const getLogger = require("../logger/factory");
 
 const addLogger = async (req, res, next) => {
-    const logger = await getLogger();
-    req.logger = logger;
-    next();
-  }
+  const logger = await getLogger();
+  req.logger = logger;
+  next();
+};
 
-  module.exports = addLogger;
+module.exports = addLogger;

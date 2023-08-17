@@ -1,16 +1,15 @@
-const Tickets = require('./models/tickets.model');
-
+const Tickets = require("./models/tickets.model");
 
 class TicketManager {
-    constructor() { }
+  constructor() {}
 
-    async getNewTicket() {
-        return await Tickets.create({});
-    }
+  async getNewTicket() {
+    return await Tickets.create({});
+  }
 
-    async updateTicket(ticket){
-        return await Tickets.updateOne({ _id: ticket._id}, ticket);
-    }
+  async updateTicket(ticket) {
+    return await Tickets.updateOne({ _id: ticket._id }, ticket);
+  }
 }
 
 module.exports = TicketManager;

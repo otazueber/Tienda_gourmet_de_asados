@@ -1,23 +1,21 @@
 {
-	"info": {
-		"_postman_id": "042351ac-2702-4539-87c0-ddcb79ef5a6f",
-		"name": "home",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-	},
-	"item": [
-		{
-			"name": "Home",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{url}}",
-					"host": [
-						"{{url}}"
-					]
-				}
-			},
-			"response": []
-		}
-	]
+  "info": {
+    "_postman_id": "042351ac-2702-4539-87c0-ddcb79ef5a6f",
+    "name": "home",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Home",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{url}}",
+          "host": ["{{url}}"]
+        }
+      },
+      "response": []
+    }
+  ]
 }

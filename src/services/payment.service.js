@@ -1,5 +1,5 @@
-const Stripe = require('stripe');
-const { stripeSK } = require('../config/app.config');
+const Stripe = require("stripe");
+const { stripeSK } = require("../config/app.config");
 
 class PaymentService {
   constructor() {
@@ -11,4 +11,4 @@ class PaymentService {
   }
 }
 
-module.exports = PaymentService
+module.exports = PaymentService;

@@ -1,6 +1,6 @@
 const CURRENCIES = {
-  DOLAR: 'usd',
-  PESO_ARGENTINO: 'ars',
-}
+  DOLAR: "usd",
+  PESO_ARGENTINO: "ars",
+};
 
-module.exports = CURRENCIES
+module.exports = CURRENCIES;

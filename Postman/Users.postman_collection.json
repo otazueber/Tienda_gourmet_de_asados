@@ -1,178 +1,149 @@
 {
-	"info": {
-		"_postman_id": "cd9a1174-a025-497b-9fad-39948406900a",
-		"name": "Users",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-	},
-	"item": [
-		{
-			"name": "AddUser",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n \r\n    \"last_name\":\"Otazu\", \r\n    \"email\":\"otazueber@gmail.com\", \r\n    \"age\":25, \r\n    \"password\":\"123\",\r\n    \"role\": \"admin\"\r\n}\r\n"
-				},
-				"url": {
-					"raw": "{{url}}/api/loggerTest",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"api",
-						"loggerTest"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Auth",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"email\":\"moni@gmail.com\", \r\n    \"password\":\"123\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{url}}/auth",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"auth"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Current",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"auth": {
-					"type": "oauth2",
-					"oauth2": [
-						{
-							"key": "addTokenTo",
-							"value": "header",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im90YXp1ZWJlckBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4NjYwMzI4OCwiZXhwIjoxNjg2NjQ2NDg4fQ.BJRh5MvmSao8tAx1iPp0uv_S8FFkGM_9uOgMvnoNoB4",
-						"type": "default"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{url}}/api/sessions/current",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"api",
-						"sessions",
-						"current"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "AddUserDocuments",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "profileImage",
-							"type": "file",
-							"src": "/C:/Eber/Tienda_gourmet_de_asados/src/public/assets/img/fuego/lena_espinillo.jpg"
-						},
-						{
-							"key": "identification",
-							"type": "file",
-							"src": "/C:/Eber/Tienda_gourmet_de_asados/src/public/assets/img/fuego/iniciador_fuego_madera.jpg"
-						},
-						{
-							"key": "proofOfAddress",
-							"type": "file",
-							"src": "/C:/Eber/Tienda_gourmet_de_asados/src/public/assets/img/fuego/chips_lena_nogal.jpg"
-						},
-						{
-							"key": "bankStatement",
-							"type": "file",
-							"src": "/C:/Eber/Tienda_gourmet_de_asados/src/public/assets/img/fuego/1681148712195carbon_4kg.jpg"
-						},
-						{
-							"key": "bankStatement",
-							"type": "file",
-							"src": [],
-							"disabled": true
-						}
-					]
-				},
-				"url": {
-					"raw": "{{url}}/api/users/6485ccbaf9f4a218d641c241/documents",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"api",
-						"users",
-						"6485ccbaf9f4a218d641c241",
-						"documents"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "ChangeRole",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"url": {
-					"raw": "{{url}}/api/users/premium/64aa099960d9945517bb8829",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"api",
-						"users",
-						"premium",
-						"64aa099960d9945517bb8829"
-					]
-				}
-			},
-			"response": []
-		}
-	]
+  "info": {
+    "_postman_id": "cd9a1174-a025-497b-9fad-39948406900a",
+    "name": "Users",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "AddUser",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n \r\n    \"last_name\":\"Otazu\", \r\n    \"email\":\"otazueber@gmail.com\", \r\n    \"age\":25, \r\n    \"password\":\"123\",\r\n    \"role\": \"admin\"\r\n}\r\n"
+        },
+        "url": {
+          "raw": "{{url}}/api/loggerTest",
+          "host": ["{{url}}"],
+          "path": ["api", "loggerTest"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Auth",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"email\":\"moni@gmail.com\", \r\n    \"password\":\"123\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}/auth",
+          "host": ["{{url}}"],
+          "path": ["auth"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Current",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "oauth2",
+          "oauth2": [
+            {
+              "key": "addTokenTo",
+              "value": "header",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im90YXp1ZWJlckBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4NjYwMzI4OCwiZXhwIjoxNjg2NjQ2NDg4fQ.BJRh5MvmSao8tAx1iPp0uv_S8FFkGM_9uOgMvnoNoB4",
+            "type": "default"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}/api/sessions/current",
+          "host": ["{{url}}"],
+          "path": ["api", "sessions", "current"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "AddUserDocuments",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "profileImage",
+              "type": "file",
+              "src": "/C:/Eber/Tienda_gourmet_de_asados/src/public/assets/img/fuego/lena_espinillo.jpg"
+            },
+            {
+              "key": "identification",
+              "type": "file",
+              "src": "/C:/Eber/Tienda_gourmet_de_asados/src/public/assets/img/fuego/iniciador_fuego_madera.jpg"
+            },
+            {
+              "key": "proofOfAddress",
+              "type": "file",
+              "src": "/C:/Eber/Tienda_gourmet_de_asados/src/public/assets/img/fuego/chips_lena_nogal.jpg"
+            },
+            {
+              "key": "bankStatement",
+              "type": "file",
+              "src": "/C:/Eber/Tienda_gourmet_de_asados/src/public/assets/img/fuego/1681148712195carbon_4kg.jpg"
+            },
+            {
+              "key": "bankStatement",
+              "type": "file",
+              "src": [],
+              "disabled": true
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{url}}/api/users/6485ccbaf9f4a218d641c241/documents",
+          "host": ["{{url}}"],
+          "path": ["api", "users", "6485ccbaf9f4a218d641c241", "documents"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "ChangeRole",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "url": {
+          "raw": "{{url}}/api/users/premium/64aa099960d9945517bb8829",
+          "host": ["{{url}}"],
+          "path": ["api", "users", "premium", "64aa099960d9945517bb8829"]
+        }
+      },
+      "response": []
+    }
+  ]
 }

@@ -1,17 +1,17 @@
-const jwt = require('jsonwebtoken');
-const { jwtSecret } = require('../config/app.config');
-const DbUserManager = require('../dao/dbUserManager');
-const HTTTP_STATUS_CODES = require('../commons/constants/http-status-codes.constants');
+const jwt = require("jsonwebtoken");
+const { jwtSecret } = require("../config/app.config");
+const DbUserManager = require("../dao/dbUserManager");
+const HTTTP_STATUS_CODES = require("../commons/constants/http-status-codes.constants");
 
-const generateToken = user => {
-  const token = jwt.sign(user, jwtSecret, { expiresIn: '12h' });
+const generateToken = (user) => {
+  const token = jwt.sign(user, jwtSecret, { expiresIn: "12h" });
   return token;
-}
+};
 
 const userToken = async (req, res, next) => {
   const authHeader = req.headers.Authorization;
   if (authHeader) {
-    const token = authHeader.split(' ')[1];
+    const token = authHeader.split(" ")[1];
     jwt.verify(token, jwtSecret, async (error, credentials) => {
       if (!error) {
         let user;
@@ -20,19 +20,19 @@ const userToken = async (req, res, next) => {
             first_name: "Admin",
             last_name: "Coder",
             email: credentials.email,
-            role: "admin"
+            role: "admin",
           };
         } else {
           user = await DbUserManager.getUser(credentials.email);
-          if (user){
+          if (user) {
             const newUserInfo = {
               first_name: user.first_name,
               last_name: user.last_name,
               email: user.email,
-              role: user.role
+              role: user.role,
             };
             req.user = newUserInfo;
-          }          
+          }
         }
         next();
       }
@@ -40,19 +40,22 @@ const userToken = async (req, res, next) => {
   } else {
     next();
   }
-}
-
+};
 
 const authToken = (req, res, next) => {
   const authHeader = req.headers.Authorization;
-  if (!authHeader){
-    return res.status(HTTTP_STATUS_CODES.UN_AUTHORIZED).json({ status: 'error', message: 'Not authenticated' });
+  if (!authHeader) {
+    return res
+      .status(HTTTP_STATUS_CODES.UN_AUTHORIZED)
+      .json({ status: "error", message: "Not authenticated" });
   }
 
-  const token = authHeader.split(' ')[1];
+  const token = authHeader.split(" ")[1];
   jwt.verify(token, jwtSecret, async (error, credentials) => {
-    if (error){
-      return res.status(HTTTP_STATUS_CODES.FORBIDEN).json({ status: 'error', message: 'Forbiden' });
+    if (error) {
+      return res
+        .status(HTTTP_STATUS_CODES.FORBIDEN)
+        .json({ status: "error", message: "Forbiden" });
     }
     let user;
     if (credentials.email == "adminCoder@coder.com") {
@@ -60,29 +63,28 @@ const authToken = (req, res, next) => {
         first_name: "Admin",
         last_name: "Coder",
         email: credentials.email,
-        role: "admin"
-      }
-    }
-    else {
+        role: "admin",
+      };
+    } else {
       user = await DbUserManager.getUser(credentials.email);
       req.user = {
         first_name: user.first_name,
         last_name: user.last_name,
         email: user.email,
-        role: user.role
+        role: user.role,
       };
     }
     next();
-  })
-}
+  });
+};
 
 const generatePasswordResetToken = (email) => {
-  const token = jwt.sign({ email }, jwtSecret, { expiresIn: '1h' });
+  const token = jwt.sign({ email }, jwtSecret, { expiresIn: "1h" });
   return token;
-}
+};
 
-const getEmailFromToken = token => {
-  let email = '';
+const getEmailFromToken = (token) => {
+  let email = "";
   if (token) {
     jwt.verify(token, jwtSecret, async (error, decoded) => {
       if (!error) {
@@ -91,11 +93,10 @@ const getEmailFromToken = token => {
           email = decoded.email;
         }
       }
-    })
+    });
   }
   return email;
-}
-
+};
 
 module.exports = {
   generateToken,
@@ -103,4 +104,4 @@ module.exports = {
   generatePasswordResetToken,
   getEmailFromToken,
   userToken,
-}
+};

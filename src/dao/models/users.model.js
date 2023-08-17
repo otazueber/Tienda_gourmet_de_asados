@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-const collectionName = 'user';
+const collectionName = "user";
 
 const documentSchema = new mongoose.Schema({
   name: String,
@@ -18,11 +18,11 @@ const collectionSchema = new mongoose.Schema({
   password: String,
   cart: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'cart',
+    ref: "cart",
   },
   role: {
-    type : String,
-    default: 'user',
+    type: String,
+    default: "user",
   },
   documents: [documentSchema],
   last_connection: {

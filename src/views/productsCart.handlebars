@@ -1,25 +1,37 @@
 <div id="cartContainer" class="container-fluid font bground">
-    <div class="row">
-        <div class="col-12 col-lg-4">
-            <h1 class="p-5">Mi carrito ({{this.cantidad}} productos)</h1>
-        </div>
-        <div class="col-12 col-lg-4 pt-5 centrarElementos">
-            <button id="btnFinalizarCompra" class="btnAgregarProducto">Finalizar compra {{this.importe}}</button>
-            <div class="d-flex justify-content-center" id="spiner"></div>
-        </div>
+  <div class="row">
+    <div class="col-12 col-lg-4">
+      <h1 class="p-5">Mi carrito ({{this.cantidad}} productos)</h1>
     </div>
-    <div class="row px-5">
-        {{#each products}}
-        <div class="col-12 col-lg-3 box_producto pt-5">
-            <img class="producto ps-5" src={{this.thumbnails}} alt="photo">
-            <p>{{this.description}}<br>Precio por {{this.measurement}}: {{this.price}}</p>
-            <p>Cantidad: {{this.quantity}}</p>
-            <button class="del-from-cart" style="background-color: rgb(115, 19, 134); color: white;" id={{this._id}}>
-                <img class="btn-administrar" src="/assets/img/btnEliminar.png" alt="Icon">Eliminar
-            </button>
-        </div>
-        {{/each}}
+    <div class="col-12 col-lg-4 pt-5 centrarElementos">
+      <button id="btnFinalizarCompra" class="btnAgregarProducto">Finalizar
+        compra
+        {{this.importe}}</button>
+      <div class="d-flex justify-content-center" id="spiner"></div>
     </div>
+  </div>
+  <div class="row px-5">
+    {{#each products}}
+      <div class="col-12 col-lg-3 box_producto pt-5">
+        <img class="producto ps-5" src={{this.thumbnails}} alt="photo" />
+        <p>{{this.description}}<br />Precio por
+          {{this.measurement}}:
+          {{this.price}}</p>
+        <p>Cantidad: {{this.quantity}}</p>
+        <button
+          class="del-from-cart"
+          style="background-color: rgb(115, 19, 134); color: white;"
+          id={{this._id}}
+        >
+          <img
+            class="btn-administrar"
+            src="/assets/img/btnEliminar.png"
+            alt="Icon"
+          />Eliminar
+        </button>
+      </div>
+    {{/each}}
+  </div>
 </div>
 
 <script src="/js/cart.js"></script>

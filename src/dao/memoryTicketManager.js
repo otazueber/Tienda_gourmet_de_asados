@@ -1,16 +1,18 @@
 class TicketManager {
-    constructor() { }
+  constructor() {}
 
-    getNewTicket() {
-        return {code: '123456',
-        purchase_datetime: Date.now(),
-        amount: 0,
-        purchaser: ''}
-    }
+  getNewTicket() {
+    return {
+      code: "123456",
+      purchase_datetime: Date.now(),
+      amount: 0,
+      purchaser: "",
+    };
+  }
 
-    updateTicket(ticket){
-        return ticket;
-    }
+  updateTicket(ticket) {
+    return ticket;
+  }
 }
 
 module.exports = TicketManager;

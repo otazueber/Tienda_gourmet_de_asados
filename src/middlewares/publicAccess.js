@@ -1,8 +1,8 @@
 function publicAccess(req, res, next) {
   if (req.user) {
-    return res.redirect('/');
+    return res.redirect("/");
   }
   next();
 }
 
-module.exports = publicAccess
+module.exports = publicAccess;

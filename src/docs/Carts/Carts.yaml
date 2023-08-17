@@ -1,5 +1,5 @@
 openapi: "3.0.1"
-info: 
+info:
   title: "API Carts"
   version: "1.0"
 
@@ -130,14 +130,14 @@ paths:
             application/json:
               schema:
                 $ref: "#/definitions/ResponseMessage"
-        
+
         500:
           description: Internal server error
           content:
             application/json:
               schema:
                 $ref: "#/definitions/ResponseMessage"
-  
+
   /api/carts/{cid}/purchase:
     post:
       summary: Realiza la compra de un carrito
@@ -160,7 +160,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/definitions/ResponseMessage"
-        404:  
+        404:
           description: Carrito no encontrado
           content:
             application/json:
@@ -208,7 +208,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/definitions/ResponseMessage"
-                    
 
 components:
   schemas:
@@ -270,7 +269,7 @@ components:
           type: string
         ticket:
           $ref: "#/components/schemas/Ticket"
-      
+
     PurchaseResponseAndProductsWhitOutStock:
       type: object
       properties:
@@ -305,4 +304,4 @@ definitions:
         description: Estado de la operación
       message:
         type: string
-        description: Mensaje de éxito o error  
+        description: Mensaje de éxito o error
