@@ -1,5 +1,4 @@
 const { Router } = require("express");
-const passport = require("passport");
 const {
   generateToken,
   generatePasswordResetToken,
@@ -29,21 +28,17 @@ router.post("/", async (req, res) => {
       const user = await DbUserManager.getUser(email);
       if (!user) {
         req.logger.error("El usuario no existe");
-        return res
-          .status(HTTTP_STATUS_CODES.UN_AUTHORIZED)
-          .json({
-            status: "error",
-            message: "El usuario y la contraseña no coinciden.",
-          });
+        return res.status(HTTTP_STATUS_CODES.UN_AUTHORIZED).json({
+          status: "error",
+          message: "El usuario y la contraseña no coinciden.",
+        });
       }
       if (!isValidPassword(password, user)) {
         req.logger.error("El password no es correcto");
-        return res
-          .status(HTTTP_STATUS_CODES.UN_AUTHORIZED)
-          .json({
-            status: "error",
-            message: "El usuario y la contraseña no coinciden.",
-          });
+        return res.status(HTTTP_STATUS_CODES.UN_AUTHORIZED).json({
+          status: "error",
+          message: "El usuario y la contraseña no coinciden.",
+        });
       }
       req.user = user;
     }
@@ -62,29 +57,6 @@ router.post("/", async (req, res) => {
       .status(HTTTP_STATUS_CODES.INTERNAL_SERVER_ERROR)
       .json({ status: "error", message: "Internal server error" });
   }
-});
-
-router.get(
-  "/github",
-  passport.authenticate("github", { scope: ["user: email"] }),
-  async (req, res) => {}
-);
-
-router.get(
-  "/githubcallback",
-  passport.authenticate("github", { failureRedirect: "/login" }),
-  async (req, res) => {
-    res.redirect("/api/views/products");
-  }
-);
-
-router.get("/failLogin", (req, res) => {
-  res
-    .status(HTTTP_STATUS_CODES.BAD_REQUEST)
-    .json({
-      status: "error",
-      message: "El usuario y la contraseña no coinciden",
-    });
 });
 
 router.get("/logout", (req, res) => {
@@ -135,20 +107,16 @@ router.post("/updatepassword", async (req, res) => {
   const { email, password } = req.body;
   const user = await DbUserManager.getUser(email);
   if (isValidPassword(password, user)) {
-    res
-      .status(HTTTP_STATUS_CODES.BAD_REQUEST)
-      .json({
-        status: "error",
-        message: "no puedes utilizar la misma contraseña, debe ser una nueva",
-      });
+    res.status(HTTTP_STATUS_CODES.BAD_REQUEST).json({
+      status: "error",
+      message: "no puedes utilizar la misma contraseña, debe ser una nueva",
+    });
   } else {
     await DbUserManager.actualizarPassword(email, password);
-    res
-      .status(HTTTP_STATUS_CODES.OK)
-      .json({
-        status: "success",
-        message: "Se actualizó la password correctamente",
-      });
+    res.status(HTTTP_STATUS_CODES.OK).json({
+      status: "success",
+      message: "Se actualizó la password correctamente",
+    });
   }
 });
 
