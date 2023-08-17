@@ -1,11 +1,13 @@
 const btnFinalizarCompra = document.getElementById("btnFinalizarCompra");
 const cartConteiner = document.getElementById("cartContainer");
+let buttons = document.getElementsByClassName("del-from-cart");
+
 let stripe = null;
 
 const paimentForm = `
 <div class="container-fluid font bground">
 	<div class="row">
-        <div class="d-flex justify-content-center" id="spiner"></div>
+    <div class="d-flex justify-content-center" id="spiner"></div>
 		<div class="col-12 col-lg-12 d-flex justify-content-center" id="label">
 			<h1 class="py-5">Pago</h1>            
 		</div>
@@ -31,6 +33,41 @@ const paimentForm = `
 		<div class="col-12 col-lg-4 d-flex justify-content-center"></div>
 	</div>
 </div><br>`;
+
+if (buttons != null) {
+  for (let button of buttons) {
+    button.addEventListener("click", (e) => {
+      eliminarDelCarrito(e.target.id);
+    });
+  }
+}
+
+function eliminarDelCarrito(pid) {
+  setLoading(true);
+  const cart = JSON.parse(localStorage.getItem("cart"));
+  const url = `/api/carts/${cart.idCart}/products/${pid}`;
+  fetch(url, { method: "DELETE" })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.status === "success") {
+        setLoading(false);
+        const message = "Producto eliminado";
+        const icon = "success";
+        showMessage(message, icon);
+        sleep(2500).then(function () {
+          location.reload();
+        });
+      } else {
+        const message = "No se pudo eliminar el producto del carrito";
+        const icon = "error";
+        mostrarMensaje(message, icon);
+      }
+    })
+    .catch((error) => {
+      setLoading(false);
+      console.error(error);
+    });
+}
 
 const urlParams = new URLSearchParams(window.location.search);
 if (urlParams.get("redirect_status") === "succeeded") {
@@ -59,6 +96,9 @@ async function finalizarCompra() {
         clientSecret = data.payload.client_secret;
         stripe = Stripe(data.stripePK);
         cartConteiner.innerHTML = paimentForm;
+        const importe = document.getElementById("importe").value;
+        const button_text = document.getElementById("button-text");
+        button_text.innerText = "Pagar $" + importe;
         setLoading(false);
         document
           .querySelector("#payment-form")
@@ -154,6 +194,7 @@ function showMessage(message, icon) {
 }
 
 function setLoading(isLoading) {
+  console.log("set loading");
   const spiner = document.getElementById("spiner");
   const label = document.getElementById("label");
   if (isLoading) {
@@ -165,7 +206,7 @@ function setLoading(isLoading) {
       document.querySelector("#button-text").classList.add("hidden");
     }
   } else {
-    spiner.innerHTML = "<div></div>";
+    spiner.innerHTML = "";
     if (label) {
       label.innerHTML = '<h1 class="py-5">Pago</h1>';
       document.querySelector("#submit").disabled = false;

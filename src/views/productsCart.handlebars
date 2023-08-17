@@ -5,8 +5,7 @@
     </div>
     <div class="col-12 col-lg-4 pt-5 centrarElementos">
       <button id="btnFinalizarCompra" class="btnAgregarProducto">Finalizar
-        compra
-        {{this.importe}}</button>
+        compra ${{this.importe}}</button>
       <div class="d-flex justify-content-center" id="spiner"></div>
     </div>
   </div>
@@ -15,8 +14,7 @@
       <div class="col-12 col-lg-3 box_producto pt-5">
         <img class="producto ps-5" src={{this.thumbnails}} alt="photo" />
         <p>{{this.description}}<br />Precio por
-          {{this.measurement}}:
-          {{this.price}}</p>
+          {{this.measurement}}: ${{this.price}}</p>
         <p>Cantidad: {{this.quantity}}</p>
         <button
           class="del-from-cart"
@@ -33,5 +31,6 @@
     {{/each}}
   </div>
 </div>
+<input type="hidden" id="importe" value={{this.importe}} />
 
 <script src="/js/cart.js"></script>
