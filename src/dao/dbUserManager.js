@@ -63,6 +63,27 @@ class DbUserManager {
       throw error;
     }
   }
+  static async getAll() {
+    return Users.find();
+  }
+  static async getInactiveUsers(days) {
+    const daysAgo = new Date();
+    daysAgo.setDate(daysAgo.getDate() - days);
+    return Users.find({ last_connection: { $lt: daysAgo } });
+  }
+  static async deleteInactiveUsers(days) {
+    const daysAgo = new Date();
+    daysAgo.setDate(daysAgo.getDate() - days);
+    try {
+      const result = await Users.deleteMany({
+        last_connection: { $lt: daysAgo },
+      });
+      return result.acknowledged;
+    } catch (error) {
+      console.error(error);
+      return false;
+    }
+  }
 }
 
 module.exports = DbUserManager;
