@@ -4,37 +4,28 @@
   </div>
 </div>
 <div class="row">
+  <p id="errorMessage" class="d-flex justify-content-center" style="color: red"></p>
   <div class="col-12 col-lg-12 d-flex justify-content-center">
     <div>
       <form action="" id="loginForm">
-        <p id="errorMessage" style="color: blueviolet"></p>
+
         <div class="mb-3 user-login">
-          <input
-            class="form-control"
-            type="email"
-            placeholder="email@ejemplo.com"
-            id="email"
-          />
+          <input class="form-control" type="email" placeholder="email@ejemplo.com" id="email" />
         </div>
         <div class="mb-3 user-login">
-          <input
-            class="form-control"
-            type="password"
-            placeholder="Contraseña"
-            id="password"
-          />
+          <input class="form-control" type="password" placeholder="Contraseña" id="password" />
         </div>
         <div class="mb-5 pb-5 justify-content-center">
-          <a
-            class="justify-content-center"
-            href="/auth/forgot-password"
-          >¿Olvidaste tu contraseña?</a>
+          <a class="justify-content-center" href="/auth/forgot-password">¿Olvidaste tu contraseña?</a>
           <br /><br />
           <button type="submit" class="boton-iniciar">Iniciar sesión</button>
           <br /><br />
           <a class="justify-content-center" href="/signup">Crear cuenta</a>
         </div>
       </form>
+      {{#if this.mostrarmensaje}}
+        <input type="hidden" id="mostrarMensaje" />
+      {{/if}}
     </div>
   </div>
 </div>

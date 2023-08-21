@@ -72,6 +72,7 @@ function eliminarDelCarrito(pid) {
 const urlParams = new URLSearchParams(window.location.search);
 if (urlParams.get("redirect_status") === "succeeded") {
   showMessage("Muchas gracias por su compra!!!", "success");
+  deleteCart();
   localStorage.removeItem("cart");
   sleep(3000).then(function () {
     location.href = "/";
@@ -100,9 +101,7 @@ async function finalizarCompra() {
         const button_text = document.getElementById("button-text");
         button_text.innerText = "Pagar $" + importe;
         setLoading(false);
-        document
-          .querySelector("#payment-form")
-          .addEventListener("submit", handleSubmit);
+        document.querySelector("#payment-form").addEventListener("submit", handleSubmit);
         const appearance = {
           theme: "night",
         };
@@ -119,14 +118,9 @@ async function finalizarCompra() {
           layout: "tabs",
         };
 
-        const paymentElement = elements.create(
-          "payment",
-          paymentElementOptions
-        );
+        const paymentElement = elements.create("payment", paymentElementOptions);
         paymentElement.mount("#payment-element");
-        document
-          .querySelector("#payment-form")
-          .addEventListener("submit", handleSubmit);
+        document.querySelector("#payment-form").addEventListener("submit", handleSubmit);
       })
       .catch((error) => console.error(error));
   }
@@ -151,9 +145,7 @@ async function handleSubmit(e) {
 }
 
 async function checkStatus() {
-  const clientSecret = new URLSearchParams(window.location.search).get(
-    "payment_intent_client_secret"
-  );
+  const clientSecret = new URLSearchParams(window.location.search).get("payment_intent_client_secret");
 
   if (!clientSecret) {
     return;
@@ -168,10 +160,7 @@ async function checkStatus() {
       showMessage("Your payment is processing.", "info");
       break;
     case "requires_payment_method":
-      showMessage(
-        "Your payment was not successful, please try again.",
-        "warning"
-      );
+      showMessage("Your payment was not successful, please try again.", "warning");
       break;
     default:
       showMessage("Something went wrong.", "error");
@@ -194,7 +183,6 @@ function showMessage(message, icon) {
 }
 
 function setLoading(isLoading) {
-  console.log("set loading");
   const spiner = document.getElementById("spiner");
   const label = document.getElementById("label");
   if (isLoading) {
@@ -221,5 +209,14 @@ function sleep(time) {
     setTimeout(function () {
       resolve();
     }, time);
+  });
+}
+
+function deleteCart() {
+  const cart = JSON.parse(localStorage.getItem("cart"));
+  const url = "/api/carts/" + cart.idCart;
+  fetch(url, {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json" },
   });
 }

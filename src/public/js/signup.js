@@ -31,8 +31,35 @@ function Submit() {
 
 function redirect(data) {
   if (data.status == "success") {
-    location.href = "/";
+    const icon = "success";
+    const message = "Te enviamos un correo electrónico para que confirmes tu cuenta, Muchas gracias!!!";
+    showMessage(message, icon);
+    sleep(3500).then(function () {
+      location.href = "/";
+    });
   } else {
     responseMessage.innerHTML = data.message;
   }
+}
+
+function showMessage(message, icon) {
+  const Toast = Swal.mixin({
+    toast: true,
+    position: "center",
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+  });
+  Toast.fire({
+    icon: icon,
+    title: message,
+  });
+}
+
+function sleep(time) {
+  return new Promise(function (resolve, reject) {
+    setTimeout(function () {
+      resolve();
+    }, time);
+  });
 }

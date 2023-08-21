@@ -1,4 +1,5 @@
 const form = document.getElementById("loginForm");
+const mostrarMensaje = document.getElementById("mostrarMensaje");
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -28,3 +29,21 @@ form.addEventListener("submit", (e) => {
     })
     .catch((error) => console.error(error));
 });
+
+if (mostrarMensaje) {
+  showMessage("Tu cuenta ha sido activada, ya puedes iniciar sesión!!!", "success");
+}
+
+function showMessage(message, icon) {
+  const Toast = Swal.mixin({
+    toast: true,
+    position: "center",
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+  });
+  Toast.fire({
+    icon: icon,
+    title: message,
+  });
+}

@@ -1,66 +1,23 @@
 const { Router } = require("express");
-const {
-  generateToken,
-  generatePasswordResetToken,
-  getEmailFromToken,
-} = require("../utils/jwt.utils");
-const MailAdapter = require("../adapters/mail.adapter");
-const DbUserManager = require("../dao/dbUserManager");
-const { isValidPassword } = require("../utils/cryptPassword");
+const { getEmailFromToken } = require("../utils/token.utils");
 const HTTTP_STATUS_CODES = require("../commons/constants/http-status-codes.constants");
+const UserService = require("../dao/services/userService");
+const MailService = require("../services/mail.service");
 
 const router = Router();
+const userService = new UserService();
+const mailService = new MailService();
 
 router.post("/", async (req, res) => {
-  try {
-    const { email, password } = req.body;
-    if ((email == "adminCoder@coder.com") & (password == "adminCod3r123")) {
-      const user = {
-        id: "CODER",
-        first_name: "admin",
-        last_name: "Coder",
-        email: "adminCoder@coder.com",
-        role: "admin",
-        password,
-      };
-      req.user = user;
-    } else {
-      const user = await DbUserManager.getUser(email);
-      if (!user) {
-        req.logger.error("El usuario no existe");
-        return res.status(HTTTP_STATUS_CODES.UN_AUTHORIZED).json({
-          status: "error",
-          message: "El usuario y la contraseña no coinciden.",
-        });
-      }
-      if (!isValidPassword(password, user)) {
-        req.logger.error("El password no es correcto");
-        return res.status(HTTTP_STATUS_CODES.UN_AUTHORIZED).json({
-          status: "error",
-          message: "El usuario y la contraseña no coinciden.",
-        });
-      }
-      req.user = user;
-    }
-    DbUserManager.setLastConnection(req.user.email);
-    const access_token = generateToken({
-      email: req.user.email,
-      role: req.user.role,
-    });
-    res.cookie("authToken", access_token, { maxAge: 3600000, httpOnly: true });
-    res
-      .status(HTTTP_STATUS_CODES.OK)
-      .json({ status: "success", message: "Sesión iniciada" });
-  } catch (error) {
-    req.logger.error(error.message);
-    res
-      .status(HTTTP_STATUS_CODES.INTERNAL_SERVER_ERROR)
-      .json({ status: "error", message: "Internal server error" });
+  const result = await userService.loginUser(req);
+  if (result.access_token) {
+    res.cookie("authToken", result.access_token, { maxAge: 3600000, httpOnly: true });
   }
+  res.status(result.statusCode).json(result.response);
 });
 
 router.get("/logout", (req, res) => {
-  DbUserManager.setLastConnection(req.user.email);
+  userService.setLastConnection(req.user._id);
   res.clearCookie("authToken");
   res.redirect("/");
 });
@@ -73,21 +30,8 @@ router.get("/forgot-password", (req, res) => {
 });
 
 router.post("/mail-password", async (req, res) => {
-  const { email } = req.body;
-  const user = await DbUserManager.getUser(email);
-  if (user) {
-    const token = generatePasswordResetToken(email);
-    const resetLink = `http://localhost:8080/auth/reset-password/${token}`;
-    const mailOptions = {
-      from: "Tienda gourmet de asados <tiendadeasados@gmail.com>",
-      to: email,
-      subject: "Restablecimiento de contraseña",
-      html: `Haz clic <a href="${resetLink}">aquí</a> para restablecer tu contraseña. Ten encuenta que el enlace expirará en 1 hora.`,
-    };
-    await MailAdapter.send(mailOptions);
-  } else {
-    req.logger.info("No se manda mail porque no existe usuario con este email");
-  }
+  const token = await userService.getResetPasswordToken(req);
+  mailService.sendEmailResetPassword(req, token);
   res.redirect("/login");
 });
 
@@ -97,26 +41,23 @@ router.get("/reset-password/:token", async (req, res) => {
   if (email) {
     res.render("reset.pasword.handlebars", { email });
   } else {
-    res
-      .status(HTTTP_STATUS_CODES.BAD_REQUEST)
-      .json({ status: "error", message: "token inválido o inexistente" });
+    res.status(HTTTP_STATUS_CODES.BAD_REQUEST).json({ status: "error", message: "token inválido o inexistente" });
   }
 });
 
 router.post("/updatepassword", async (req, res) => {
-  const { email, password } = req.body;
-  const user = await DbUserManager.getUser(email);
-  if (isValidPassword(password, user)) {
-    res.status(HTTTP_STATUS_CODES.BAD_REQUEST).json({
-      status: "error",
-      message: "no puedes utilizar la misma contraseña, debe ser una nueva",
-    });
+  const result = await userService.updatePassword(req);
+  res.status(result.statusCode).json(result.response);
+});
+
+router.get("/confirm-email/:token", async (req, res) => {
+  const { token } = req.params;
+  const email = await getEmailFromToken(token);
+  if (email) {
+    userService.activarCuenta(email);
+    res.render("login.handlebars", { mostrarIconos: false, mostrarmensaje: true });
   } else {
-    await DbUserManager.actualizarPassword(email, password);
-    res.status(HTTTP_STATUS_CODES.OK).json({
-      status: "success",
-      message: "Se actualizó la password correctamente",
-    });
+    res.status(HTTTP_STATUS_CODES.BAD_REQUEST).json({ status: "error", message: "token inválido o inexistente" });
   }
 });
 

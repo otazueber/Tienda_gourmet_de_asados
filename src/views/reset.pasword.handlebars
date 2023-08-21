@@ -5,29 +5,18 @@
 </div>
 
 <div class="row">
+  <p id="errorMessage" class="d-flex justify-content-center" style="color: red"></p>
   <div class="col-12 col-lg-12 d-flex justify-content-center">
     <div>
       <form action="" id="resetPassForm">
         <div>
           <input type="hidden" id="userId" value={{email}} />
           <div class="mb-3 user-data">
-            <input
-              class="form-control"
-              type="password"
-              placeholder="Contraseña"
-              name="password"
-              id="password1"
-            />
+            <input class="form-control" type="password" placeholder="Contraseña" name="password" id="password1" />
           </div>
           <div class="mb-3 user-data">
-            <input
-              class="form-control"
-              type="password"
-              placeholder="re ingrese la contraseña"
-              name="password2"
-              id="password2"
-            />
-            <p id="errorMessage" style="color: blueviolet"></p>
+            <input class="form-control" type="password" placeholder="re ingrese la contraseña" name="password2" id="password2" />
+
           </div>
           <div class="mb-5 pb-5">
             <button type="submit" class="boton-aceptar">Aceptar</button>

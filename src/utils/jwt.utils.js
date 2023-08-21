@@ -1,15 +1,12 @@
 const jwt = require("jsonwebtoken");
 const { jwtSecret } = require("../config/app.config");
-const DbUserManager = require("../dao/dbUserManager");
 const HTTTP_STATUS_CODES = require("../commons/constants/http-status-codes.constants");
+const UserService = require("../dao/services/userService");
 
-const generateToken = (user) => {
-  const token = jwt.sign(user, jwtSecret, { expiresIn: "12h" });
-  return token;
-};
+const userService = new UserService();
 
 const userToken = async (req, res, next) => {
-  const authHeader = req.headers.Authorization;
+  const authHeader = req.headers.authorization;
   if (authHeader) {
     const token = authHeader.split(" ")[1];
     jwt.verify(token, jwtSecret, async (error, credentials) => {
@@ -23,7 +20,7 @@ const userToken = async (req, res, next) => {
             role: "admin",
           };
         } else {
-          user = await DbUserManager.getUser(credentials.email);
+          user = await userService.getUser(credentials.email);
           if (user) {
             const newUserInfo = {
               first_name: user.first_name,
@@ -43,19 +40,14 @@ const userToken = async (req, res, next) => {
 };
 
 const authToken = (req, res, next) => {
-  const authHeader = req.headers.Authorization;
+  const authHeader = req.headers.authorization;
   if (!authHeader) {
-    return res
-      .status(HTTTP_STATUS_CODES.UN_AUTHORIZED)
-      .json({ status: "error", message: "Not authenticated" });
+    return res.status(HTTTP_STATUS_CODES.UN_AUTHORIZED).json({ status: "error", message: "Not authenticated" });
   }
-
   const token = authHeader.split(" ")[1];
   jwt.verify(token, jwtSecret, async (error, credentials) => {
     if (error) {
-      return res
-        .status(HTTTP_STATUS_CODES.FORBIDEN)
-        .json({ status: "error", message: "Forbiden" });
+      return res.status(HTTTP_STATUS_CODES.FORBIDEN).json({ status: "error", message: "Forbiden" });
     }
     let user;
     if (credentials.email == "adminCoder@coder.com") {
@@ -66,7 +58,7 @@ const authToken = (req, res, next) => {
         role: "admin",
       };
     } else {
-      user = await DbUserManager.getUser(credentials.email);
+      user = await userService.getUser(credentials.email);
       req.user = {
         first_name: user.first_name,
         last_name: user.last_name,
@@ -78,30 +70,7 @@ const authToken = (req, res, next) => {
   });
 };
 
-const generatePasswordResetToken = (email) => {
-  const token = jwt.sign({ email }, jwtSecret, { expiresIn: "1h" });
-  return token;
-};
-
-const getEmailFromToken = (token) => {
-  let email = "";
-  if (token) {
-    jwt.verify(token, jwtSecret, async (error, decoded) => {
-      if (!error) {
-        const decodedToken = jwt.decode(token);
-        if (decodedToken.exp >= Date.now() / 1000) {
-          email = decoded.email;
-        }
-      }
-    });
-  }
-  return email;
-};
-
 module.exports = {
-  generateToken,
   authToken,
-  generatePasswordResetToken,
-  getEmailFromToken,
   userToken,
 };

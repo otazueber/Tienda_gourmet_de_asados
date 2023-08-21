@@ -1,4 +1,4 @@
-const Tickets = require("./models/tickets.model");
+const Tickets = require("../models/tickets.model");
 
 class TicketManager {
   constructor() {}

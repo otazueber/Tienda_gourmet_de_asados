@@ -55,7 +55,7 @@ async function actualizarCantidadEnIconoCarrito() {
   fetch(url)
     .then((response) => response.json())
     .then((data) => {
-      data.forEach((p) => {
+      data.products.forEach((p) => {
         cant += p.quantity;
       });
       cartCount.innerHTML = cant;

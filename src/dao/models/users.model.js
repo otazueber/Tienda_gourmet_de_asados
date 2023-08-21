@@ -14,6 +14,10 @@ const collectionSchema = new mongoose.Schema({
     type: String,
     unique: true,
   },
+  confirmed_email: {
+    type: Boolean,
+    default: false,
+  },
   age: Number,
   password: String,
   cart: {

@@ -11,4 +11,5 @@ module.exports = {
   mailPass: process.env.MAIL_PASS,
   stripeSK: process.env.STRIPE_SK,
   stripePK: process.env.STRIPE_PK,
+  sourceDatabase: process.env.SOURCE_DATABASE,
 };
