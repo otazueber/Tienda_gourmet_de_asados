@@ -1,4 +1,3 @@
-const homeController = require("../controllers/controller.home");
 const cartsController = require("../controllers/controller.carts");
 const productsController = require("../controllers/controller.products");
 const viewsController = require("../controllers/controller.views");

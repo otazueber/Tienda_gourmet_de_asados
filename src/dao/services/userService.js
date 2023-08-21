@@ -3,7 +3,7 @@ const HTTTP_STATUS_CODES = require("../../commons/constants/http-status-codes.co
 const { hashPassword, isValidPassword } = require("../../utils/cryptPassword");
 const UserDTO = require("../../dto/user.dto");
 const APP_CONST = require("../../commons/constants/appConstants");
-const { generateToken, generateEmailToken, getEmailFromToken } = require("../../utils/token.utils");
+const { generateToken, generateEmailToken } = require("../../utils/token.utils");
 
 class UserService {
   async createUser(body) {

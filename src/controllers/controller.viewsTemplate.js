@@ -1,7 +1,5 @@
 const { Router, json } = require("express");
-const privateAccess = require("../middlewares/privateAccess");
 const publicAccess = require("../middlewares/publicAccess");
-const { userToken } = require("../utils/jwt.utils");
 
 const router = Router();
 
