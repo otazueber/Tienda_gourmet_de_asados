@@ -20,7 +20,7 @@ form.addEventListener("submit", (e) => {
   })
     .then((response) => response.json())
     .then((data) => {
-      if (data.status == "success") {
+      if (data.status === "success") {
         location.href = "/";
       } else {
         const errorMessage = document.getElementById("errorMessage");

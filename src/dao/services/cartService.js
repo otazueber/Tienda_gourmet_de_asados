@@ -46,7 +46,8 @@ class CartService {
       product: pid,
       quantity: body.quantity,
     };
-    const cartProduct = cart.products.find((p) => p.product == pid);
+
+    const cartProduct = cart.products.find((p) => p.product._id.toString() === pid);
     let resultAdd;
     if (cartProduct) {
       resultAdd = await cartManager.updateProductInCart(cid, productToAdd);
@@ -106,8 +107,6 @@ class CartService {
         minimumFractionDigits: 2,
         maximumFractionDigits: 2,
       });
-    } else {
-      console.log("no hay productos");
     }
     return {
       products,

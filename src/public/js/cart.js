@@ -129,11 +129,12 @@ async function finalizarCompra() {
 async function handleSubmit(e) {
   e.preventDefault();
   setLoading(true);
+  const baseURL = window.location.protocol + "//" + window.location.host;
   const cart = JSON.parse(localStorage.getItem("cart"));
   const { error } = await stripe.confirmPayment({
     elements,
     confirmParams: {
-      return_url: "http://localhost:8080/api/views/carts/" + cart.idCart,
+      return_url: baseURL + "/api/views/carts/" + cart.idCart,
     },
   });
   if (error.type === "card_error" || error.type === "validation_error") {

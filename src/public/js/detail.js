@@ -25,9 +25,7 @@ btnRestar.addEventListener("click", () => {
 
 btnAgregar.addEventListener("click", async () => {
   try {
-    const cantidadActual = parseFloat(
-      document.getElementById("cantidad").innerText
-    );
+    const cantidadActual = parseFloat(document.getElementById("cantidad").innerText);
     if (cantidadActual > 0) {
       const idCart = await obtenerCarrito();
       const body = JSON.stringify({ quantity: cantidadActual });
@@ -112,7 +110,7 @@ async function actualizarCantidadEnIconoCarrito() {
   fetch(url)
     .then((response) => response.json())
     .then((data) => {
-      data.forEach((p) => {
+      data.products.forEach((p) => {
         cant += p.quantity;
       });
       cartCount.innerHTML = cant;

@@ -237,7 +237,7 @@ class UserService {
   async loginUser(req) {
     try {
       const { email, password } = req.body;
-      if ((email == "adminCoder@coder.com") & (password == "adminCod3r123")) {
+      if ((email === "adminCoder@coder.com") & (password === "adminCod3r123")) {
         const user = {
           _id: "CODER",
           first_name: "admin",

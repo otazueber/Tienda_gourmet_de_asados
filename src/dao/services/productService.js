@@ -80,7 +80,6 @@ class ProductService {
         response: { status: "success", message: "Producto actualizado satisfactoriamente" },
       };
     } else {
-      console.log("result false");
       return {
         statusCode: HTTTP_STATUS_CODES.INTERNAL_SERVER_ERROR,
         response: { status: "error", message: "Internal server error" },

@@ -38,7 +38,7 @@ class CartManager {
       return false;
     }
     cartToUpdate.products.forEach((p) => {});
-    const index = cartToUpdate.products.findIndex((product) => product.product == pid);
+    const index = cartToUpdate.products.findIndex((product) => product.product.toString() === pid);
     if (index === -1) {
       return false;
     } else {

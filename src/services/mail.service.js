@@ -43,7 +43,7 @@ class MailService {
   sendEmailResetPassword(req, token) {
     if (token) {
       const { email } = req.body;
-      const resetLink = `http://localhost:8080/auth/reset-password/${token}`;
+      const resetLink = `${this.internalGetBaseURL()}/auth/reset-password/${token}`;
       const mailOptions = {
         from: APP_CONST.EMAIL_FROM,
         to: email,
@@ -80,7 +80,7 @@ Si ha tenido algún problema durante el proceso de confirmación o tiene pregunt
 Gracias por unirse a Non Vegan. Esperamos que tenga una experiencia gratificante y enriquecedora con nosotros.<br><br>
 ¡Saludos cordiales!<br><br>
 El Equipo de Not Vegan S.A.<br>
-<a href="http://localhost:8080">www.not_vegan.com.ar</a>`;
+<a href="${this.internalGetBaseURL()}">www.not_vegan.com.ar</a>`;
   }
   internalGetCustomizedDeleteUserMessage(user) {
     return `<h3>Estimado/a ${user.first_name} ${user.last_name}.</h3><br><br>
@@ -93,11 +93,11 @@ Estamos comprometidos en brindarte una experiencia excepcional de compras en lí
 Agradecemos tu comprensión y esperamos verte pronto.<br><br>
 ¡Saludos cordiales!<br><br>
 El Equipo de Not Vegan S.A.<br>
-<a href="http://localhost:8080">www.not_vegan.com.ar</a>`;
+<a href="${this.internalGetBaseURL()}">www.not_vegan.com.ar</a>`;
   }
   internalGetUrlConfirmationMail(email) {
     const token = generateEmailToken(email);
-    return `http://localhost:8080/auth/confirm-email/${token}`;
+    return `${this.internalGetBaseURL()}/auth/confirm-email/${token}`;
   }
   internalGetCustomizedDeletedMessage() {
     return `<h3>Estimado/a usuario/a.</h3><br><br>
@@ -110,7 +110,7 @@ Estamos comprometidos en brindarte una experiencia excepcional de compras en lí
 Agradecemos tu comprensión y esperamos verte pronto.<br><br>
 ¡Saludos cordiales!<br><br>
 El Equipo de Not Vegan S.A.<br>
-<a href="http://localhost:8080">www.not_vegan.com.ar</a>`;
+<a href="${this.internalGetBaseURL()}">www.not_vegan.com.ar</a>`;
   }
   internalGetCustomizedDeletedProductMessage(user, productDescription) {
     return `<h3>Estimado/a ${user.first_name} ${user.last_name}.</h3><br><br>
@@ -122,7 +122,7 @@ Si tienes alguna pregunta o inquietud con respecto a esta eliminación o cualqui
 Agradecemos tu comprensión y colaboración en este asunto.<br><br>
 ¡Saludos cordiales!<br><br>
 El Equipo de Not Vegan S.A.<br>
-<a href="http://localhost:8080">www.not_vegan.com.ar</a>`;
+<a href="${this.internalGetBaseURL()}">www.not_vegan.com.ar</a>`;
   }
   internalGetFormattedDate() {
     const currentDate = new Date();
@@ -130,6 +130,9 @@ El Equipo de Not Vegan S.A.<br>
     const month = String(currentDate.getMonth() + 1).padStart(2, "0"); // Los meses están basados en 0, por lo que sumamos 1
     const year = currentDate.getFullYear();
     return `${day}/${month}/${year}`;
+  }
+  internalGetBaseURL() {
+    return window.location.protocol + "//" + window.location.host;
   }
 }
 

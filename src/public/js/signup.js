@@ -30,7 +30,7 @@ function Submit() {
 }
 
 function redirect(data) {
-  if (data.status == "success") {
+  if (data.status === "success") {
     const icon = "success";
     const message = "Te enviamos un correo electrónico para que confirmes tu cuenta, Muchas gracias!!!";
     showMessage(message, icon);

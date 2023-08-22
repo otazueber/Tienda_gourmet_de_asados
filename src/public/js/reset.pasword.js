@@ -13,7 +13,7 @@ form.addEventListener("submit", (e) => {
 
   if (password1 != password2) {
     errorMessage.innerHTML = "Las contraseñas no coinciden";
-  } else if (password1.trim() == "") {
+  } else if (password1.trim() === "") {
     errorMessage.innerHTML = "Ingrese una constraseña";
   } else {
     const url = "/auth/updatepassword";
@@ -34,7 +34,7 @@ form.addEventListener("submit", (e) => {
 });
 
 function redirect(data) {
-  if (data.status == "success") {
+  if (data.status === "success") {
     location.href = "/login";
   } else {
     errorMessage.innerHTML = data.message;

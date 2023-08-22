@@ -50,7 +50,7 @@ const authToken = (req, res, next) => {
       return res.status(HTTTP_STATUS_CODES.FORBIDEN).json({ status: "error", message: "Forbiden" });
     }
     let user;
-    if (credentials.email == "adminCoder@coder.com") {
+    if (credentials.email === "adminCoder@coder.com") {
       req.user = {
         first_name: "Admin",
         last_name: "Coder",
