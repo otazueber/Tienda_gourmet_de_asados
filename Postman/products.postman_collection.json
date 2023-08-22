@@ -6,315 +6,56 @@
 	},
 	"item": [
 		{
-			"name": "AddAProduct",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im90YXp1ZWJlckBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4ODk1MzE5MCwiZXhwIjoxNjg4OTk2MzkwfQ.uLifXD3XEE90LDWVExHezBmOHSfqIdMPw9hkZn7VZHo",
-						"type": "default"
-					},
-					{
-						"key": "filename",
-						"value": "",
-						"type": "default",
-						"disabled": true
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "title",
-							"value": "carbón",
-							"type": "text"
-						},
-						{
-							"key": "code",
-							"value": "999",
-							"type": "text"
-						},
-						{
-							"key": "status",
-							"value": "true",
-							"type": "text"
-						},
-						{
-							"key": "measurement",
-							"value": "unidad",
-							"type": "text"
-						},
-						{
-							"key": "file",
-							"type": "file",
-							"src": "/C:/Eber/Tienda_gourmet_de_asados/src/public/assets/img/fuego/iniciador_fuego_madera.jpg"
-						},
-						{
-							"key": "category",
-							"value": "fuego",
-							"type": "text"
-						},
-						{
-							"key": "stock",
-							"value": "20",
-							"type": "text"
-						},
-						{
-							"key": "price",
-							"value": "750",
-							"type": "text"
-						},
-						{
-							"key": "description",
-							"value": "Carbón x 4kg",
-							"type": "text"
-						},
-						{
-							"key": "Authorization",
-							"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQ29kZXJAY29kZXIuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjg2NDk3MTYxLCJleHAiOjE2ODY1NDAzNjF9.lSqiiWKtasCVPqQ_7TUY9y3MqAZtTtNsFqwNhA9tqFk",
-							"type": "default"
-						}
-					],
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{url}}/api/products",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"api",
-						"products"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "insertMany",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im90YXp1ZWJlckBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4ODk1MzE5MCwiZXhwIjoxNjg4OTk2MzkwfQ.uLifXD3XEE90LDWVExHezBmOHSfqIdMPw9hkZn7VZHo",
-						"type": "default"
-					},
-					{
-						"key": "filename",
-						"value": "",
-						"type": "default",
-						"disabled": true
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "title",
-							"value": "carbón",
-							"type": "text"
-						},
-						{
-							"key": "code",
-							"value": "004",
-							"type": "text"
-						},
-						{
-							"key": "status",
-							"value": "true",
-							"type": "text"
-						},
-						{
-							"key": "measurement",
-							"value": "unidad",
-							"type": "text"
-						},
-						{
-							"key": "file",
-							"type": "file",
-							"src": "/C:/Users/eber/Downloads/carbon_4kg.jpg"
-						},
-						{
-							"key": "category",
-							"value": "fuego",
-							"type": "text"
-						},
-						{
-							"key": "stock",
-							"value": "20",
-							"type": "text"
-						},
-						{
-							"key": "price",
-							"value": "750",
-							"type": "text"
-						},
-						{
-							"key": "description",
-							"value": "Carbón x 4kg",
-							"type": "text"
-						},
-						{
-							"key": "Authorization",
-							"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQ29kZXJAY29kZXIuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjg2NDk3MTYxLCJleHAiOjE2ODY1NDAzNjF9.lSqiiWKtasCVPqQ_7TUY9y3MqAZtTtNsFqwNhA9tqFk",
-							"type": "default"
-						}
-					],
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{url}}/api/products/insertMany",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"api",
-						"products",
-						"insertMany"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "UpdateAProduct",
-			"request": {
-				"method": "PUT",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im90YXp1ZWJlckBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4ODk1MzE5MCwiZXhwIjoxNjg4OTk2MzkwfQ.uLifXD3XEE90LDWVExHezBmOHSfqIdMPw9hkZn7VZHo",
-						"type": "default"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": " {\r\n        \"title\": \"carbón\",\r\n        \"code\": \"004\",\r\n        \"status\": true,\r\n        \"measurement\": \"unidad\",\r\n        \"thumbnails\": \"/assets/img/fuego/1681148712195carbon_4kg.jpg\",\r\n        \"stock\": 20000,\r\n        \"price\": 1000,\r\n        \"description\": \"Carbón x 4kg\",\r\n        \"category\": \"fuego\",\r\n        \"__v\": 0\r\n    }",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{url}}/api/products/644c5aec424afd5c3e6e6431",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"api",
-						"products",
-						"644c5aec424afd5c3e6e6431"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "GetProducts",
-			"request": {
-				"method": "PUT",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im90YXp1ZWJlckBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4NjUwODk5NCwiZXhwIjoxNjg2NTUyMTk0fQ.8dCAt79yVGGTKWl37JI7qMuV0xiupWAnpyC-WivRaq0",
-						"type": "default"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": " {\r\n        \"title\": \"carbón\",\r\n        \"code\": \"004\",\r\n        \"status\": true,\r\n        \"measurement\": \"unidad\",\r\n        \"thumbnails\": \"1681148712195carbon_4kg.jpg\",\r\n        \"stock\": 20000,\r\n        \"price\": 750,\r\n        \"description\": \"Carbón x 4kg\",\r\n        \"category\": \"fuego\",\r\n        \"__v\": 0\r\n    }",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{url}}/api/products",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"api",
-						"products"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "GetAProduct",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{url}}/api/products/64344b28787779b1c8a8381d",
+					"raw": "{{url}}/api/products/64e2c046da77ebbe1f06c61c",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
 						"api",
 						"products",
-						"64344b28787779b1c8a8381d"
+						"64e2c046da77ebbe1f06c61c"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "DelAProduct",
+			"name": "GetAllProducts",
 			"request": {
-				"method": "POST",
+				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": " {\r\n        \"title\": \"carbón\",\r\n        \"code\": \"004\",\r\n        \"status\": true,\r\n        \"measurement\": \"unidad\",\r\n        \"thumbnails\": \"1681148712195carbon_4kg.jpg\",\r\n        \"stock\": 20000,\r\n        \"price\": -1,\r\n        \"description\": \"Carbón x 4kg\",\r\n        \"category\": \"fuego\",\r\n        \"__v\": 0\r\n    }",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
 				"url": {
-					"raw": "{{url}}/auth",
+					"raw": "{{url}}/api/products",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
-						"auth"
+						"api",
+						"products"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Getmockingproducts",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
+			"name": "Update a product",
 			"request": {
-				"method": "GET",
+				"method": "PUT",
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im90YXp1ZWJlckBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4NjUwODk5NCwiZXhwIjoxNjg2NTUyMTk0fQ.8dCAt79yVGGTKWl37JI7qMuV0xiupWAnpyC-WivRaq0",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im90YXp1ZWJlckBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY5MjY0MjI1MSwiZXhwIjoxNjkyNjg1NDUxfQ.ZzopqKD3lnK01fvesc39jGDeAuEBfKT0Xzpt9-s0ZIk",
 						"type": "default"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": " {\r\n        \"title\": \"carbón\",\r\n        \"code\": \"004\",\r\n        \"status\": true,\r\n        \"measurement\": \"unidad\",\r\n        \"thumbnails\": \"1681148712195carbon_4kg.jpg\",\r\n        \"stock\": 20000,\r\n        \"price\": 750,\r\n        \"description\": \"Carbón x 4kg\",\r\n        \"category\": \"fuego\",\r\n        \"__v\": 0\r\n    }",
+					"raw": " {\r\n\r\n            \"title\": \"nuevo titulo\",\r\n            \"price\": 100\r\n\r\n        }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -322,40 +63,57 @@
 					}
 				},
 				"url": {
-					"raw": "{{url}}/api/products/mockingproducts/",
+					"raw": "{{url}}/api/products/64e2c046da77ebbe1f06c61c",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
 						"api",
 						"products",
-						"mockingproducts",
-						""
+						"64e2c046da77ebbe1f06c61c"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "DeleteProduct",
+			"name": "Add product",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/products",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a product",
 			"request": {
 				"method": "DELETE",
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im90YXp1ZWJlckBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4ODk1MzE5MCwiZXhwIjoxNjg4OTk2MzkwfQ.uLifXD3XEE90LDWVExHezBmOHSfqIdMPw9hkZn7VZHo",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im90YXp1ZWJlckBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY5MjY0MjI1MSwiZXhwIjoxNjkyNjg1NDUxfQ.ZzopqKD3lnK01fvesc39jGDeAuEBfKT0Xzpt9-s0ZIk",
 						"type": "default"
 					}
 				],
 				"url": {
-					"raw": "{{url}}/api/products/644c5aec424afd5c3e6e6468",
+					"raw": "{{url}}/api/products/64e2c046da77ebbe1f06c61d",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
 						"api",
 						"products",
-						"644c5aec424afd5c3e6e6468"
+						"64e2c046da77ebbe1f06c61d"
 					]
 				}
 			},

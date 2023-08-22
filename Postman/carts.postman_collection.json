@@ -1,148 +1,27 @@
 {
-  "info": {
-    "_postman_id": "abb8f898-ab2f-42c7-92ef-02da0641d592",
-    "name": "carts",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-  },
-  "item": [
-    {
-      "name": "AddACart",
-      "request": {
-        "method": "POST",
-        "header": [],
-        "url": {
-          "raw": "{{url}}/api/carts",
-          "host": ["{{url}}"],
-          "path": ["api", "carts"]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "Get carts",
-      "request": {
-        "method": "GET",
-        "header": [],
-        "url": {
-          "raw": "{{url}}/api/carts",
-          "host": ["{{url}}"],
-          "path": ["api", "carts"]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "AddProductToCart",
-      "request": {
-        "method": "POST",
-        "header": [
-          {
-            "key": "Authorization",
-            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im90YXp1ZWJlckBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4ODk1MzE5MCwiZXhwIjoxNjg4OTk2MzkwfQ.uLifXD3XEE90LDWVExHezBmOHSfqIdMPw9hkZn7VZHo",
-            "type": "default"
-          }
-        ],
-        "body": {
-          "mode": "raw",
-          "raw": "{\r\n    \"quantity\": 1\r\n}",
-          "options": {
-            "raw": {
-              "language": "json"
-            }
-          }
-        },
-        "url": {
-          "raw": "{{url}}/api/carts/64a9f4211d8059bccfce6751/product/64ab69ba3b4becf8e606a0d0",
-          "host": ["{{url}}"],
-          "path": [
-            "api",
-            "carts",
-            "64a9f4211d8059bccfce6751",
-            "product",
-            "64ab69ba3b4becf8e606a0d0"
-          ]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "GetProductsOfACart",
-      "protocolProfileBehavior": {
-        "disableBodyPruning": true
-      },
-      "request": {
-        "auth": {
-          "type": "oauth2",
-          "oauth2": [
-            {
-              "key": "addTokenTo",
-              "value": "header",
-              "type": "string"
-            }
-          ]
-        },
-        "method": "GET",
-        "header": [
-          {
-            "key": "Authorization",
-            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im90YXp1ZWJlckBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4NjYwMzI4OCwiZXhwIjoxNjg2NjQ2NDg4fQ.BJRh5MvmSao8tAx1iPp0uv_S8FFkGM_9uOgMvnoNoB4",
-            "type": "default"
-          }
-        ],
-        "body": {
-          "mode": "raw",
-          "raw": "",
-          "options": {
-            "raw": {
-              "language": "json"
-            }
-          }
-        },
-        "url": {
-          "raw": "{{url}}/api/carts/648642c468616fd93555ade7",
-          "host": ["{{url}}"],
-          "path": ["api", "carts", "648642c468616fd93555ade7"]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "DelProductsfromACart",
-      "request": {
-        "method": "DELETE",
-        "header": [
-          {
-            "key": "Authorization",
-            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im90YXp1ZWJlckBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4NjYwMzI4OCwiZXhwIjoxNjg2NjQ2NDg4fQ.BJRh5MvmSao8tAx1iPp0uv_S8FFkGM_9uOgMvnoNoB4",
-            "type": "default"
-          }
-        ],
-        "url": {
-          "raw": "{{url}}/api/carts/64879ea7dd32844d8fe5d976",
-          "host": ["{{url}}"],
-          "path": ["api", "carts", "64879ea7dd32844d8fe5d976"]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "Purchase",
-      "request": {
-        "method": "POST",
-        "header": [
-          {
-            "key": "Authorization",
-            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im90YXp1ZWJlckBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY4NjYwMzI4OCwiZXhwIjoxNjg2NjQ2NDg4fQ.BJRh5MvmSao8tAx1iPp0uv_S8FFkGM_9uOgMvnoNoB4",
-            "type": "default"
-          }
-        ],
-        "url": {
-          "raw": "{{url}}/api/carts/64879ea7dd32844d8fe5d976/purchase",
-          "host": ["{{url}}"],
-          "path": ["api", "carts", "64879ea7dd32844d8fe5d976", "purchase"]
-        }
-      },
-      "response": []
-    }
-  ]
+	"info": {
+		"_postman_id": "abb8f898-ab2f-42c7-92ef-02da0641d592",
+		"name": "carts",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get carts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/carts",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"carts"
+					]
+				}
+			},
+			"response": []
+		}
+	]
 }
