@@ -1,6 +1,5 @@
 const { Router } = require("express");
 const { authToken } = require("../utils/jwt.utils");
-const { userAccess } = require("../middlewares/current");
 
 const HTTTP_STATUS_CODES = require("../commons/constants/http-status-codes.constants");
 const CartService = require("../dao/services/cartService");
@@ -47,7 +46,7 @@ router.get("/:cid", async (req, res) => {
   }
 });
 
-router.put("/:cid/product/:pid", authToken, userAccess, async (req, res) => {
+router.put("/:cid/product/:pid", authToken, async (req, res) => {
   try {
     const { cid, pid } = req.params;
     const body = req.body;
@@ -59,7 +58,7 @@ router.put("/:cid/product/:pid", authToken, userAccess, async (req, res) => {
   }
 });
 
-router.delete("/:cid", authToken, userAccess, async (req, res) => {
+router.delete("/:cid", authToken, async (req, res) => {
   try {
     const { cid } = req.params;
     const result = await cartService.deleteProducts(cid);
@@ -69,7 +68,7 @@ router.delete("/:cid", authToken, userAccess, async (req, res) => {
   }
 });
 
-router.delete("/:cid/products/:pid", authToken, userAccess, async (req, res) => {
+router.delete("/:cid/products/:pid", authToken, async (req, res) => {
   const { cid, pid } = req.params;
   const result = await cartService.deleteProduct(cid, pid);
   if (result) {

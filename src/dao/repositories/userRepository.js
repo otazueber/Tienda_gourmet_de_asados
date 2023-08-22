@@ -40,14 +40,12 @@ class UserRepository {
     const param = { last_connection: { $lt: daysAgo } };
     return this.manager.getInactiveUsers(param);
   }
-  async deleteInactiveUsers(days) {
-    const daysAgo = new Date();
-    daysAgo.setDate(daysAgo.getDate() - days);
-    const param = {
-      last_connection: { $lt: daysAgo },
-    };
+  async deleteInactiveUsers(param) {
     const result = await this.manager.deleteInactiveUsers(param);
     return result.acknowledged;
+  }
+  async deleteUser(email) {
+    return await this.manager.deleteUser(email);
   }
 }
 

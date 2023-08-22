@@ -8,13 +8,14 @@ router.get("/signup", publicAccess, (req, res) => {
 });
 
 router.get("/login", publicAccess, (req, res) => {
-  res.render("login.handlebars", { mostrarIconos: false });
+  res.render("login.handlebars", { mostrarIconos: false, isAdmin: false });
 });
 
 router.get("/", async (req, res) => {
   res.render("home.handlebars", {
     mostrarIconos: true,
     tengoUsuario: req.user ? true : false,
+    isAdmin: req.user ? req.user.role === "admin" : false,
   });
 });
 

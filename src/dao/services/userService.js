@@ -58,8 +58,26 @@ class UserService {
   async setLastConnection(id) {
     return await userManager.setLastConnection(id);
   }
-  async actualizarRol(email, role) {
-    return await userManager.actualizarRol(email, role);
+  async actualizarRol(req) {
+    const { email, role } = req.params;
+    if (req.user.email === email) {
+      return {
+        statusCode: HTTTP_STATUS_CODES.BAD_REQUEST,
+        response: { status: "error", message: "No puedes modificar tu rol de administrador" },
+      };
+    }
+    console.log(email + role);
+    const result = await userManager.actualizarRol(email, role);
+    if (result.acknowledged) {
+      return {
+        statusCode: HTTTP_STATUS_CODES.BAD_REQUEST,
+        response: { status: "error", message: "No se pudo modificar el rol del usuario" },
+      };
+    }
+    return {
+      statusCode: HTTTP_STATUS_CODES.OK,
+      response: { status: "success", message: "Rol modificado" },
+    };
   }
   async activarCuenta(email) {
     const user = await userManager.getUser(email);
@@ -144,7 +162,12 @@ class UserService {
     } else {
       msg = `Se eliminaron ${usersToDel} usuarios inactivos.`;
     }
-    const result = await userManager.deleteInactiveUsers(APP_CONST.INACTIVE_DAYS);
+    const daysAgo = new Date();
+    daysAgo.setDate(daysAgo.getDate() - APP_CONST.INACTIVE_DAYS);
+    const param = {
+      last_connection: { $lt: daysAgo },
+    };
+    const result = await userManager.deleteInactiveUsers(param);
     if (result) {
       return {
         statusCode: HTTTP_STATUS_CODES.OK,
@@ -157,6 +180,20 @@ class UserService {
         response: { status: "error", message: "No se pudo eliminar" },
       };
     }
+  }
+  async deleteUser(req, email) {
+    if (req.user.email === email) {
+      return {
+        statusCode: HTTTP_STATUS_CODES.BAD_REQUEST,
+        response: { status: "error", message: "No puedes eliminar tu propia cuenta" },
+      };
+    }
+    const result = await userManager.deleteUser(email);
+    return {
+      statusCode: HTTTP_STATUS_CODES.OK,
+      response: { status: "success", message: "No puedes eliminar tu propia cuenta" },
+      email: result.email,
+    };
   }
   async changeRole(id) {
     const user = await userManager.getUserById(id);

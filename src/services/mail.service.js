@@ -3,6 +3,17 @@ const APP_CONST = require("../commons/constants/appConstants");
 const { generateEmailToken } = require("../utils/token.utils");
 
 class MailService {
+  sendMailUserDeletedByAdmin(email) {
+    if (email) {
+      const mailOptions = {
+        from: APP_CONST.EMAIL_FROM,
+        to: email,
+        subject: "Importante: Eliminación de Cuenta",
+        html: this.internalGetCustomizedDeletedMessage(),
+      };
+      MailAdapter.send(mailOptions);
+    }
+  }
   sendMailUsersDeleted(users) {
     if (users) {
       const mailOptions = {
@@ -62,7 +73,7 @@ El Equipo de Not Vegan S.A.<br>
   internalGetCustomizedDeleteUserMessage(user) {
     return `<h3>Estimado/a ${user.first_name} ${user.last_name}.</h3><br><br>
 Esperamos que estés teniendo un excelente día. <br><br>
-Nos ponemos en contacto contigo para informarte sobre un cambio importante relacionado con tu cuenta en nuestra Tienda Gourmet de Asados.<br>
+Nos ponemos en contacto contigo para informarte sobre un cambio importante relacionado con tu cuenta en nuestra plataforma.<br>
 Lamentablemente, hemos observado que tu cuenta ha permanecido inactiva durante un período extendido de tiempo. Con el objetivo de mantener nuestra plataforma segura y eficiente, hemos procedido a eliminar tu cuenta debido a esta inactividad.
 Entendemos que pueden surgir ocasiones en las que no se tiene la oportunidad de interactuar con nuestra plataforma. Sin embargo, queremos recordarte que Not Vegan es un lugar vibrante donde puedes encontrar una amplia variedad de productos de alta calidad y aprovechar ofertas exclusivas.
 Si deseas seguir siendo parte de nuestra comunidad y disfrutar de las ventajas que ofrecemos, te invitamos cordialmente a volver a visitarnos. Puedes crear una nueva cuenta.<br><br>
@@ -75,6 +86,19 @@ El Equipo de Not Vegan S.A.<br>
   internalGetUrlConfirmationMail(email) {
     const token = generateEmailToken(email);
     return `http://localhost:8080/auth/confirm-email/${token}`;
+  }
+  internalGetCustomizedDeletedMessage() {
+    return `<h3>Estimado/a usuario/a.</h3><br><br>
+Esperamos que estés teniendo un excelente día. <br><br>
+Nos ponemos en contacto contigo para informarte sobre un cambio importante relacionado con tu cuenta en nuestra plataforma.<br>
+Con el objetivo de mantener nuestra plataforma segura y eficiente, el administrador de la plataforma ha procedido a eliminar tu cuenta.
+Queremos recordarte que Not Vegan es un lugar vibrante donde puedes encontrar una amplia variedad de productos de alta calidad y aprovechar ofertas exclusivas.
+Si deseas seguir siendo parte de nuestra comunidad y disfrutar de las ventajas que ofrecemos, te invitamos cordialmente a volver a visitarnos. Puedes crear una nueva cuenta.<br><br>
+Estamos comprometidos en brindarte una experiencia excepcional de compras en línea y en satisfacer todas tus necesidades. Si tienes alguna pregunta o requieres asistencia, no dudes en contactarnos a través de tiendadeasados@gmail.com.<br><br>
+Agradecemos tu comprensión y esperamos verte pronto.<br><br>
+¡Saludos cordiales!<br><br>
+El Equipo de Not Vegan S.A.<br>
+<a href="http://localhost:8080">www.not_vegan.com.ar</a>`;
   }
 }
 

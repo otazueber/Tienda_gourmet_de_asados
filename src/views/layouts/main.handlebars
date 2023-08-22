@@ -91,6 +91,9 @@
                                         href="/api/views/products?limit=8&page=1&query=almacen">Almacén</a>
                                     <a class="textLink" href="/api/views/products?limit=8&page=1&query=vinos">Vinos</a>
                                     <a class="textLink" href="/api/views/products?limit=8&page=1&query=fuego">Fuego</a>
+                                    {{#if this.isAdmin}}
+                                    <a class="textLink" href="/api/views/users">Usuarios</a>
+                                    {{/if}}
                                 </div>
                             </div>
                         </div>

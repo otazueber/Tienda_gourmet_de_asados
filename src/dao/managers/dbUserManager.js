@@ -42,6 +42,9 @@ class DbUserManager {
   async deleteInactiveUsers(param) {
     return await Users.deleteMany(param);
   }
+  async deleteUser(email) {
+    return await Users.findOneAndDelete({ email });
+  }
 }
 
 module.exports = DbUserManager;

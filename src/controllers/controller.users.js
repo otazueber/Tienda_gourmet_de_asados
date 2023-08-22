@@ -46,4 +46,16 @@ router.delete("/inactiveUsers", async (req, res) => {
   mailService.sendMailUsersDeleted(result.usersDeleted);
 });
 
+router.delete("/:email", async (req, res) => {
+  const { email } = req.params;
+  const result = await userService.deleteUser(req, email);
+  res.status(result.statusCode).json(result.response);
+  mailService.sendMailUserDeletedByAdmin(result.email);
+});
+
+router.put("/:email/role/:role", async (req, res) => {
+  const result = await userService.actualizarRol(req);
+  res.status(result.statusCode).json(result.response);
+});
+
 module.exports = router;
