@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node src/index.js",
     "productTest": "mocha src/test/product.test.js",
     "cartTest": "mocha src/test/cart.test.js",
     "sessionsTest": "mocha src/test/sessions.test.js"
