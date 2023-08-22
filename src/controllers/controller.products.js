@@ -5,9 +5,13 @@ const { adminAccess } = require("../middlewares/current");
 const HTTTP_STATUS_CODES = require("../commons/constants/http-status-codes.constants");
 const ProductService = require("../dao/services/productService");
 const APP_CONST = require("../commons/constants/appConstants");
+const UserService = require("../dao/services/userService");
+const MailService = require("../services/mail.service");
 
 const router = Router();
 const productService = new ProductService();
+const userService = new UserService();
+const mailService = new MailService();
 
 router.get("/", async (req, res) => {
   try {
@@ -63,6 +67,12 @@ router.delete("/:pid", authToken, adminAccess, async (req, res) => {
   const { pid } = req.params;
   const result = await productService.deleteProduct(pid, req.user);
   res.status(result.statusCode).json(result.response);
+  const userOwner = await userService.getUser(result.owner);
+  if (userOwner) {
+    if (userOwner.role === "premium") {
+      mailService.sendEmailProductDeleted(userOwner, result.description);
+    }
+  }
 });
 
 module.exports = router;

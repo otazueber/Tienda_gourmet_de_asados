@@ -53,6 +53,18 @@ class MailService {
       MailAdapter.send(mailOptions);
     }
   }
+  sendEmailProductDeleted(user, productDescription) {
+    if (user) {
+      const mailOptions = {
+        from: APP_CONST.EMAIL_FROM,
+        to: user.email,
+        subject: "Importante: Producto eliminado",
+        html: this.internalGetCustomizedDeletedProductMessage(user, productDescription),
+      };
+      MailAdapter.send(mailOptions);
+    }
+  }
+
   internalGetCustomizedConfirmationUserMessage(user) {
     return `<h3>Estimado/a ${user.first_name} ${user.last_name}.</h3><br><br>
 
@@ -99,6 +111,25 @@ Agradecemos tu comprensión y esperamos verte pronto.<br><br>
 ¡Saludos cordiales!<br><br>
 El Equipo de Not Vegan S.A.<br>
 <a href="http://localhost:8080">www.not_vegan.com.ar</a>`;
+  }
+  internalGetCustomizedDeletedProductMessage(user, productDescription) {
+    return `<h3>Estimado/a ${user.first_name} ${user.last_name}.</h3><br><br>
+Esperamos que te encuentres bien. Queremos informarte que uno de tus productos ha sido eliminado de nuestra plataforma. Queremos brindarte toda la claridad posible acerca de esta situación.<br><br>
+Producto Eliminado: ${productDescription}<br>
+Fecha de Eliminación: ${this.internalGetFormattedDate()}<br><br>
+Lamentamos cualquier inconveniente que esto pueda causarte. La eliminación de tu producto puede deberse a razones relacionadas con nuestra política de contenido o términos de uso. Por favor, revisa nuestros términos y condiciones para obtener más información sobre las reglas y directrices que rigen nuestra plataforma.<br><br>
+Si tienes alguna pregunta o inquietud con respecto a esta eliminación o cualquier otro aspecto de nuestra plataforma, no dudes en contactarnos. Estamos aquí para ayudarte y proporcionarte el soporte necesario.<br><br>
+Agradecemos tu comprensión y colaboración en este asunto.<br><br>
+¡Saludos cordiales!<br><br>
+El Equipo de Not Vegan S.A.<br>
+<a href="http://localhost:8080">www.not_vegan.com.ar</a>`;
+  }
+  internalGetFormattedDate() {
+    const currentDate = new Date();
+    const day = String(currentDate.getDate()).padStart(2, "0");
+    const month = String(currentDate.getMonth() + 1).padStart(2, "0"); // Los meses están basados en 0, por lo que sumamos 1
+    const year = currentDate.getFullYear();
+    return `${day}/${month}/${year}`;
   }
 }
 

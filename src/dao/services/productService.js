@@ -122,6 +122,8 @@ class ProductService {
       return {
         statusCode: HTTTP_STATUS_CODES.OK,
         response: { status: "success", message: "Producto eliminado satisfactoriamente !!!" },
+        owner: productToDel.owner,
+        description: productToDel.description,
       };
     } else {
       return {

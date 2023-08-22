@@ -66,9 +66,8 @@ class UserService {
         response: { status: "error", message: "No puedes modificar tu rol de administrador" },
       };
     }
-    console.log(email + role);
     const result = await userManager.actualizarRol(email, role);
-    if (result.acknowledged) {
+    if (!result.acknowledged) {
       return {
         statusCode: HTTTP_STATUS_CODES.BAD_REQUEST,
         response: { status: "error", message: "No se pudo modificar el rol del usuario" },
