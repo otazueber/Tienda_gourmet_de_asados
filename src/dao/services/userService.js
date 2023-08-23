@@ -239,7 +239,7 @@ class UserService {
       const { email, password } = req.body;
       if ((email === "adminCoder@coder.com") & (password === "adminCod3r123")) {
         const user = {
-          _id: "CODER",
+          _id: "64a540e34a897061ada4a316",
           first_name: "admin",
           last_name: "Coder",
           email: "adminCoder@coder.com",
@@ -286,7 +286,7 @@ class UserService {
       console.error(error);
       return {
         statusCode: HTTTP_STATUS_CODES.INTERNAL_SERVER_ERROR,
-        response: { status: "error", message: "Internal sercer error" },
+        response: { status: "error", message: "Internal server error" },
       };
     }
   }
