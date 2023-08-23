@@ -66,42 +66,62 @@
                 </div>
                 {{/if}}
                 <!-- Menú -->
-                <div class="col-6 col-lg-8 d-flex justify-content-center" {{#if this.mostrarIconos}} style="width: 50%;"
-                    {{else}} style="width: 100%;" {{/if}}>
-                    <nav class="d-flex justify-content-center navbar navbar-expand-lg navbar-dark bg-black"><button
-                            aria-controls="responsive-navbar-nav" type="button" aria-label="Toggle navigation"
-                            class="navbar-toggler collapsed" style="border-color: white;"><span
-                                class="navbar-toggler-icon"></span></button>
-                        <div class="navbar-collapse collapse" id="responsive-navbar-nav">
-                            <div>
-                                <div class="mr-auto navbar-nav">
-                                    <a class="textLink" href="/">Inicio</a>
-                                    <a class="textLink"
-                                        href="/api/views/products?limit=8&page=1&query=vacunos">Vacunos</a>
-                                    <a class="textLink" href="/api/views/products?limit=8&page=1&query=cerdo">Cerdo</a>
-                                    <a class="textLink" href="/api/views/products?limit=8&page=1&query=aves">Aves</a>
-                                    <a class="textLink" href="/api/views/products?limit=8&page=1&query=mar">Mar</a>
-                                    <a class="textLink"
-                                        href="/api/views/products?limit=8&page=1&query=embutidos">Embutidos</a>
-                                    <a class="textLink"
-                                        href="/api/views/products?limit=8&page=1&query=achuras">Achuras</a>
-                                    <a class="textLink"
-                                        href="/api/views/products?limit=8&page=1&query=elaborados">Elaborados</a>
-                                    <a class="textLink"
-                                        href="/api/views/products?limit=8&page=1&query=quesos">Quesos</a>
-                                    <a class="textLink"
-                                        href="/api/views/products?limit=8&page=1&query=helados">Helados</a>
-                                    <a class="textLink"
-                                        href="/api/views/products?limit=8&page=1&query=almacen">Almacén</a>
-                                    <a class="textLink" href="/api/views/products?limit=8&page=1&query=vinos">Vinos</a>
-                                    <a class="textLink" href="/api/views/products?limit=8&page=1&query=fuego">Fuego</a>
-                                    {{#if this.isAdmin}}
-                                    <a class="textLink" href="/api/views/users">Usuarios</a>
-                                    {{/if}}
-                                </div>
-                            </div>
-                        </div>
-                    </nav>
+                <div class="col-6 col-lg-8 d-flex justify-content-center" {{#if this.mostrarIconos}} style="width: 50%;" {{else}} style="width: 100%;" {{/if}}>
+                    <nav class="navbar navbar-expand-lg navbar-light">
+					<button class="btn btn-secondary" type="button" data-bs-toggle="collapse"
+						data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+						aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+						<ul class="navbar-nav">
+							<li class="nav-item">
+								<a class="textLink" href="/">Inicio</a>
+							</li>
+							<li class="nav-item">
+								<a class="textLink" href="/api/views/products?limit=8&page=1&query=vacunos">Vacunos</a>
+							</li>
+							<li class="nav-item">
+								<a class="textLink" href="/api/views/products?limit=8&page=1&query=cerdo">Cerdo</a>
+							</li>
+							<li class="nav-item">
+								<a class="textLink" href="/api/views/products?limit=8&page=1&query=aves">Aves</a>
+							</li>
+							<li class="nav-item">
+								<a class="textLink" href="/api/views/products?limit=8&page=1&query=mar">Mar</a>
+							</li>
+							<li class="nav-item">
+								<a class="textLink" href="/api/views/products?limit=8&page=1&query=embutidos">Embutidos</a>
+							</li>
+							<li class="nav-item">
+								<a class="textLink" href="/api/views/products?limit=8&page=1&query=achuras">Achuras</a>
+							</li>
+							<li class="nav-item">
+								<a class="textLink" href="/api/views/products?limit=8&page=1&query=elaborados">Elaborados</a>
+							</li>
+							<li class="nav-item">
+								<a class="textLink" href="/api/views/products?limit=8&page=1&query=quesos">Quesos</a>
+							</li>
+							<li class="nav-item">
+								<a class="textLink" href="/api/views/products?limit=8&page=1&query=helados">Helados</a>
+							</li>
+							<li class="nav-item">
+								<a class="textLink" href="/api/views/products?limit=8&page=1&query=almacen">Almacén</a>
+							</li>
+							<li class="nav-item">
+								<a class="textLink" href="/api/views/products?limit=8&page=1&query=vinos">Vinos</a>
+							</li>
+							<li class="nav-item">
+								<a class="textLink" href="/api/views/products?limit=8&page=1&query=fuego">Fuego</a>
+							</li>
+							{{#if this.isAdmin}}
+                                                        <li class="nav-item">
+								<a class="textLink" href="/api/views/users">Usuarios</a>
+							</li>
+                                                        {{/if}}
+						</ul>
+					</div>
+				</nav>
                 </div>
                 <!-- Icono para ver el carrito -->
                 {{#if this.mostrarIconos}}
