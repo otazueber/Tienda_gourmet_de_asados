@@ -94,19 +94,21 @@ class CartService {
     const products = [];
     let cantidad = 0;
     let importe = "";
-    const cart = await cartManager.getCartById(cid, { populateProducts: true });
-    if (cart && cart.products.length > 0) {
-      let importeTotal = 0;
-      cart.products.forEach((p) => {
-        cantidad += 1;
-        importeTotal += p.product.price * p.quantity;
-        products.push(new ProductCartDTO(p));
-      });
-      importe = importeTotal.toLocaleString("de-ES", {
-        style: "decimal",
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2,
-      });
+    if (cid != "-1") {
+      const cart = await cartManager.getCartById(cid, { populateProducts: true });
+      if (cart && cart.products.length > 0) {
+        let importeTotal = 0;
+        cart.products.forEach((p) => {
+          cantidad += 1;
+          importeTotal += p.product.price * p.quantity;
+          products.push(new ProductCartDTO(p));
+        });
+        importe = importeTotal.toLocaleString("de-ES", {
+          style: "decimal",
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2,
+        });
+      }
     }
     return {
       products,
