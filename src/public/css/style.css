@@ -245,3 +245,13 @@ a {
     transform: rotate(360deg);
   }
 }
+
+.detail-photo {
+  width: 30%;
+}
+
+@media (max-width: 600px) {
+  .foto {
+    width: 100%;
+  }
+}

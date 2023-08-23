@@ -1,28 +1,20 @@
 <div id="root" class="container-fluid font bground">
   <div class="row">
     <div class="col-12 col-lg-12 centrarElementos">
-      <img class="ps-5 foto" src={{this.product.thumbnails}} alt="Fhoto" />
+      <img class="ps-5 foto detail-photo" src={{this.product.thumbnails}} alt="Fhoto" />
       <p>{{this.product.description}}
         <br />Precio por
         {{this.product.measurement}}: ${{this.product.price}}</p>
       <div class="centrarElementos">
         <div class="d-flex flex-row justify-content-center">
           <button class="btnAgregarProducto" id="btnRestar">
-            <img
-              class="btn-administrar"
-              src="/assets/img/btnResta.png"
-              alt="Icon"
-            />
+            <img class="btn-administrar" src="/assets/img/btnResta.png" alt="Icon" />
           </button>
           <div style="width: 50px;">
             <span id="cantidad">1</span>
           </div>
           <button class="btnAgregarProducto" id="btnSumar">
-            <img
-              class="btn-administrar"
-              src="/assets/img/btnSuma.png"
-              alt="Icon"
-            />
+            <img class="btn-administrar" src="/assets/img/btnSuma.png" alt="Icon" />
           </button>
           <button class="btnAgregarProducto" id="btnAgregar">
             <img src="/assets/img/agregar.png" alt="imagen" />Agregar al carrito
