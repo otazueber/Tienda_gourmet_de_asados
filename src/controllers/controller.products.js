@@ -70,7 +70,8 @@ router.delete("/:pid", authToken, adminAccess, async (req, res) => {
   const userOwner = await userService.getUser(result.owner);
   if (userOwner) {
     if (userOwner.role === "premium") {
-      mailService.sendEmailProductDeleted(userOwner, result.description);
+      const baseUrl = req.protocol + "://" + req.get("host");
+      mailService.sendEmailProductDeleted(userOwner, result.description, baseUrl);
     }
   }
 });

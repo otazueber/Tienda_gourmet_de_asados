@@ -3,18 +3,18 @@ const APP_CONST = require("../commons/constants/appConstants");
 const { generateEmailToken } = require("../utils/token.utils");
 
 class MailService {
-  sendMailUserDeletedByAdmin(email) {
+  sendMailUserDeletedByAdmin(email, baseUrl) {
     if (email) {
       const mailOptions = {
         from: APP_CONST.EMAIL_FROM,
         to: email,
         subject: "Importante: Eliminación de Cuenta",
-        html: this.internalGetCustomizedDeletedMessage(),
+        html: this.internalGetCustomizedDeletedMessage(baseUrl),
       };
       MailAdapter.send(mailOptions);
     }
   }
-  sendMailUsersDeleted(users) {
+  sendMailUsersDeleted(users, baseUrl) {
     if (users) {
       const mailOptions = {
         from: APP_CONST.EMAIL_FROM,
@@ -24,26 +24,26 @@ class MailService {
       };
       users.forEach((u) => {
         mailOptions.to = u.email;
-        mailOptions.html = this.internalGetCustomizedDeleteUserMessage(u);
+        mailOptions.html = this.internalGetCustomizedDeleteUserMessage(u, baseUrl);
         MailAdapter.send(mailOptions);
       });
     }
   }
-  sendEmailConfirmation(user) {
+  sendEmailConfirmation(user, baseUrl) {
     if (user) {
       const mailOptions = {
         from: APP_CONST.EMAIL_FROM,
         to: user.email,
         subject: "Confirmación de Registro: Activa tu Cuenta de Correo Electrónico",
-        html: this.internalGetCustomizedConfirmationUserMessage(user),
+        html: this.internalGetCustomizedConfirmationUserMessage(user, baseUrl),
       };
       MailAdapter.send(mailOptions);
     }
   }
-  sendEmailResetPassword(req, token) {
+  sendEmailResetPassword(req, token, baseUrl) {
     if (token) {
       const { email } = req.body;
-      const resetLink = `${this.internalGetBaseURL()}/auth/reset-password/${token}`;
+      const resetLink = `${baseUrl}/auth/reset-password/${token}`;
       const mailOptions = {
         from: APP_CONST.EMAIL_FROM,
         to: email,
@@ -53,23 +53,23 @@ class MailService {
       MailAdapter.send(mailOptions);
     }
   }
-  sendEmailProductDeleted(user, productDescription) {
+  sendEmailProductDeleted(user, productDescription, baseUrl) {
     if (user) {
       const mailOptions = {
         from: APP_CONST.EMAIL_FROM,
         to: user.email,
         subject: "Importante: Producto eliminado",
-        html: this.internalGetCustomizedDeletedProductMessage(user, productDescription),
+        html: this.internalGetCustomizedDeletedProductMessage(user, productDescription, baseUrl),
       };
       MailAdapter.send(mailOptions);
     }
   }
 
-  internalGetCustomizedConfirmationUserMessage(user) {
+  internalGetCustomizedConfirmationUserMessage(user, baseUrl) {
     return `<h3>Estimado/a ${user.first_name} ${user.last_name}.</h3><br><br>
 
 Es un placer darle la bienvenida a nuestra plataforma y agradecemos su registro en nuestra comunidad. Para garantizar la seguridad y la integridad de su cuenta, le pedimos que complete el proceso de confirmación haciendo clic en el enlace que se proporciona a continuación:<br><br>
-Enlace de Confirmación: <a href="${this.internalGetUrlConfirmationMail(user.email)}">aquí</a><br><br>
+Enlace de Confirmación: <a href="${this.internalGetUrlConfirmationMail(user.email, baseUrl)}">aquí</a><br><br>
 Al confirmar su dirección de correo electrónico, tendrá acceso completo a todas las funciones y beneficios que nuestra plataforma tiene para ofrecer. Esto incluye la posibilidad de recibir actualizaciones, comunicaciones importantes y participar en actividades exclusivas.<br><br>
 Por favor, siga estos pasos para confirmar su cuenta:<br><br>
 1 - Haga clic en el enlace de confirmación proporcionado arriba.<br>
@@ -80,9 +80,9 @@ Si ha tenido algún problema durante el proceso de confirmación o tiene pregunt
 Gracias por unirse a Non Vegan. Esperamos que tenga una experiencia gratificante y enriquecedora con nosotros.<br><br>
 ¡Saludos cordiales!<br><br>
 El Equipo de Not Vegan S.A.<br>
-<a href="${this.internalGetBaseURL()}">www.not_vegan.com.ar</a>`;
+<a href="${baseUrl}">www.not_vegan.com.ar</a>`;
   }
-  internalGetCustomizedDeleteUserMessage(user) {
+  internalGetCustomizedDeleteUserMessage(user, baseUrl) {
     return `<h3>Estimado/a ${user.first_name} ${user.last_name}.</h3><br><br>
 Esperamos que estés teniendo un excelente día. <br><br>
 Nos ponemos en contacto contigo para informarte sobre un cambio importante relacionado con tu cuenta en nuestra plataforma.<br>
@@ -93,13 +93,13 @@ Estamos comprometidos en brindarte una experiencia excepcional de compras en lí
 Agradecemos tu comprensión y esperamos verte pronto.<br><br>
 ¡Saludos cordiales!<br><br>
 El Equipo de Not Vegan S.A.<br>
-<a href="${this.internalGetBaseURL()}">www.not_vegan.com.ar</a>`;
+<a href="${baseUrl}">www.not_vegan.com.ar</a>`;
   }
-  internalGetUrlConfirmationMail(email) {
+  internalGetUrlConfirmationMail(email, baseUrl) {
     const token = generateEmailToken(email);
-    return `${this.internalGetBaseURL()}/auth/confirm-email/${token}`;
+    return `${baseUrl}/auth/confirm-email/${token}`;
   }
-  internalGetCustomizedDeletedMessage() {
+  internalGetCustomizedDeletedMessage(baseUrl) {
     return `<h3>Estimado/a usuario/a.</h3><br><br>
 Esperamos que estés teniendo un excelente día. <br><br>
 Nos ponemos en contacto contigo para informarte sobre un cambio importante relacionado con tu cuenta en nuestra plataforma.<br>
@@ -110,9 +110,9 @@ Estamos comprometidos en brindarte una experiencia excepcional de compras en lí
 Agradecemos tu comprensión y esperamos verte pronto.<br><br>
 ¡Saludos cordiales!<br><br>
 El Equipo de Not Vegan S.A.<br>
-<a href="${this.internalGetBaseURL()}">www.not_vegan.com.ar</a>`;
+<a href="${baseUrl}">www.not_vegan.com.ar</a>`;
   }
-  internalGetCustomizedDeletedProductMessage(user, productDescription) {
+  internalGetCustomizedDeletedProductMessage(user, productDescription, baseUrl) {
     return `<h3>Estimado/a ${user.first_name} ${user.last_name}.</h3><br><br>
 Esperamos que te encuentres bien. Queremos informarte que uno de tus productos ha sido eliminado de nuestra plataforma. Queremos brindarte toda la claridad posible acerca de esta situación.<br><br>
 Producto Eliminado: ${productDescription}<br>
@@ -122,7 +122,7 @@ Si tienes alguna pregunta o inquietud con respecto a esta eliminación o cualqui
 Agradecemos tu comprensión y colaboración en este asunto.<br><br>
 ¡Saludos cordiales!<br><br>
 El Equipo de Not Vegan S.A.<br>
-<a href="${this.internalGetBaseURL()}">www.not_vegan.com.ar</a>`;
+<a href="${baseUrl}">www.not_vegan.com.ar</a>`;
   }
   internalGetFormattedDate() {
     const currentDate = new Date();
@@ -130,9 +130,6 @@ El Equipo de Not Vegan S.A.<br>
     const month = String(currentDate.getMonth() + 1).padStart(2, "0"); // Los meses están basados en 0, por lo que sumamos 1
     const year = currentDate.getFullYear();
     return `${day}/${month}/${year}`;
-  }
-  internalGetBaseURL() {
-    return window.location.protocol + "//" + window.location.host;
   }
 }
 

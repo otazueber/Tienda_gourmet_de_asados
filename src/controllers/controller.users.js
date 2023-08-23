@@ -11,7 +11,8 @@ const mailService = new MailService();
 router.post("/", async (req, res) => {
   result = await userService.createUser(req.body);
   res.status(result.statusCode).json(result.response);
-  mailService.sendEmailConfirmation(result.response.userCreated);
+  const baseUrl = req.protocol + "://" + req.get("host");
+  mailService.sendEmailConfirmation(result.response.userCreated, baseUrl);
 });
 
 router.put("/premium/:uid", async (req, res) => {
@@ -43,14 +44,16 @@ router.get("/", async (req, res) => {
 router.delete("/inactiveUsers", async (req, res) => {
   const result = await userService.deleteInactiveUsers();
   res.status(result.statusCode).json(result.response);
-  mailService.sendMailUsersDeleted(result.usersDeleted);
+  const baseUrl = req.protocol + "://" + req.get("host");
+  mailService.sendMailUsersDeleted(result.usersDeleted, baseUrl);
 });
 
 router.delete("/:email", async (req, res) => {
   const { email } = req.params;
   const result = await userService.deleteUser(req, email);
   res.status(result.statusCode).json(result.response);
-  mailService.sendMailUserDeletedByAdmin(result.email);
+  const baseUrl = req.protocol + "://" + req.get("host");
+  mailService.sendMailUserDeletedByAdmin(result.email, baseUrl);
 });
 
 router.put("/:email/role/:role", async (req, res) => {

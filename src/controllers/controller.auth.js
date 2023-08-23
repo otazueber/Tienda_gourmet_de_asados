@@ -31,7 +31,8 @@ router.get("/forgot-password", (req, res) => {
 
 router.post("/mail-password", async (req, res) => {
   const token = await userService.getResetPasswordToken(req);
-  mailService.sendEmailResetPassword(req, token);
+  const baseUrl = req.protocol + "://" + req.get("host");
+  mailService.sendEmailResetPassword(req, token, baseUrl);
   res.redirect("/login");
 });
 
