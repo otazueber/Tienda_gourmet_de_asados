@@ -1,11 +1,21 @@
 const { sourceDatabase } = require("../../config/app.config");
 
-let CartManager;
+class CartManagerFactory {
+  
+  constructor() {
+    switch (sourceDatabase) {
+      case "MONGO":
+        this.CartManager = require("../managers/dbCartManager");
+        break;
+      default:
+        throw new Error("Database type not supported");
+    }
+  }
 
-switch (sourceDatabase) {
-  case "MONGO":
-    CartManager = require("../managers/dbCartManager");
-    break;
+  createCartManager() {
+    return new this.CartManager();
+  }
 }
 
-module.exports = CartManager;
+module.exports = CartManagerFactory;
+

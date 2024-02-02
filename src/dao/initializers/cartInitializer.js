@@ -1,6 +1,10 @@
 const CartManagerFactory = require("../factories/cartManagerFactory");
 const CartRepository = require("../repositories/cartRepository");
 
-const cartManager = new CartRepository(new CartManagerFactory());
+const cartManagerFactory = new CartManagerFactory();
 
-module.exports = cartManager;
+const cartManager = cartManagerFactory.createCartManager();
+
+const cartRepository = new CartRepository(cartManager);
+
+module.exports = cartRepository;
