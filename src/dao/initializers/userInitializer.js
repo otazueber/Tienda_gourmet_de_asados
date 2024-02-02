@@ -1,6 +1,13 @@
 const UserManagerFactory = require("../factories/userManagerFactory");
 const UserRepository = require("../repositories/userRepository");
 
-const userManager = new UserRepository(new UserManagerFactory());
+// Crear una instancia de UserManagerFactory
+const userManagerFactory = new UserManagerFactory();
 
-module.exports = userManager;
+// Crear una instancia de UserManager utilizando el método createUserManager()
+const userManager = userManagerFactory.createUserManager();
+
+// Crear una instancia de UserRepository pasando userManager como argumento
+const userRepository = new UserRepository(userManager);
+
+module.exports = userRepository;
