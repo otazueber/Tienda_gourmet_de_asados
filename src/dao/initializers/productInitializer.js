@@ -1,6 +1,10 @@
 const ProductManagerFactory = require("../factories/productManagerFactory");
 const ProductRepository = require("../repositories/productRepository");
 
-const productManager = new ProductRepository(new ProductManagerFactory());
+const productManagerFactory = new ProductManagerFactory();
 
-module.exports = productManager;
+const productManager = productManagerFactory.createProductManager();
+
+const productRepository = new ProductRepository(productManager);
+
+module.exports = productRepository;

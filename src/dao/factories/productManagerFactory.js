@@ -1,15 +1,26 @@
 const { sourceDatabase } = require("../../config/app.config");
 
-let ProductManager;
+class ProductManagerFactory {
+  
+  constructor() {
+    switch (sourceDatabase) {
+      case "MONGO":
+        this.ProductManager = require("../managers/dbUserManager");
+        break;
 
-switch (sourceDatabase) {
-  case "MONGO":
-    ProductManager = require("../managers/dbProductManager");
-    break;
+        case "MEMORY":
+        this.ProductManager = require("../managers/fileProductManager");
+        break;
+  
+      default:
+        throw new Error("Database type not supported");
+    }
+  }
 
-  case "MEMORY":
-    ProductManager = require("../managers/fileProductManager");
-    break;
+  createProductManager() {
+    return new this.ProductManager();
+  }
 }
 
-module.exports = ProductManager;
+module.exports = ProductManagerFactory;
+
